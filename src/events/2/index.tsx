@@ -31,7 +31,7 @@ import { MdOutlineCardGiftcard } from "react-icons/md";
 // };
 
 // export default CreateEvent;
-export default function Page() {
+export default function Event2() {
   return (
     <main className="w-full">
       <h2 className="text-[#25194D] font-semibold text-4xl text-center mt-14">
