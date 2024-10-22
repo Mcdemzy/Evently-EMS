@@ -11,6 +11,8 @@
 // import { LuTicket } from "react-icons/lu";
 // import { MdOutlineCardGiftcard } from "react-icons/md";
 
+import { Link } from "react-router-dom";
+
 // const CreateEvent = () => {
 //   const { sessionClaims } = auth();
 
@@ -71,7 +73,7 @@ export default function Event3() {
         <div className="flex items-center justify-center w-[50%]">
           <label
             htmlFor="dropzone-file"
-            className="flex flex-col items-center justify-center w-full h-[304px] rounded-lg cursor-pointer bg-[#FFFFFF] dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+            className="flex flex-col items-center justify-center w-full h-[304px] rounded-lg cursor-pointer bg-[#FFFFFF] hover:bg-gray-100 dark:border-gray-600"
           >
             <div className="flex flex-col items-center justify-center pt-5 pb-6">
               <svg
@@ -101,18 +103,18 @@ export default function Event3() {
       </section>
 
       <section className="mt-20 my-6 mb-10 w-full flex flex-row justify-center gap-x-8 items-center">
-        <a
-          href="/events/create/2"
+        <Link
+          to="/events/create/2"
           className="flex justify-center items-center shaodw-md w-[240px] h-[48px] rounded-md text-primary text-md bg-[#624CF50D]"
         >
           Receed
-        </a>
-        <a
-          href="/events/create/2"
+        </Link>
+        <Link
+          to="/"
           className="flex justify-center items-center w-[240px] h-[48px] rounded-md text-white text-md bg-[#624CF5]"
         >
           Create Event
-        </a>
+        </Link>
       </section>
     </main>
   );

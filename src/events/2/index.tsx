@@ -10,6 +10,7 @@ import { FaRegCalendarXmark } from "react-icons/fa6";
 import { HiOutlineMail } from "react-icons/hi";
 import { LuTicket } from "react-icons/lu";
 import { MdOutlineCardGiftcard } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 // const CreateEvent = () => {
 //   const { sessionClaims } = auth();
@@ -63,12 +64,7 @@ export default function Event2() {
       </section>
       <section className="mt-4 mb-10 bg-[#E9E8ED] space-y-4 flex flex-col jusitfy-center items-center w-[80%] m-auto h-[440px] rounded-md">
         <div className="mt-10 w-[100px] h-[100px]  rounded-full ">
-          <img
-            src="/assets/images/ticket.png"
-            width={100}
-            height={100}
-            alt={""}
-          />
+          <img src="/images/ticket.png" width={100} height={100} alt={""} />
         </div>
         <p className="text-xl text-[#25194D] text-center font-semibold">
           CREATE EVENT
@@ -211,7 +207,7 @@ export default function Event2() {
                 <Globe color="#25194D" />
               </div>
               <input
-                className="w-full h-[46px] border border-[#1C1C1C] rounded-e-md"
+                className="w-full h-[46px] border-y border-e border-[#1C1C1C] rounded-e-md"
                 type="text"
                 name=""
                 id=""
@@ -220,10 +216,10 @@ export default function Event2() {
             {/* twitter */}
             <div className="flex jusitfy-start items-center rounded-md">
               <div className="w-[56px] h-[46px] border border-[#1C1C1C] rounded-s-md flex justify-center items-center">
-                <Globe color="#25194D" />
+                <img src="/images/x.png" alt="twitter" />
               </div>
               <input
-                className="w-full h-[46px] border border-[#1C1C1C] rounded-e-md"
+                className="w-full h-[46px] border-y border-e border-[#1C1C1C] rounded-e-md"
                 type="text"
                 name=""
                 id=""
@@ -232,10 +228,10 @@ export default function Event2() {
             {/* instagram */}
             <div className="flex jusitfy-start items-center rounded-md">
               <div className="w-[56px] h-[46px] border border-[#1C1C1C] rounded-s-md flex justify-center items-center">
-                <Globe color="#25194D" />
+                <img src="/images/instagram.png" alt="instagram" />
               </div>
               <input
-                className="w-full h-[46px] border border-[#1C1C1C] rounded-e-md"
+                className="w-full h-[46px] border-y border-e border-[#1C1C1C] rounded-e-md"
                 type="text"
                 name=""
                 id=""
@@ -244,10 +240,10 @@ export default function Event2() {
             {/* whatsapp */}
             <div className="flex jusitfy-start items-center rounded-md">
               <div className="w-[56px] h-[46px] border border-[#1C1C1C] rounded-s-md flex justify-center items-center">
-                <Globe color="#25194D" />
+                <img src="/images/whatsapp.png" alt="whatsapp" />
               </div>
               <input
-                className="w-full h-[46px] border border-[#1C1C1C] rounded-e-md"
+                className="w-full h-[46px] border-y border-e border-[#1C1C1C] rounded-e-md"
                 type="text"
                 name=""
                 id=""
@@ -256,10 +252,10 @@ export default function Event2() {
             {/* facebook */}
             <div className="flex jusitfy-start items-center rounded-md">
               <div className="w-[56px] h-[46px] border border-[#1C1C1C] rounded-s-md flex justify-center items-center">
-                <Globe color="#25194D" />
+                <img src="/images/facebook.png" alt="facebook" />
               </div>
               <input
-                className="w-full h-[46px] border border-[#1C1C1C] rounded-e-md"
+                className="w-full h-[46px] border-y border-e border-[#1C1C1C] rounded-e-md"
                 type="text"
                 name=""
                 id=""
@@ -268,10 +264,10 @@ export default function Event2() {
             {/* telegram */}
             <div className="flex jusitfy-start items-center rounded-md">
               <div className="w-[56px] h-[46px] border border-[#1C1C1C] rounded-s-md flex justify-center items-center">
-                <Globe color="#25194D" />
+                <img src="/images/telegram.png" alt="telegram" />
               </div>
               <input
-                className="w-full h-[46px] border border-[#1C1C1C] rounded-e-md"
+                className="w-full h-[46px] border-y border-e border-[#1C1C1C] rounded-e-md"
                 type="text"
                 name=""
                 id=""
@@ -282,7 +278,7 @@ export default function Event2() {
             {/* Evently Logo Section */}
             <div className="flex items-center justify-center w-[200px] h-[200px] gap-3 shadow-2xl rounded-full px-[13px] py-[50px] z-[1] bg-white dark:text-black">
               <img
-                src="/assets/images/logo.svg"
+                src="/images/logo.svg"
                 width={30}
                 height={50}
                 alt="Event Image"
@@ -362,18 +358,18 @@ export default function Event2() {
         {/* buttons */}
       </section>
       <section className="mt-20 my-6 mb-10 w-full flex flex-row justify-center gap-x-8 items-center">
-        <a
-          href="/events/create"
+        <Link
+          to="/events/create"
           className="flex justify-center items-center shaodw-md w-[240px] h-[48px] rounded-md text-primary text-md bg-[#624CF50D]"
         >
           Receed
-        </a>
-        <a
-          href="/events/create/3"
+        </Link>
+        <Link
+          to="/events/create/3"
           className="flex justify-center items-center w-[240px] h-[48px] rounded-md text-white text-md bg-[#624CF5]"
         >
           Proceed
-        </a>
+        </Link>
       </section>
     </main>
   );

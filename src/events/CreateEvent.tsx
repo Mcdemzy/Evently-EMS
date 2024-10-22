@@ -1,5 +1,6 @@
 //@ts-check
 import { useState } from "react";
+import { Link } from "react-router-dom";
 export default function CreateEvent() {
   const [physicalEvent, setPhysicalEvent] = useState(false);
   const [onlineEvent, setOnlineEvent] = useState(false);
@@ -14,7 +15,7 @@ export default function CreateEvent() {
       {/* progress bars */}
       <section className="my-6 w-[90%] m-auto  flex justify-between items-center">
         <div className="w-[30%] h-[101px] flex justify-center items-center gap-y-1 flex-col">
-          <span className="w-[48px] h-[48px] rounded-full bg-[#1b1825] text-white flex justify-center items-center">
+          <span className="w-[48px] h-[48px] rounded-full bg-[#25194D] text-white flex justify-center items-center">
             1
           </span>
           <p>DETAILS</p>
@@ -40,7 +41,7 @@ export default function CreateEvent() {
             <div>
               <label
                 htmlFor="username"
-                className="block mb-2 text-sm font-medium text-[#25194D] dark:text-white"
+                className="block mb-2 text-sm font-medium text-[#25194D]"
               >
                 Event Name <span className="text-[#FA776C]">*</span>
               </label>
@@ -48,32 +49,32 @@ export default function CreateEvent() {
                 type="text"
                 name="username"
                 id="username"
-                className=" border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className=" border border-[#1C1C1C] bg-white text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
             </div>
             <div>
               <label
                 htmlFor="username"
-                className="block mb-2 text-sm font-medium text-[#25194D] dark:text-white"
+                className="block mb-2 text-sm font-medium text-[#25194D]"
               >
                 Category Event <span className="text-[#FA776C]">*</span>
               </label>
-              <select className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <select className="border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option value="">Select Category</option>
               </select>
             </div>
             <div className="col-span-2">
               <label
                 htmlFor="description"
-                className="block mb-2 text-sm font-medium text-[#25194D] dark:text-white"
+                className="block mb-2 text-sm font-medium text-[#25194D]"
               >
                 Description of event <span className="text-[#FA776C]">*</span>
               </label>
               <textarea
                 cols={4}
                 rows={5}
-                className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600  dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 name=""
                 id=""
               ></textarea>
@@ -86,7 +87,7 @@ export default function CreateEvent() {
             <div>
               <label
                 htmlFor="username"
-                className="block mb-2 text-sm font-medium text-[#25194D] dark:text-white"
+                className="block mb-2 text-sm font-medium text-[#25194D]"
               >
                 Start Date <span className="text-[#FA776C]">*</span>
               </label>
@@ -94,14 +95,14 @@ export default function CreateEvent() {
                 type="date"
                 name="username"
                 id="username"
-                className=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className=" border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
             </div>
             <div>
               <label
                 htmlFor="username"
-                className="block mb-2 text-sm font-medium text-[#25194D] dark:text-white"
+                className="block mb-2 text-sm font-medium text-[#25194D]"
               >
                 End Date <span className="text-[#FA776C]">*</span>
               </label>
@@ -109,7 +110,7 @@ export default function CreateEvent() {
                 type="date"
                 name="username"
                 id="username"
-                className=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className=" border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
             </div>
@@ -118,7 +119,7 @@ export default function CreateEvent() {
             <div>
               <label
                 htmlFor="username"
-                className="block mb-2 text-sm font-medium text-[#25194D] dark:text-white"
+                className="block mb-2 text-sm font-medium text-[#25194D]"
               >
                 Start Time <span className="text-[#FA776C]">*</span>
               </label>
@@ -126,14 +127,14 @@ export default function CreateEvent() {
                 type="time"
                 name="start-time"
                 id="time"
-                className=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className=" border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
             </div>
             <div>
               <label
                 htmlFor="username"
-                className="block mb-2 text-sm font-medium text-[#25194D] dark:text-white"
+                className="block mb-2 text-sm font-medium text-[#25194D]"
               >
                 End Time <span className="text-[#FA776C]">*</span>
               </label>
@@ -141,7 +142,7 @@ export default function CreateEvent() {
                 type="date"
                 name="time"
                 id="username"
-                className=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className=" border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
             </div>
@@ -153,7 +154,7 @@ export default function CreateEvent() {
             <div className="mt-6 flex items-center">
               <label
                 htmlFor="default-radio-1"
-                className="text-md font-medium text-[#25194D] dark:text-gray-300  me-2"
+                className="text-md font-medium text-[#25194D]  me-2"
               >
                 Physical Event
               </label>
@@ -167,7 +168,7 @@ export default function CreateEvent() {
             <div className="mt-6 flex items-center">
               <label
                 htmlFor="default-radio-2"
-                className="ms-2 text-md font-medium text-[#25194D] dark:text-gray-300 me-2"
+                className="ms-2 text-md font-medium text-[#25194D] me-2"
               >
                 Online Event
               </label>
@@ -185,11 +186,11 @@ export default function CreateEvent() {
               <div>
                 <label
                   htmlFor="country"
-                  className="block mb-2 text-sm font-medium text-[#25194D] dark:text-white"
+                  className="block mb-2 text-sm font-medium text-[#25194D]"
                 >
                   Country <span className="text-[#FA776C]">*</span>
                 </label>
-                <select className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <select className="border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   <option value="">Select Country</option>
                   <option value="Nigeria">Nigeria</option>
                 </select>
@@ -197,11 +198,11 @@ export default function CreateEvent() {
               <div>
                 <label
                   htmlFor="state"
-                  className="block mb-2 text-sm font-medium text-[#25194D] dark:text-white"
+                  className="block mb-2 text-sm font-medium text-[#25194D]"
                 >
                   State <span className="text-[#FA776C]">*</span>
                 </label>
-                <select className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <select className="border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   <option value="">Select State</option>
                 </select>
               </div>
@@ -226,7 +227,7 @@ export default function CreateEvent() {
                 <input
                   type="text"
                   id="online-location"
-                  className="block w-full p-2.5 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="block w-full p-2.5 ps-10 text-sm text-gray-900 border border-[#1C1C1C] rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required
                 />
               </div>
@@ -255,25 +256,25 @@ export default function CreateEvent() {
               <input
                 type="url"
                 id="online-location"
-                className="block w-full p-2.5 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="block w-full p-2.5 ps-10 text-sm text-gray-900 border border-[#1C1C1C] rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Enter online event URL"
                 required
               />
             </div>
           )}
           <section className="mt-20 my-6 mb-10 w-full flex flex-row justify-center gap-x-8 items-center">
-            <a
-              href="/"
+            <Link
+              to="/"
               className="flex justify-center items-center shaodw-md w-[240px] h-[48px] rounded-md text-primary text-md bg-[#624CF50D]"
             >
               Cancel
-            </a>
-            <a
-              href="/events/create/2"
+            </Link>
+            <Link
+              to="/events/create/2"
               className="flex justify-center items-center w-[240px] h-[48px] rounded-md text-white text-md bg-[#624CF5]"
             >
               Proceed
-            </a>
+            </Link>
           </section>
         </form>
       </section>
