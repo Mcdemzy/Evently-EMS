@@ -1,0 +1,58 @@
+import { Event } from "../../../types"; 
+
+export const EventData: Event[] = [
+  {
+    title: "Concert Night",
+    price: 10.5,
+    description: "A night full of music",
+    date: "Sat, Oct 14",
+    time: "7:00 PM",
+    organizer: "John Doe",
+    imageUrl: "https://picsum.photos/400/300?random=1",
+  },
+  {
+    title: "Art Expo",
+    price: 5.0,
+    description: "Explore modern art",
+    date: "Sun, Oct 15",
+    time: "10:00 AM",
+    organizer: "Jane Smith",
+    imageUrl: "https://picsum.photos/400/300?random=2",
+  },
+  {
+    title: "Tech Meetup",
+    price: 0.0,
+    description: "Network with tech enthusiasts",
+    date: "Mon, Oct 16",
+    time: "6:00 PM",
+    organizer: "Tech Circle",
+    imageUrl: "https://picsum.photos/400/300?random=3",
+  },
+  {
+    title: "Food Festival",
+    price: 8.99,
+    description: "Taste food from around the world",
+    date: "Tue, Oct 17",
+    time: "12:00 PM",
+    organizer: "Food Lovers",
+    imageUrl: "https://picsum.photos/400/300?random=4",
+  },
+  {
+    title: "Movie Night",
+    price: 3.67,
+    description: "Watch the latest films",
+    date: "Wed, Oct 18",
+    time: "8:00 PM",
+    organizer: "Cinema Club",
+    imageUrl: "https://picsum.photos/400/300?random=5",
+  },
+  {
+    title: "Charity Run",
+    price: 15.0,
+    description: "Run for a cause",
+    date: "Thu, Oct 19",
+    time: "9:00 AM",
+    organizer: "Run for Life",
+    imageUrl: "https://picsum.photos/400/300?random=6",
+  },
+];
