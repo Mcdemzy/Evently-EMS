@@ -55,7 +55,7 @@ function LandingPage() {
         </div>
 
         <HeroSection darkMode={darkMode} />
-;
+        
         <Suspense fallback={<div>Loading ExploreNow...</div>}>
           <ExploreNow darkMode={darkMode} />
         </Suspense>
