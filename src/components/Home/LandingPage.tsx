@@ -1,104 +1,89 @@
-import { useState, useEffect } from "react";
-import { FaMoon, FaSun } from "react-icons/fa";
+import { Suspense, useState } from 'react';
+import { FiSun, FiMoon } from 'react-icons/fi';
+import HeroSection from '../shared/HeroSection';
+import ExploreNow from '../shared/ExploreNow';
+import React from 'react';
 
-const LandingPage = () => {
+const TrendingEvents = React.lazy(() => import('../shared/TrendingEvents'));
+const NewEvents = React.lazy(() => import('../shared/NewEvents'));
+const FAQ = React.lazy(() => import('../shared/FAQ'));
+const Footer = React.lazy(() => import('../shared/Footer'));
+const NewsLetter = React.lazy(() => import('../shared/NewsLetter'));
+const PricingSection = React.lazy(() => import('../shared/PricingSection'));
+
+function LandingPage() {
   const [darkMode, setDarkMode] = useState(false);
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
 
-  // Toggle dark mode
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
 
-  // Countdown logic
-  useEffect(() => {
-    const targetDate = new Date("2024-12-01T23:59:59").getTime();
-
-    const countdown = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = targetDate - now;
-
-      if (distance < 0) {
-        clearInterval(countdown);
-        return;
-      }
-
-      setTimeLeft({
-        days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-        hours: Math.floor(
-          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        ),
-        minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-        seconds: Math.floor((distance % (1000 * 60)) / 1000),
-      });
-    }, 1000);
-
-    return () => clearInterval(countdown);
-  }, []);
-
   return (
-    <>
-      <main
-        className={`flex flex-col items-center justify-center h-screen transition-colors ${
-          darkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"
-        }`}
+    <div
+      className={`transition-all duration-500 overflow-hidden ${
+        darkMode ? 'dark' : 'light'
+      }`}
+    >
+      <div
+        className={`min-h-screen ${
+          darkMode ? 'bg-black' : 'bg-white'
+        } transition-all duration-500`}
+        style={{ color: darkMode ? '#DFE1FF' : '#25194D' }}
       >
-        <button
-          onClick={toggleDarkMode}
-          className="absolute top-5 right-5 p-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition"
-        >
-          {darkMode ? <FaSun /> : <FaMoon />}
-        </button>
-
-        <h1 className="text-4xl md:text-6xl font-bold mb-8 animate-bounce">
-          Evently🔥🔥
-        </h1>
-
-        <div className="flex space-x-6 text-center">
-          <div>
-            <p className="text-5xl font-bold">{timeLeft.days}</p>
-            <p className="uppercase text-sm tracking-wider">Days</p>
-          </div>
-          <div>
-            <p className="text-5xl font-bold">{timeLeft.hours}</p>
-            <p className="uppercase text-sm tracking-wider">Hours</p>
-          </div>
-          <div>
-            <p className="text-5xl font-bold">{timeLeft.minutes}</p>
-            <p className="uppercase text-sm tracking-wider">Minutes</p>
-          </div>
-          <div>
-            <p className="text-5xl font-bold">{timeLeft.seconds}</p>
-            <p className="uppercase text-sm tracking-wider">Seconds</p>
+        <div className="flex justify-end p-4 fixed top-0 w-full z-10">
+          <div
+            onClick={toggleDarkMode}
+            className="relative w-9 h-9 bg-gray-300 dark:bg-gray-700 rounded-full p-1 transition-all duration-500 flex items-center justify-between overflow-hidden cursor-pointer"
+          >
+            <button
+              onClick={toggleDarkMode}
+              className={`w-full h-auto flex items-center justify-center rounded-full transition-all duration-500 transform ${
+                darkMode ? 'translate-x-[-150%]' : 'translate-x-[30%]'
+              }`}
+            >
+              <FiMoon size={18} className="text-gray-300" />
+            </button>
+            <button
+              onClick={toggleDarkMode}
+              className={`w-full h-auto flex items-center justify-center rounded-full transition-all duration-500 transform ${
+                darkMode ? 'translate-x-[-70%]' : 'translate-x-[1500%]'
+              }`}
+            >
+              <FiSun size={18} className="text-yellow-500" />
+            </button>
           </div>
         </div>
 
-        <p className="mt-12 text-lg">
-          Stay tuned! We are working on something amazing.
-        </p>
+        <HeroSection darkMode={darkMode} />
 
-        {/* Floating animation */}
-        <div className="absolute bottom-10 w-[80px] h-[80px] bg-purple-500 rounded-full opacity-75 animate-float"></div>
-      </main>
+        <ExploreNow darkMode={darkMode} />
 
-      {/* Custom Animation for Floating Effect */}
-      <style>{`
-        @keyframes float {
-          0% { transform: translateY(0px); }
-          50% { transform: translateY(-20px); }
-          100% { transform: translateY(0px); }
-        }
-        .animate-float {
-          animation: float 3s ease-in-out infinite;
-        }
-      `}</style>
-    </>
+        <Suspense fallback={<div>Loading TrendingEvents...</div>}>
+          <TrendingEvents darkMode={darkMode} />
+        </Suspense>
+
+        <Suspense fallback={<div>Loading NewEvents...</div>}>
+          <NewEvents darkMode={darkMode} />
+        </Suspense>
+
+        <Suspense fallback={<div>Loading FAQ...</div>}>
+          <FAQ />
+        </Suspense>
+
+        <Suspense fallback={<div>Loading PricingSection...</div>}>
+          <PricingSection darkMode={darkMode} />
+        </Suspense>
+
+        <Suspense fallback={<div>Loading NewsLetter...</div>}>
+          <NewsLetter darkMode={darkMode} />
+        </Suspense>
+
+        <Suspense fallback={<div>Loading Footer...</div>}>
+          <Footer darkMode={darkMode} />
+        </Suspense>
+      </div>
+    </div>
   );
-};
+}
 
 export default LandingPage;
