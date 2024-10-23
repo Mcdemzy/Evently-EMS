@@ -1,9 +1,9 @@
 import { Suspense, useState } from 'react';
 import { FiSun, FiMoon } from 'react-icons/fi';
 import HeroSection from '../shared/HeroSection';
+import ExploreNow from '../shared/ExploreNow';
 import React from 'react';
 
-const ExploreNow = React.lazy(() => import('../shared/ExploreNow'));
 const TrendingEvents = React.lazy(() => import('../shared/TrendingEvents'));
 const NewEvents = React.lazy(() => import('../shared/NewEvents'));
 const FAQ = React.lazy(() => import('../shared/FAQ'));
@@ -55,10 +55,8 @@ function LandingPage() {
         </div>
 
         <HeroSection darkMode={darkMode} />
-;
-        <Suspense fallback={<div>Loading ExploreNow...</div>}>
-          <ExploreNow darkMode={darkMode} />
-        </Suspense>
+
+        <ExploreNow darkMode={darkMode} />
 
         <Suspense fallback={<div>Loading TrendingEvents...</div>}>
           <TrendingEvents darkMode={darkMode} />
