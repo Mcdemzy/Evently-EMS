@@ -26,7 +26,7 @@ export default function Event2() {
       </p>
       <Progress />
       {!showForm && !ticketType && (
-        <section className="mt-4 mb-10 bg-[#E9E8ED] space-y-4 flex flex-col jusitfy-center items-center w-[80%] m-auto h-[440px] rounded-md">
+        <section className="mt-4 mb-10 bg-[#E9E8ED] space-y-4 flex flex-col jusitfy-center items-center w-[95%] md:w-[80%] m-auto h-[440px] rounded-md">
           <div className="mt-10 w-[100px] h-[100px]  rounded-full ">
             <img src="/images/ticket.png" width={100} height={100} alt={""} />
           </div>
@@ -47,7 +47,7 @@ export default function Event2() {
         </section>
       )}
       {showForm && (
-        <section className="mt-4 mb-10 bg-[#E9E8ED] space-y-4 flex flex-col jusitfy-center items-center w-[80%] m-auto h-[440px] rounded-md">
+        <section className="mt-4 mb-10 bg-[#E9E8ED] space-y-4 flex flex-col jusitfy-center items-center w-[95%] md:w-[80%] m-auto h-[440px] rounded-md">
           <div className="mt-10 w-[100px] h-[100px]  rounded-full ">
             <img src="/images/ticket.png" width={100} height={100} alt={""} />
           </div>
@@ -93,7 +93,7 @@ export default function Event2() {
           </div>
         </section>
       )}
-      <section className="w-[80%] m-auto">
+      <section className="w-[95%] md:w-[80%] m-auto">
         {ticketType == "free" || ticketType === "paid" ? (
           <form className="mt-14" action="#">
             <div className="flex flex-row justify-start items-center">

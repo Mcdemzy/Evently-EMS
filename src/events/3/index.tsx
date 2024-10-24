@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Progress from "./Progress";
 export default function Event3() {
   return (
     <main className="w-full">
@@ -8,27 +9,7 @@ export default function Event3() {
       <p className="text-center mt-2 text-[#25194D]">
         Begin your journey to an unforgettable experience.
       </p>
-      {/* progress bars */}
-      <section className="my-6 w-[90%] m-auto  flex justify-between items-center">
-        <div className="w-[30%] h-[101px] flex justify-center items-center gap-y-1 flex-col">
-          <span className="w-[48px] h-[48px] rounded-full bg-[#25194D] text-white flex justify-center items-center">
-            1
-          </span>
-          <p>DETAILS</p>
-        </div>
-        <div className="w-[30%] h-[101px] flex justify-center items-center gap-y-1 flex-col">
-          <span className="w-[48px] h-[48px] rounded-full bg-[#25194D] text-white flex justify-center items-center">
-            2
-          </span>
-          <p>TICKETS</p>
-        </div>
-        <div className="w-[30%] h-[101px] flex justify-center items-center gap-y-1 flex-col">
-          <span className="w-[48px] h-[48px] rounded-full bg-[#25194D] text-white flex justify-center items-center">
-            3
-          </span>
-          <p>APPEARANCE</p>
-        </div>
-      </section>
+      <Progress />
       <div className="mt-10 w-[80%] m-auto">
         <h2 className=" text-[#25194D] text-2xl font-semibold">
           Event Appearance
@@ -39,7 +20,7 @@ export default function Event3() {
         <div className="flex items-center justify-center w-[50%]">
           <label
             htmlFor="dropzone-file"
-            className="flex flex-col items-center justify-center w-full h-[304px] rounded-lg cursor-pointer bg-[#FFFFFF] hover:bg-gray-100 dark:border-gray-600"
+            className="flex flex-col items-center justify-center w-full md:h-[304px] rounded-lg cursor-pointer bg-[#FFFFFF] hover:bg-gray-100 dark:border-gray-600"
           >
             <div className="flex flex-col items-center justify-center pt-5 pb-6">
               <svg
@@ -58,7 +39,7 @@ export default function Event3() {
                 <circle cx="9" cy="9" r="2" />
                 <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
               </svg>
-              <p className="mt-6 mb-2 text-lg text-[#FA776C] dark:text-gray-400">
+              <p className="text-center md:text-start mt-6 mb-2 text-sm md:text-lg text-[#FA776C] dark:text-gray-400">
                 <span className="text-[#25194D]">Drag an image here</span> or
                 click to upload
               </p>

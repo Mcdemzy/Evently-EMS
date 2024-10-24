@@ -14,7 +14,7 @@ export default function PreviewTicket() {
       </p>
       <Progress />
       <section className="mt-20 mb-10 w-[80%] m-auto">
-        <div className="flex justify-between items-center">
+        <div className="flex flex-wrap gap-y-4 justify-between items-center">
           <h2 className="text-xl font-medium text-[#25194D]  me-2">TICEKTS</h2>
           <Link
             to="/events/create/2"
