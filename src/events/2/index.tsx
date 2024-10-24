@@ -4,9 +4,11 @@ import FreeTicket from "./FreeTicket";
 import PaidTicket from "./PaidTicket";
 import Socials from "./Socials";
 import { useState } from "react";
+import Footer from "../../components/shared/Footer";
 export default function Event2() {
   const [showForm, setShowForm] = useState(false);
   const [ticketType, setTicketType] = useState<"free" | "paid" | null>(null);
+  const [darkMode] = useState(false);
 
   const handleAddTicketClick = () => {
     setShowForm(true);
@@ -149,6 +151,7 @@ export default function Event2() {
           Proceed
         </Link>
       </section>
+      <Footer darkMode={darkMode} />
     </main>
   );
 }
