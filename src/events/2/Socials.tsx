@@ -8,10 +8,10 @@ import { MdOutlineCardGiftcard } from "react-icons/md";
 export default function Socials() {
   return (
     <>
-      <section className="mt-4 w-[80%] m-auto  py-10">
-        <h2 className="text-[#25194D] text-2xl font-semibold">SOCIAL LINK</h2>
-        <div className="mt-2 w-full flex flex-row gap-x-5 jusitfy-between items-center">
-          <div className="w-[50%] space-y-4">
+      <section className="mt-4 w-[95%] md:w-[80%] m-auto  py-10">
+        <h2 className="text-[#25194D] text-2xl font-semibold">SOCIAL LINKS</h2>
+        <div className="mt-2 w-full flex flex-col lg:flex-row gap-x-5 jusitfy-between items-center">
+          <div className="w-full lg:w-[50%] space-y-4">
             {/* website */}
             <div className="mt-4 flex jusitfy-start items-center rounded-md">
               <div className="w-[56px] h-[46px] border border-[#1C1C1C] rounded-s-md flex justify-center items-center">
@@ -85,7 +85,7 @@ export default function Socials() {
               />
             </div>
           </div>
-          <div className="w-[50%] py-40  flex items-center justify-center relative">
+          <div className="mt-14 hidden md:w-[50%] py-40  md:flex items-center justify-center relative">
             {/* Evently Logo Section */}
             <div className="flex items-center justify-center w-[200px] h-[200px] gap-3 shadow-2xl rounded-full px-[13px] py-[50px] z-[1] bg-white dark:text-black">
               <img
