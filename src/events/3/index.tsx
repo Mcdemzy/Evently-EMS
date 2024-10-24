@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import Progress from "./Progress";
+import Footer from "../../components/shared/Footer";
+import { useState } from "react";
 export default function Event3() {
+  const [darkMode] = useState(false);
   return (
     <main className="w-full">
       <h2 className="text-[#25194D] font-semibold text-4xl text-center mt-14">
@@ -63,6 +66,7 @@ export default function Event3() {
           Create Event
         </Link>
       </section>
+      <Footer darkMode={darkMode} />
     </main>
   );
 }

@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Footer from "../components/shared/Footer";
 export default function CreateEvent() {
   const [physicalEvent, setPhysicalEvent] = useState(false);
   const [onlineEvent, setOnlineEvent] = useState(false);
+  const [darkMode] = useState(false);
+
   return (
     <main className="w-full">
       <h2 className="text-[#25194D] font-semibold text-4xl text-center mt-14">
@@ -277,6 +280,7 @@ export default function CreateEvent() {
           </section>
         </form>
       </section>
+      <Footer darkMode={darkMode} />
     </main>
   );
 }
