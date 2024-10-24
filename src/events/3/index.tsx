@@ -1,38 +1,4 @@
-//@ts-check
-// import EventForm from "@/components/shared/EventForm";
-// import { auth } from "@clerk/nextjs";
-// import { Globe } from "lucide-react";
-// import Image from "next/image";
-// import Link from "next/link";
-// import { BiParty } from "react-icons/bi";
-// import { BsPersonVcard } from "react-icons/bs";
-// import { FaRegCalendarXmark } from "react-icons/fa6";
-// import { HiOutlineMail } from "react-icons/hi";
-// import { LuTicket } from "react-icons/lu";
-// import { MdOutlineCardGiftcard } from "react-icons/md";
-
 import { Link } from "react-router-dom";
-
-// const CreateEvent = () => {
-//   const { sessionClaims } = auth();
-
-//   const userId = sessionClaims?.userId as string;
-
-//   return (
-//     <>
-//       <section className="py-5 md:py-10">
-//         <h3 className="wrapper h3-bold text-center sm:text-left">
-//           Create Event
-//         </h3>
-//       </section>
-//       <div className="wrapper my-8">
-//         <EventForm userId={userId} type="Create" />
-//       </div>
-//     </>
-//   );
-// };
-
-// export default CreateEvent;
 export default function Event3() {
   return (
     <main className="w-full">
