@@ -10,12 +10,14 @@ import PreviewTicket from "./events/2/PreviewTicket";
 import AllEvents from "./components/Events/AllEvents/AllEvents";
 import Signup from "./components/Auth/Signup/Signup";
 import Login from "./components/Auth/Login/Login";
+import Test from "./Test";
 
 const App = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/test" element={<Test />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/events/all" element={<AllEvents />} />
         <Route path="/signup" element={<Signup />} />
