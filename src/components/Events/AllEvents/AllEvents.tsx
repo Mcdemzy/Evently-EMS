@@ -4,6 +4,8 @@ import {
   FaSearch,
 } from "react-icons/fa";
 import { FaChevronDown } from "react-icons/fa6";
+import TrendingEvents from "../../shared/TrendingEvents";
+import { useState } from "react";
 
 // const eventsData = [
 //   {
@@ -66,6 +68,12 @@ import { FaChevronDown } from "react-icons/fa6";
 // ];
 
 const AllEvents = () => {
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
   return (
     <main className=" py-10">
       {/* Search Bar with Filter */}
@@ -100,7 +108,7 @@ const AllEvents = () => {
         </div>
       </div>
 
-      <div className="">
+      {/* <div className="">
         <h2 className="text-[30px] lg:text-[40px] font-bold text-center text-[#1C1C1C] dark:text-[#EDEFFF] leading-[60px] md:mb-5 mb-1 uppercase">
           TRENDING EVENTS
         </h2>
@@ -108,7 +116,7 @@ const AllEvents = () => {
         <p className="text-center font-normal text-base md:text-xl md:mt-5 mt-2 leading-5 md:leading-[60px]">
           Elevating Experiences, One Event at a Time
         </p>
-      </div>
+      </div> */}
 
       {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
         {eventsData.map((event) => (
@@ -144,6 +152,9 @@ const AllEvents = () => {
           </div>
         ))}
       </div> */}
+      <TrendingEvents darkMode={darkMode} />
+
+      <div onClick={toggleDarkMode}></div>
     </main>
   );
 };
