@@ -4,10 +4,10 @@ import "swiper/css/pagination";
 import { Link } from "react-router-dom";
 import { Autoplay, Pagination } from "swiper/modules";
 
-const ImageSlide = () => {
+const ImageSlider = () => {
   return (
     <>
-      {/* Right side - Image slider */}
+      {/* Image slider */}
       <div className="hidden md:block w-1/2 relative">
         <Swiper
           spaceBetween={30}
@@ -72,4 +72,4 @@ const ImageSlide = () => {
   );
 };
 
-export default ImageSlide;
+export default ImageSlider;
