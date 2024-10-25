@@ -8,7 +8,7 @@ const Login = () => {
       <ImageSlider />
 
       {/* Right side - Login form */}
-      <div className="w-full h-screen md:w-1/2 h-fit pt-5 bg-white flex justify-center items-center">
+      <div className="w-full h-screen md:w-1/2  pt-5 bg-white flex justify-center items-center">
         <div className="w-4/5 lg:w-2/3">
           <div className="mb-8">
             <div className="flex gap-4">
