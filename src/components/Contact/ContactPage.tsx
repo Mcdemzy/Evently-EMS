@@ -1,13 +1,10 @@
 import { useRef, useState } from "react";
-import { FaRegCalendarXmark } from "react-icons/fa6";
-import { LuTicket } from "react-icons/lu";
-import { HiOutlineMail } from "react-icons/hi";
-import { BiParty } from "react-icons/bi";
-import { MdOutlineCardGiftcard } from "react-icons/md";
-import { BsPersonVcard } from "react-icons/bs";
-import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import emailjs from "@emailjs/browser";
+import PricingSection from "../shared/PricingSection";
+import NewsLetter from "../shared/NewsLetter";
+import Footer from "../shared/Footer";
 
 const ContactPage = () => {
   const form = useRef<HTMLFormElement>(null);
@@ -15,7 +12,6 @@ const ContactPage = () => {
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     if (!form.current) return;
 
     setIsSending(true);
@@ -45,17 +41,18 @@ const ContactPage = () => {
     <>
       <ToastContainer />
       <section className="mt-10">
-        <h1 className="text-[#FA776C] text-[3rem] font-semibold text-center">
+        <h1 className="text-[#FA776C] text-3xl md:text-4xl font-semibold text-center">
           Contact Us
         </h1>
       </section>
 
-      <main className="p-10 mt-11 flex md:flex-row flex-col gap-9 justify-center">
-        <section className="bg-[#EDEFFF] dark:bg-[#0D0D0D] h-full w-full md:w-[55%] min-h-[500px] py-10 px-[60px] rounded-tl-[40px] rounded-br-[40px]">
+      <main className="p-4 md:p-10 mt-11 flex flex-col md:flex-row gap-6 md:gap-9 justify-center items-center">
+        {/* Form Section */}
+        <section className="bg-[#EDEFFF] dark:bg-[#0D0D0D] w-full md:w-[55%] py-8 md:py-10 px-6 md:px-12 rounded-tl-[40px] rounded-br-[40px]">
           <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-6">
-            {/* Form fields */}
+            {/* First Name */}
             <div>
-              <label className="block text-[1.25rem] font-normal">
+              <label className="block text-lg font-normal">
                 First Name<span className="text-red-500 ml-1">*</span>
               </label>
               <input
@@ -65,8 +62,10 @@ const ContactPage = () => {
                 required
               />
             </div>
+
+            {/* Last Name */}
             <div>
-              <label className="block text-[1.25rem] font-normal">
+              <label className="block text-lg font-normal">
                 Last Name<span className="text-red-500 ml-1">*</span>
               </label>
               <input
@@ -76,8 +75,10 @@ const ContactPage = () => {
                 required
               />
             </div>
+
+            {/* Email */}
             <div>
-              <label className="block text-[1.25rem] font-normal">
+              <label className="block text-lg font-normal">
                 Email Address<span className="text-red-500 ml-1">*</span>
               </label>
               <input
@@ -87,8 +88,10 @@ const ContactPage = () => {
                 required
               />
             </div>
+
+            {/* Message */}
             <div>
-              <label className="block text-[1.25rem] font-normal">
+              <label className="block text-lg font-normal">
                 Your Message<span className="text-red-500 ml-1">*</span>
               </label>
               <textarea
@@ -97,6 +100,8 @@ const ContactPage = () => {
                 className="bg-[#DFE1FF] dark:bg-[#1F1F1F] w-full px-4 py-2 mt-2 border rounded-md border-transparent focus:border-purple-500 focus:bg-white focus:ring-0"
               ></textarea>
             </div>
+
+            {/* Terms Checkbox */}
             <div className="flex items-center">
               <input
                 type="checkbox"
@@ -112,6 +117,8 @@ const ContactPage = () => {
                 <span className="text-red-500">Terms & conditions</span>
               </label>
             </div>
+
+            {/* Submit Button */}
             <button
               type="submit"
               disabled={isSending}
@@ -124,84 +131,19 @@ const ContactPage = () => {
           </form>
         </section>
 
-        <section className="w-[50%] flex items-center justify-center relative">
-          {/* Evently Logo Section */}
-          <div className="flex items-center justify-center w-[200px] h-[200px] gap-3 shadow-2xl rounded-full px-[13px] py-[50px] z-[1] bg-white dark:text-black">
-            <img
-              src="images/logo.svg"
-              width={30}
-              height={50}
-              alt="Event Image"
-            />
-            <span className="md:text-2xl text-xl font-bold">Evently</span>
-          </div>
-
-          {/* Icon and Line Section */}
-          <section className="absolute flex flex-col items-center">
-            <div className="bg-[#FEF3F2] w-[80px] h-[80px] rounded-full p-4 flex justify-center items-center">
-              <span className="text-[#FA776C] text-[2rem]">
-                <FaRegCalendarXmark />
-              </span>
-            </div>
-            <div className="w-[80px] h-fit flex flex-col items-center">
-              {/* Broken Line Effect */}
-              {[...Array(20)].map((_, i) => (
-                <span
-                  key={i}
-                  className="bg-[#FA776C] w-2 h-3 mb-3 block"
-                ></span>
-              ))}
-            </div>
-            <div className="bg-[#FEF3F2] w-[80px] h-[80px] rounded-full p-4 flex justify-center items-center">
-              <span className="text-[#FA776C] text-[2rem]">
-                <BsPersonVcard />
-              </span>
-            </div>
-          </section>
-
-          <section className="absolute rotate-[60deg] flex flex-col items-center">
-            <div className="bg-[#FEF3F2] w-[80px] h-[80px] rounded-full p-4 flex justify-center items-center">
-              <span className="text-[#FA776C] text-[2rem]">
-                <MdOutlineCardGiftcard />
-              </span>
-            </div>
-            <div className="w-[80px] h-fit flex flex-col items-center">
-              {[...Array(20)].map((_, i) => (
-                <span
-                  key={i}
-                  className="bg-[#FA776C] w-2 h-3 mb-3 block"
-                ></span>
-              ))}
-            </div>
-            <div className="bg-[#FEF3F2] w-[80px] h-[80px] rounded-full p-4 flex justify-center items-center">
-              <span className="text-[#FA776C] text-[2rem]">
-                <HiOutlineMail />
-              </span>
-            </div>
-          </section>
-
-          <section className="absolute rotate-[-60deg] flex flex-col items-center">
-            <div className="bg-[#FEF3F2] w-[80px] h-[80px] rounded-full p-4 flex justify-center items-center">
-              <span className="text-[#FA776C] text-[2rem]">
-                <LuTicket />
-              </span>
-            </div>
-            <div className="w-[80px] h-fit flex flex-col items-center">
-              {[...Array(20)].map((_, i) => (
-                <span
-                  key={i}
-                  className="bg-[#FA776C] w-2 h-3 mb-3 block"
-                ></span>
-              ))}
-            </div>
-            <div className="bg-[#FEF3F2] w-[80px] h-[80px] rounded-full p-4 flex justify-center items-center">
-              <span className="text-[#FA776C] text-[2rem]">
-                <BiParty />
-              </span>
-            </div>
-          </section>
-        </section>
+        {/* Image Section */}
+        <div className="hidden md:block w-full md:w-[35%]">
+          <img
+            src="/images/eventlyDesign.png"
+            alt="Evently Design"
+            className="w-full h-auto rounded-lg"
+          />
+        </div>
       </main>
+
+      <PricingSection darkMode={false} />
+      <NewsLetter darkMode={false} />
+      <Footer darkMode={false} />
     </>
   );
 };
