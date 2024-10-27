@@ -21,7 +21,7 @@ const Footer: React.FC<DarkModeProps> = ({ darkMode }) => {
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-6 px-4">
         <a href="/" className="flex items-center">
           <img
-            src="images/logo.svg"
+            src="/images/logo.svg"
             width={30}
             height={50}
             alt="Evently logo"
