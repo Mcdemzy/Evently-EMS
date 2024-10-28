@@ -80,7 +80,7 @@ const Footer: React.FC<DarkModeProps> = ({ darkMode }) => {
             <motion.div
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.9 }}
-              className={`w-6 h-6 flex justify-center items-center text-[#FA776C] hover:text-${
+              className={`w-6 h-6 text-[#FA776C] hover:text-${
                 darkMode ? "white" : "black"
               } transition-colors duration-300`}
             >
@@ -97,7 +97,7 @@ const Footer: React.FC<DarkModeProps> = ({ darkMode }) => {
             <motion.div
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.9 }}
-              className={`w-6 h-6 flex justify-center items-center text-[#FA776C] hover:text-${
+              className={`w-6 h-6 text-[#FA776C] hover:text-${
                 darkMode ? "white" : "black"
               } transition-colors duration-300`}
             >
@@ -114,7 +114,7 @@ const Footer: React.FC<DarkModeProps> = ({ darkMode }) => {
             <motion.div
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.9 }}
-              className={`w-6 h-6 flex justify-center items-center text-[#FA776C] hover:text-${
+              className={`w-6 h-6 text-[#FA776C] hover:text-${
                 darkMode ? "white" : "black"
               } transition-colors duration-300`}
             >
