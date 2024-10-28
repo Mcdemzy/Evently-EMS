@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Footer from "../components/shared/Footer";
 export default function CreateEvent() {
   const [physicalEvent, setPhysicalEvent] = useState(false);
   const [onlineEvent, setOnlineEvent] = useState(false);
+  const [darkMode] = useState(false);
+
   return (
-    <main className="w-full">
+    <main className="w-full bg-white">
       <h2 className="text-[#25194D] font-semibold text-4xl text-center mt-14">
         CREATE EVENT
       </h2>
@@ -92,8 +95,8 @@ export default function CreateEvent() {
               </label>
               <input
                 type="date"
-                name="username"
-                id="username"
+                name="start-date"
+                id="start-date"
                 className=" border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
@@ -107,8 +110,8 @@ export default function CreateEvent() {
               </label>
               <input
                 type="date"
-                name="username"
-                id="username"
+                name="end-date"
+                id="end-data"
                 className=" border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
@@ -117,7 +120,7 @@ export default function CreateEvent() {
           <div className="mt-6 grid gap-4 mb-4 sm:grid-cols-2">
             <div>
               <label
-                htmlFor="username"
+                htmlFor="time"
                 className="block mb-2 text-sm font-medium text-[#25194D]"
               >
                 Start Time <span className="text-[#FA776C]">*</span>
@@ -132,15 +135,15 @@ export default function CreateEvent() {
             </div>
             <div>
               <label
-                htmlFor="username"
+                htmlFor="time"
                 className="block mb-2 text-sm font-medium text-[#25194D]"
               >
                 End Time <span className="text-[#FA776C]">*</span>
               </label>
               <input
-                type="date"
-                name="time"
-                id="username"
+                type="time"
+                name="end-time"
+                id="end-time"
                 className=" border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
@@ -277,6 +280,7 @@ export default function CreateEvent() {
           </section>
         </form>
       </section>
+      <Footer darkMode={darkMode} />
     </main>
   );
 }
