@@ -1,15 +1,15 @@
-import { Suspense, useState } from 'react';
-import { FiSun, FiMoon } from 'react-icons/fi';
-import HeroSection from '../shared/HeroSection';
-import ExploreNow from '../shared/ExploreNow';
-import React from 'react';
+import { Suspense, useState } from "react";
+import { FiSun, FiMoon } from "react-icons/fi";
+import HeroSection from "../shared/HeroSection";
+import ExploreNow from "../shared/ExploreNow";
+import React from "react";
 
-const TrendingEvents = React.lazy(() => import('../shared/TrendingEvents'));
-const NewEvents = React.lazy(() => import('../shared/NewEvents'));
-const FAQ = React.lazy(() => import('../shared/FAQ'));
-const Footer = React.lazy(() => import('../shared/Footer'));
-const NewsLetter = React.lazy(() => import('../shared/NewsLetter'));
-const PricingSection = React.lazy(() => import('../shared/PricingSection'));
+const TrendingEvents = React.lazy(() => import("../shared/TrendingEvents"));
+const NewEvents = React.lazy(() => import("../shared/NewEvents"));
+const FAQ = React.lazy(() => import("../shared/FAQ"));
+const Footer = React.lazy(() => import("../shared/Footer"));
+const NewsLetter = React.lazy(() => import("../shared/NewsLetter"));
+const PricingSection = React.lazy(() => import("../shared/PricingSection"));
 
 function LandingPage() {
   const [darkMode, setDarkMode] = useState(false);
@@ -21,14 +21,14 @@ function LandingPage() {
   return (
     <div
       className={`transition-all duration-500 overflow-hidden ${
-        darkMode ? 'dark' : 'light'
+        darkMode ? "dark" : "light"
       }`}
     >
       <div
         className={`min-h-screen ${
-          darkMode ? 'bg-black' : 'bg-white'
+          darkMode ? "bg-black" : "bg-white"
         } transition-all duration-500`}
-        style={{ color: darkMode ? '#DFE1FF' : '#25194D' }}
+        style={{ color: darkMode ? "#DFE1FF" : "#25194D" }}
       >
         <div className="flex justify-end p-4 fixed top-0 w-full z-10">
           <div
@@ -38,7 +38,7 @@ function LandingPage() {
             <button
               onClick={toggleDarkMode}
               className={`w-full h-auto flex items-center justify-center rounded-full transition-all duration-500 transform ${
-                darkMode ? 'translate-x-[-150%]' : 'translate-x-[30%]'
+                darkMode ? "translate-x-[-150%]" : "translate-x-[30%]"
               }`}
             >
               <FiMoon size={18} className="text-gray-300" />
@@ -46,7 +46,7 @@ function LandingPage() {
             <button
               onClick={toggleDarkMode}
               className={`w-full h-auto flex items-center justify-center rounded-full transition-all duration-500 transform ${
-                darkMode ? 'translate-x-[-70%]' : 'translate-x-[1500%]'
+                darkMode ? "translate-x-[-70%]" : "translate-x-[1500%]"
               }`}
             >
               <FiSun size={18} className="text-yellow-500" />

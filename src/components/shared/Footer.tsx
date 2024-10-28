@@ -2,6 +2,7 @@ import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { DarkModeProps } from "../../types";
+import { Link } from "react-router-dom";
 
 const Footer: React.FC<DarkModeProps> = ({ darkMode }) => {
   const [ref, inView] = useInView({
@@ -69,8 +70,8 @@ const Footer: React.FC<DarkModeProps> = ({ darkMode }) => {
           transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
           className="flex gap-4"
         >
-          <a
-            href="https://facebook.com"
+          <Link
+            to="https://facebook.com"
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-full border border-[#FA776C] flex items-center justify-center p-2"
@@ -85,9 +86,9 @@ const Footer: React.FC<DarkModeProps> = ({ darkMode }) => {
             >
               <FaFacebookF />
             </motion.div>
-          </a>
-          <a
-            href="https://twitter.com"
+          </Link>
+          <Link
+            to="https://twitter.com"
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-full border border-[#FA776C] flex items-center justify-center p-2"
@@ -102,9 +103,9 @@ const Footer: React.FC<DarkModeProps> = ({ darkMode }) => {
             >
               <FaTwitter />
             </motion.div>
-          </a>
-          <a
-            href="https://instagram.com"
+          </Link>
+          <Link
+            to="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-full border border-[#FA776C] flex items-center justify-center p-2"
@@ -119,7 +120,7 @@ const Footer: React.FC<DarkModeProps> = ({ darkMode }) => {
             >
               <FaInstagram />
             </motion.div>
-          </a>
+          </Link>
         </motion.div>
       </div>
       <motion.div
