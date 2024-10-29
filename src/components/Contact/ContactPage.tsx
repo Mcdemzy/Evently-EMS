@@ -38,9 +38,9 @@ const ContactPage = () => {
   };
 
   return (
-    <>
+    <main className="dark:bg-black">
       <ToastContainer />
-      <section className="mt-10">
+      <section className="dark:bg-black pt-10">
         <h1 className="text-[#FA776C] text-3xl md:text-4xl font-semibold text-center">
           Contact Us
         </h1>
@@ -48,7 +48,7 @@ const ContactPage = () => {
 
       <main className="p-4 md:p-10 mt-11 flex flex-col md:flex-row gap-6 md:gap-9 justify-center items-center">
         {/* Form Section */}
-        <section className="bg-[#EDEFFF] dark:bg-[#0D0D0D] w-full md:w-[55%] py-8 md:py-10 px-6 md:px-12 rounded-tl-[40px] rounded-br-[40px]">
+        <section className="bg-[#EDEFFF] dark:bg-[#0D0D0D] dark:text-white w-full md:w-[55%] py-8 md:py-10 px-6 md:px-12 rounded-tl-[40px] rounded-br-[40px]">
           <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-6">
             {/* First Name */}
             <div>
@@ -144,7 +144,7 @@ const ContactPage = () => {
       <PricingSection darkMode={false} />
       <NewsLetter darkMode={false} />
       <Footer darkMode={false} />
-    </>
+    </main>
   );
 };
 
