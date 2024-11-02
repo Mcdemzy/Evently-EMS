@@ -6,7 +6,7 @@ const HistorySection: React.FC = () => {
   return (
     <section className="mt-16 py-8 px-4 lg:px-24">
       <SectionTitle title="Our History" />
-      <div className="text-[#1C1C1C] text-base lg:text-lg font-normal text-justify flex flex-col gap-6 leading-7 lg:leading-8">
+      <div className="text-[#1C1C1C] text-base lg:text-lg font-normal text-justify flex flex-col gap-6 leading-7 lg:leading-8 dark:text-[#DFE1FF]">
         <p>
           Evently was born out of a deep passion for creating memorable
           experiences. Founded by a team of event enthusiasts with diverse

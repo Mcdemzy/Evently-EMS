@@ -11,7 +11,7 @@ const VisionSection: React.FC = () => {
             Our Vision
           </h1>
         </div>
-        <p className="text-[#1C1C1C] text-base lg:text-lg font-normal text-justify max-w-full lg:max-w-[600px] mt-4 leading-7 lg:leading-8">
+        <p className="text-[#1C1C1C] text-base lg:text-lg font-normal text-justify max-w-full lg:max-w-[600px] mt-4 leading-7 lg:leading-8 dark:text-[#DFE1FF]">
           Our vision is to be the leading event management company known for our
           innovative approach, exceptional service, and ability to create
           meaningful experiences. We aspire to set new standards in the
