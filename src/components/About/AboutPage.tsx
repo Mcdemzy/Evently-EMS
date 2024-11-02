@@ -12,7 +12,7 @@ import Footer from "../shared/Footer";
 
 const AboutPage: React.FC = () => {
   return (
-    <>
+    <main className="dark:bg-black">
       <PageHeader />
       <IntroSection />
       <WhatIsEvently />
@@ -22,7 +22,7 @@ const AboutPage: React.FC = () => {
       <PricingSection darkMode={false} />
       <NewsLetter darkMode={false} />
       <Footer darkMode={false} />
-    </>
+    </main>
   );
 };
 

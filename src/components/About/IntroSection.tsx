@@ -12,13 +12,13 @@ const IntroSection: React.FC = () => {
         />
       </div>
       <div className="text-center lg:text-left px-5 lg:px-8 max-w-full lg:max-w-[50%]">
-        <h2 className="text-[#624CF5] text-2xl lg:text-3xl font-medium">
+        <h2 className="text-[#624CF5] text-2xl lg:text-3xl font-medium dark:text-white">
           Welcome to Evently
         </h2>
-        <h3 className="text-[#1C1C1C] font-medium text-xl lg:text-2xl leading-10 my-4">
+        <h3 className="text-[#1C1C1C] font-medium text-xl lg:text-2xl leading-10 my-4 dark:text-white">
           Turning dreams into Extraordinary Events.
         </h3>
-        <p className="text-[#1C1C1C] font-light text-base lg:text-lg leading-7 lg:leading-8 text-justify">
+        <p className="text-[#1C1C1C] font-light text-base lg:text-lg leading-7 lg:leading-8 text-justify dark:text-white">
           At Evently, we believe that every event tells a story—your story.
           Whether you’re celebrating a milestone, launching a product, or
           hosting a corporate gala, our mission is to bring your vision to life
