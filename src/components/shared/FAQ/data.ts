@@ -1,4 +1,4 @@
-import { FAQItem } from "../../../types";
+import { FAQItem } from '../../../types';
 
 export const faqData: FAQItem[] = [
   {
@@ -7,21 +7,19 @@ export const faqData: FAQItem[] = [
       'Evently is your trusted partner in crafting unforgettable events, whether you’re planning an intimate gathering or a large-scale celebration. At Evently, we specialize in bringing your unique vision to life with meticulous attention to detail, creative flair, and expert coordination.',
   },
   {
-    question: 'What types of events does Evently specialize in?',
+    question: 'What events do you specialize in?',
     answer: '[Answer goes here]',
   },
   {
-    question:
-      "What happens if there's a last-minute change or emergency on the day of the event?",
+    question: 'How are last-minute changes handled?',
     answer: '[Answer goes here]',
   },
   {
-    question: "How far in advance should I book Evently's services?",
+    question: 'When should I book Evently?',
     answer: '[Answer goes here]',
   },
   {
-    question:
-      'What is the process of working with Evently from start to finish?',
+    question: 'What is the workflow with Evently?',
     answer: '[Answer goes here]',
   },
 ];

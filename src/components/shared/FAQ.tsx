@@ -38,24 +38,26 @@ const FaqItem: React.FC<{
         className="w-full p-4 bg-lavender-50 hover:bg-lavender-100 rounded-lg flex justify-between items-center"
         onClick={() => setOpenIndex(isOpen ? null : index)}
       >
-        <span className="text-left font-normal md:text-xl text-base">
-          {item.question}
-        </span>
-        <svg
-          className={`w-6 h-6 transition-transform ${
-            isOpen ? 'transform rotate-180' : ''
-          }`}
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M19 9l-7 7-7-7"
-          />
-        </svg>
+        <div className="flex items-center justify-between w-full">
+          <span className="text-left font-normal md:text-xl text-sm">
+            {item.question}
+          </span>
+          <svg
+            className={`md:w-6 md:h-6 w-4 h-4 transition-transform text-right ${
+              isOpen ? 'transform rotate-180' : ''
+            }`}
+            fill="none"
+            viewBox="0 0 20 20"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </div>
       </button>
       <div
         ref={contentRef}
@@ -74,7 +76,7 @@ const FaqItem: React.FC<{
 
 const FAQ: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.8 });
+  const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.2 });
   const controls = useAnimation();
 
   React.useEffect(() => {
@@ -106,7 +108,7 @@ const FAQ: React.FC = () => {
   return (
     <motion.div
       ref={ref}
-      className="md:max-w-7xl w-full mx-auto p-6 pt-20 dark:bg-black dark:text-white"
+      className="md:max-w-7xl w-full mx-auto p-6 pt-28 dark:bg-black dark:text-white"
       initial={{ opacity: 0, scale: 0.8 }}
       animate={controls}
     >
