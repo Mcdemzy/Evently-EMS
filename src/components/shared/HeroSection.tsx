@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 
 const HeroSection: React.FC = () => {
   const { ref, inView } = useInView({
-    triggerOnce: false,
-    threshold: 0.3,
+    triggerOnce: false, 
+    threshold: 0.1,
   });
 
   return (
     <div
       ref={ref}
-      className="flex flex-col items-center justify-center text-center px-4 pt-10 md:pb-20 pb-8 dark:bg-black dark:text-white"
+      className="flex flex-col items-center justify-center text-center px-4 pt-10 md:pb-20 pb-14 dark:bg-black dark:text-white"
     >
       <motion.h1
         initial={{ opacity: 0, y: 50 }}

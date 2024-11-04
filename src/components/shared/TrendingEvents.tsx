@@ -11,7 +11,7 @@ import { useInView } from 'react-intersection-observer';
 const TrendingEvents: React.FC = () => {
   const { ref, inView } = useInView({
     triggerOnce: false,
-    threshold: 0.6,
+    threshold: 0.1,
   });
 
   const cardVariants = {
@@ -32,7 +32,7 @@ const TrendingEvents: React.FC = () => {
   return (
     <div
       ref={ref}
-      className="pt-20 dark:bg-black dark:text-white"
+      className="py-20 dark:bg-black dark:text-white"
     >
       <motion.h2
         className="text-[30px] lg:text-[40px] font-bold text-center leading-[60px] md:mb-2 mb-1 uppercase"
@@ -45,7 +45,7 @@ const TrendingEvents: React.FC = () => {
       </motion.h2>
       <div className="max-w-full lg:w-[120px] w-[80px] lg:border-[3px] border-[2px] mx-auto border-gray-800 dark:border-white"></div>
       <motion.p
-        className="text-center font-normal text-base md:text-xl mt-2 leading-5 md:leading-[60px]"
+        className="text-center font-normal text-base md:text-xl mt-2 leading-5 md:leading-[60px] px-2"
         variants={paragraphVariants}
         initial="hidden"
         animate={inView ? 'visible' : 'hidden'}
