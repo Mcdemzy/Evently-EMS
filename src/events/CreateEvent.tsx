@@ -4,7 +4,6 @@ import Footer from "../components/shared/Footer";
 export default function CreateEvent() {
   const [physicalEvent, setPhysicalEvent] = useState(false);
   const [onlineEvent, setOnlineEvent] = useState(false);
-  const [darkMode] = useState(false);
 
   return (
     <main className="w-full bg-white">
@@ -280,7 +279,7 @@ export default function CreateEvent() {
           </section>
         </form>
       </section>
-      <Footer darkMode={darkMode} />
+      <Footer />
     </main>
   );
 }

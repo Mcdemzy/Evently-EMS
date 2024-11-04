@@ -30,7 +30,7 @@ const FaqItem: React.FC<{
   return (
     <div
       ref={ref}
-      className={`mb-4 rounded-2xl transition-all duration-200 ${
+      className={`mb-4 rounded-2xl ${
         isOpen ? 'bg-[#624CF5] text-white' : 'bg-[#EDEFFF] dark:bg-[#624CF5]'
       }`}
     >
@@ -59,7 +59,7 @@ const FaqItem: React.FC<{
       </button>
       <div
         ref={contentRef}
-        className={`faq-answer transition-all duration-300 ease-in-out overflow-hidden ${
+        className={`faq-answer ease-in-out overflow-hidden ${
           isOpen ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
         }`}
         style={{ height: isOpen ? contentHeight : 0 }}
@@ -106,7 +106,7 @@ const FAQ: React.FC = () => {
   return (
     <motion.div
       ref={ref}
-      className="md:max-w-7xl w-full mx-auto p-6 pt-20"
+      className="md:max-w-7xl w-full mx-auto p-6 pt-20 dark:bg-black dark:text-white"
       initial={{ opacity: 0, scale: 0.8 }}
       animate={controls}
     >
@@ -114,7 +114,7 @@ const FAQ: React.FC = () => {
         FAQ
       </h2>
       <div className="max-w-full lg:w-[120px] w-[80px] lg:border-[3px] border-[2px] border-[#1C1C1C] dark:border-[#EDEFFF] mx-auto"></div>
-      <p className="text-center font-normal text-base md:text-xl mt-2 leading-5 md:leading-[60px]">
+      <p className="text-center font-normal text-base md:text-xl mt-2 mb-10 leading-5 md:leading-[60px]">
         Our most frequently asked questions and answers
       </p>
       {faqData.map((item, index) => (

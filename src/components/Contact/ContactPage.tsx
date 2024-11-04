@@ -141,9 +141,9 @@ const ContactPage = () => {
         </div>
       </main>
 
-      <PricingSection darkMode={false} />
-      <NewsLetter darkMode={false} />
-      <Footer darkMode={false} />
+      <PricingSection />
+      <NewsLetter />
+      <Footer />
     </main>
   );
 };

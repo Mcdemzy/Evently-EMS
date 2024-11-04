@@ -19,9 +19,9 @@ const AboutPage: React.FC = () => {
       <VisionSection />
       <HistorySection />
       <QuestionSection />
-      <PricingSection darkMode={false} />
-      <NewsLetter darkMode={false} />
-      <Footer darkMode={false} />
+      <PricingSection />
+      <NewsLetter />
+      <Footer />
     </main>
   );
 };

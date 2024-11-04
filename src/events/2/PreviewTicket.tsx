@@ -2,11 +2,9 @@ import { Dot, EllipsisVertical, Plus } from "lucide-react";
 import Progress from "./Progress";
 import Socials from "./Socials";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import Footer from "../../components/shared/Footer";
 
 export default function PreviewTicket() {
-  const [darkMode] = useState(false);
 
   return (
     <main className="w-full">
@@ -148,7 +146,7 @@ export default function PreviewTicket() {
           Proceed
         </Link>
       </section>
-      <Footer darkMode={darkMode} />
+      <Footer />
     </main>
   );
 }
