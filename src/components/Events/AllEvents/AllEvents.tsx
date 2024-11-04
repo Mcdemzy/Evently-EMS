@@ -48,11 +48,11 @@ const AllEvents = () => {
           </div>
         </div>
 
-        <TrendingEvents darkMode={darkMode} />
+        <TrendingEvents />
 
         <div onClick={toggleDarkMode}></div>
       </main>
-      <Footer darkMode={darkMode} />
+      <Footer />
     </>
   );
 };

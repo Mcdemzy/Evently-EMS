@@ -5,11 +5,10 @@ import { Navigation, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
-import { DarkModeProps } from '../../types';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
-const NewEvents: React.FC<DarkModeProps> = ({ darkMode }) => {
+const NewEvents: React.FC = () => {
   const { ref, inView } = useInView({
     triggerOnce: false,
     threshold: 0.7,
@@ -33,9 +32,7 @@ const NewEvents: React.FC<DarkModeProps> = ({ darkMode }) => {
   return (
     <div
       ref={ref}
-      className={`pt-20 transition-all duration-200 ${
-        darkMode ? 'bg-black text-white' : 'text-[#25194D]'
-      }`}
+      className={`pt-20 dark:bg-black dark:text-white`}
     >
       <motion.h2
         className="text-[30px] lg:text-[40px] font-bold text-center leading-[60px] md:mb-2 mb-1 uppercase"
@@ -46,7 +43,7 @@ const NewEvents: React.FC<DarkModeProps> = ({ darkMode }) => {
       >
         NEW EVENTS
       </motion.h2>
-      <div className="max-w-full lg:w-[120px] w-[80px] lg:border-[3px] border-[2px] mx-auto"></div>
+      <div className="max-w-full lg:w-[120px] w-[80px] lg:border-[3px] border-[2px] mx-auto border-gray-800 dark:border-white"></div>
       <motion.p
         className="text-center font-normal text-base md:text-xl mt-2 leading-5 md:leading-[60px]"
         variants={paragraphVariants}
@@ -54,7 +51,8 @@ const NewEvents: React.FC<DarkModeProps> = ({ darkMode }) => {
         animate={inView ? 'visible' : 'hidden'}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        Check out events, festivals and parties that are coming up so you don’t miss out
+        Check out events, festivals and parties that are coming up so you don’t
+        miss out
       </motion.p>
 
       <Swiper
@@ -93,7 +91,6 @@ const NewEvents: React.FC<DarkModeProps> = ({ darkMode }) => {
                 time={event.time}
                 organizer={event.organizer}
                 imageUrl={event.imageUrl}
-                darkMode={darkMode}
               />
             </motion.div>
           </SwiperSlide>

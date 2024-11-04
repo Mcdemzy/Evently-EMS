@@ -2,7 +2,7 @@ import { useState, FormEvent } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
-function NewsLetter({ darkMode }: { darkMode: boolean }) {
+const NewsLetter: React.FC = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
 
@@ -30,13 +30,11 @@ function NewsLetter({ darkMode }: { darkMode: boolean }) {
   return (
     <div>
       <motion.section
-        ref={ref} 
+        ref={ref}
         initial="hidden"
         animate={inView ? 'visible' : 'hidden'}
         variants={sectionVariants}
-        className={`w-full lg:w-[75%] mx-auto mb-16 p-8 lg:p-12 rounded-lg transition-all duration-500 ${
-          darkMode ? 'bg-[rgb(13,13,13)] text-white' : 'bg-[#EDEFFF] text-black'
-        }`}
+        className={`w-full lg:w-[75%] mx-auto mb-16 p-8 lg:p-12 rounded-lg bg-[#EDEFFF] dark:bg-[#0D0D0D] dark:text-white`}
       >
         <h2 className="text-2xl lg:text-3xl font-semibold text-center mb-4">
           Subscribe to our Events Newsletter
@@ -52,9 +50,7 @@ function NewsLetter({ darkMode }: { darkMode: boolean }) {
               placeholder="Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className={`w-full p-3 rounded-md transition-all duration-500 ${
-                darkMode ? 'bg-[#000000] text-white' : 'bg-[#DFE1FF] text-black'
-              }`}
+              className={`w-full p-3 rounded-md bg-[#DFE1FF] dark:bg-[#000000]`}
               required
             />
           </div>
@@ -64,9 +60,7 @@ function NewsLetter({ darkMode }: { darkMode: boolean }) {
               placeholder="Email Address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className={`w-full p-3 rounded-md transition-all duration-500 ${
-                darkMode ? 'bg-[#000000] text-white' : 'bg-[#DFE1FF] text-black'
-              }`}
+              className={`w-full p-3 rounded-md bg-[#DFE1FF] dark:bg-[#000000]`}
               required
             />
           </div>

@@ -1,9 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { DarkModeProps } from '../../types';
 
-const PricingSection: React.FC<DarkModeProps> = ({ darkMode }) => {
+const PricingSection: React.FC = () => {
   const { ref, inView } = useInView({ triggerOnce: false, threshold: 1 });
 
   const containerVariants = {
@@ -48,9 +47,7 @@ const PricingSection: React.FC<DarkModeProps> = ({ darkMode }) => {
       initial="hidden"
       animate={inView ? 'visible' : 'hidden'}
       variants={containerVariants}
-      className={`text-center transition-all duration-500 mb-16 p-12 mt-10 rounded-lg flex flex-col justify-center ${
-        darkMode ? 'bg-[rgb(13,13,13)] text-white' : 'bg-[#EDEFFF] text-black'
-      }`}
+      className={`text-center mb-16 p-12 mt-10 rounded-lg flex flex-col justify-center bg-[#EDEFFF] dark:bg-[#0D0D0D] dark:text-white`}
     >
       <motion.h2
         variants={headingVariants}
@@ -66,7 +63,7 @@ const PricingSection: React.FC<DarkModeProps> = ({ darkMode }) => {
         best.
       </motion.p>
       <motion.div variants={buttonVariants} className="flex justify-center">
-        <button className="bg-gradient-to-r from-[#624CF5] to-[#624CF5] text-white py-3 px-10 rounded-md hover:bg-indigo-900 transition duration-300 max-w-[177px]">
+        <button className="bg-gradient-to-r from-[#624CF5] to-[#624CF5] hover:from-[#5a4cb1] hover:to-[#5536c4] text-white py-3 px-10 rounded-md hover:bg-indigo-900 transition duration-300 max-w-[177px]">
           View Pricing
         </button>
       </motion.div>

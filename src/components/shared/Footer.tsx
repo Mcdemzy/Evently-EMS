@@ -1,10 +1,9 @@
-import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { DarkModeProps } from "../../types";
-import { Link } from "react-router-dom";
+import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import { Link } from 'react-router-dom';
 
-const Footer: React.FC<DarkModeProps> = ({ darkMode }) => {
+const Footer: React.FC = () => {
   const [ref, inView] = useInView({
     triggerOnce: false,
     threshold: 0.1,
@@ -13,12 +12,66 @@ const Footer: React.FC<DarkModeProps> = ({ darkMode }) => {
   return (
     <footer
       ref={ref}
-      className={`relative py-10 ${
-        darkMode ? "bg-[rgb(13,13,13)]" : "bg-gray-100"
-      } transition-all duration-500 overflow-hidden`}
+      className="relative py-10  overflow-hidden dark:bg-black dark:text-white"
     >
-      <div className="absolute inset-0 bg-gradient-to-r from-[#FA776C] to-[#FBD67B] opacity-10 -z-10 animate-pulse"></div>
-      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-6 px-4">
+      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-6 px-16 md:pb-12 pb-6 ">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
+          transition={{ duration: 0.5, delay: 0.4, ease: 'easeOut' }}
+          className="flex md:gap-14 gap-4 text-sm md:text-xl font-normal font-[inter] md:flex-row items-center"
+        >
+          <a href="/events" className='hover:underline'>Events</a>
+          <a href="/pricing" className='hover:underline'>Pricing</a>
+          <a href="/about" className='hover:underline'>About</a>
+          <a href="/contact" className='hover:underline'>Contact</a>
+          <a href="/blog" className='hover:underline'>Blog</a>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: inView ? 1 : 0, scale: inView ? 1 : 0.8 }}
+          transition={{ duration: 0.5, delay: 0.6, ease: 'easeOut' }}
+          className="flex gap-4 justify-center"
+        >
+          <Link
+            to="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full border border-[#FA776C] flex items-center justify-center p-2 group"
+            aria-label="Facebook"
+          >
+            <FaFacebookF className="w-5 h-5 text-[#FA776C] group-hover:scale-125 transition-transform duration-200 group-hover:text-black group-hover:dark:text-white" />
+          </Link>
+          <Link
+            to="https://twitter.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full border border-[#FA776C] flex items-center justify-center p-2 group"
+            aria-label="Twitter"
+          >
+            <FaTwitter className="w-5 h-5 text-[#FA776C] group-hover:scale-125 transition-transform duration-200 group-hover:text-black group-hover:dark:text-white" />
+          </Link>
+          <Link
+            to="https://instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full border border-[#FA776C] flex items-center justify-center p-2 group"
+            aria-label="Instagram"
+          >
+            <FaInstagram className="w-5 h-5 text-[#FA776C] group-hover:scale-125 transition-transform duration-200 group-hover:text-black group-hover:dark:text-white" />
+          </Link>
+        </motion.div>
+      </div>
+      <div className="border dark:border-[#EFEFEF] mx-16 border-gray-300"></div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
+        transition={{ duration: 0.5, delay: 0.8, ease: 'easeOut' }}
+        className="md:pt-12 pt-6 flex flex-col md:flex-row justify-between items-center gap-6 px-16 md:pb-10 pb-5 text-center text-sm "
+      >
+        <p className='font-[inter] font-normal md:text-xl text-sm'>© 2023 Evently. All rights reserved.</p>
         <a href="/" className="flex items-center">
           <img
             src="/images/logo.svg"
@@ -29,119 +82,20 @@ const Footer: React.FC<DarkModeProps> = ({ darkMode }) => {
           <motion.span
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: inView ? 1 : 0, x: inView ? 0 : -20 }}
-            transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-            className={`ml-2 text-2xl font-bold ${
-              darkMode ? "text-white" : "text-gray-800"
-            } transition-all duration-500`}
+            transition={{ duration: 0.5, delay: 0.2, ease: 'easeOut' }}
+            className="ml-2 text-3xl font-bold "
           >
             Evently
           </motion.span>
         </a>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
-          transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
-          className="flex flex-col md:flex-row items-center gap-4"
-        >
-          <a
-            href="/about"
-            className={`hover:${darkMode ? "text-gray-300" : "text-gray-500"}`}
-          >
-            About Us
+        <div className="flex justify-center gap-4 mt-2">
+          <a href="/terms" className="hover:underline text-sm md:text-xl font-normal font-[inter]">
+            Terms of Service
           </a>
-          <a
-            href="/events"
-            className={`hover:${darkMode ? "text-gray-300" : "text-gray-500"}`}
-          >
-            Events
+          <a href="/privacy" className="hover:underline text-sm md:text-xl font-normal font-[inter]">
+            Privacy Policy
           </a>
-          <a
-            href="/contact"
-            className={`hover:${darkMode ? "text-gray-300" : "text-gray-500"}`}
-          >
-            Contact
-          </a>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: inView ? 1 : 0, scale: inView ? 1 : 0.8 }}
-          transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
-          className="flex gap-4"
-        >
-          <Link
-            to="https://facebook.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-full border border-[#FA776C] flex items-center justify-center p-2"
-            aria-label="Facebook"
-          >
-            <motion.div
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-              className={`w-6 h-6 text-[#FA776C] hover:text-${
-                darkMode ? "white" : "black"
-              } transition-colors duration-300`}
-            >
-              <FaFacebookF />
-            </motion.div>
-          </Link>
-          <Link
-            to="https://twitter.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-full border border-[#FA776C] flex items-center justify-center p-2"
-            aria-label="Twitter"
-          >
-            <motion.div
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-              className={`w-6 h-6 text-[#FA776C] hover:text-${
-                darkMode ? "white" : "black"
-              } transition-colors duration-300`}
-            >
-              <FaTwitter />
-            </motion.div>
-          </Link>
-          <Link
-            to="https://instagram.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-full border border-[#FA776C] flex items-center justify-center p-2"
-            aria-label="Instagram"
-          >
-            <motion.div
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-              className={`w-6 h-6 text-[#FA776C] hover:text-${
-                darkMode ? "white" : "black"
-              } transition-colors duration-300`}
-            >
-              <FaInstagram />
-            </motion.div>
-          </Link>
-        </motion.div>
-      </div>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
-        transition={{ duration: 0.5, delay: 0.8, ease: "easeOut" }}
-        className={`mt-5 pt-4 text-center text-sm ${
-          darkMode ? "text-gray-300" : "text-gray-700"
-        } transition-all duration-500`}
-      >
-        <p>© 2023 Evently. All rights reserved.</p>
-        <p>
-          Designed and created by{" "}
-          <a
-            href="https://the4coders.com"
-            className="font-bold text-[#FA776C] hover:underline dark:text-[#FA776C]"
-          >
-            The4Coders
-          </a>
-          .
-        </p>
+        </div>
       </motion.div>
     </footer>
   );
