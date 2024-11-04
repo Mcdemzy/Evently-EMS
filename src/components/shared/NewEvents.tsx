@@ -11,7 +11,7 @@ import { useInView } from 'react-intersection-observer';
 const NewEvents: React.FC = () => {
   const { ref, inView } = useInView({
     triggerOnce: false,
-    threshold: 0.7,
+    threshold: 0.1,
   });
 
   const cardVariants = {
@@ -45,7 +45,7 @@ const NewEvents: React.FC = () => {
       </motion.h2>
       <div className="max-w-full lg:w-[120px] w-[80px] lg:border-[3px] border-[2px] mx-auto border-gray-800 dark:border-white"></div>
       <motion.p
-        className="text-center font-normal text-base md:text-xl mt-2 leading-5 md:leading-[60px]"
+        className="text-center font-normal text-base md:text-xl mt-2 leading-5 md:leading-[60px] px-2"
         variants={paragraphVariants}
         initial="hidden"
         animate={inView ? 'visible' : 'hidden'}

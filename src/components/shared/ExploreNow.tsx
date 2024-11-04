@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const ExploreNow: React.FC = () => {
   const { ref, inView } = useInView({
     triggerOnce: false,
-    threshold: 0.5,
+    threshold: 0.2,
   });
 
   return (
@@ -15,7 +15,7 @@ const ExploreNow: React.FC = () => {
       animate={inView ? { opacity: 1, scale: 1 } : {}}
       transition={{ duration: 0.8, ease: 'easeOut' }}
     >
-      <section className="px-4 py-5 md:py-10 flex justify-center items-center dark:bg-black dark:text-white">
+      <section className="px-4 py-5 md:py-10 flex justify-center items-center dark:bg-black dark:text-white pt-20">
         <div className="grid grid-cols-1 md:grid-cols-2 justify-between gap-5 mx-auto max-w-7xl">
           <motion.div
             className="flex flex-col justify-center gap-8"

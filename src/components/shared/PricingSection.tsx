@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 const PricingSection: React.FC = () => {
-  const { ref, inView } = useInView({ triggerOnce: false, threshold: 1 });
+  const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.1 });
 
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
