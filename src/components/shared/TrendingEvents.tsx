@@ -90,7 +90,6 @@ const TrendingEvents: React.FC = () => {
                 time={event.time}
                 organizer={event.organizer}
                 imageUrl={event.imageUrl}
-                // darkMode={false}
               />
             </motion.div>
           </SwiperSlide>
