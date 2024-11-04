@@ -13,7 +13,7 @@ const Card: React.FC<CardProps> = ({
 }) => {
   return (
     <div
-      className={`card group relative shadow-lg rounded-xl p-4 w-96 mx-4 border cursor-pointer transition-colors duration-500 dark:bg-black dark:border-gray-800 bg-white border-gray-200
+      className={`card group relative shadow-lg rounded-xl p-4 w-80 md:w-96 mx-4 border cursor-pointer transition-colors duration-500 dark:bg-black dark:border-gray-800 bg-white border-gray-200
       `}
     >
       <div
