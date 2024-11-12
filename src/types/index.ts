@@ -26,3 +26,8 @@ export interface FAQItem {
   question: string;
   answer: string;
 }
+
+export interface NavBarProps {
+  isDarkMode: boolean;
+  toggleDarkMode: () => void;
+}
