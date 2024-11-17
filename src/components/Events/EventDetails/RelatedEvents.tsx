@@ -36,15 +36,15 @@ const RelatedEvents = () => {
   ];
 
   return (
-    <div className="w-full p-4 mt-16 flex flex-col justify-center items-center">
-      <h2 className="text-2xl font-bold text-[#25194D]">
+    <div className="w-full p-4  flex flex-col justify-center items-center dark:bg-black">
+      <h2 className="text-2xl font-bold text-[#25194D] dark:bg-black dark:text-[#EDEFFF]">
         Other Events You May Like
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8 justify-center">
         {events.map((event) => (
           <div
             key={event.id}
-            className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow"
+            className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow dark:bg-black dark:border dark:border-solid dark:border-[#25194D]"
           >
             <img
               src={event.image}
@@ -52,23 +52,27 @@ const RelatedEvents = () => {
               className="w-full h-48 object-cover"
             />
             <div className="p-4">
-              <h3 className="text-xl font-bold text-[#25194D]">
+              <h3 className="text-xl font-bold text-[#25194D] dark:text-[#EDEFFF]">
                 {event.title}
               </h3>
               <div className="mt-3 flex items-center space-x-3">
-                <span className="bg-[#25194D] text-[#EDEFFF] px-3 py-1 rounded-full text-sm font-semibold">
+                <span className="bg-[#25194D] text-[#EDEFFF] px-3 py-1 rounded-full text-sm font-semibold dark:text-[#EDEFFF]">
                   {event.price}
                 </span>
-                <span className="text-sm text-[#25194D]">{event.category}</span>
+                <span className="text-sm text-[#25194D] dark:text-[#EDEFFF]">
+                  {event.category}
+                </span>
               </div>
               <div className="mt-4">
                 <div className="flex items-center space-x-2">
-                  <FaCalendarAlt className="text-[#25194D]" />
-                  <span className="text-sm text-[#25194D]">{event.date}</span>
+                  <FaCalendarAlt className="text-[#25194D] dark:text-[#EDEFFF]" />
+                  <span className="text-sm text-[#25194D] dark:text-[#EDEFFF]">
+                    {event.date}
+                  </span>
                 </div>
                 <div className="flex items-center space-x-2 mt-2">
-                  <FaMapMarkerAlt className="text-[#25194D]" />
-                  <span className="text-sm text-[#25194D]">
+                  <FaMapMarkerAlt className="text-[#25194D] dark:text-[#EDEFFF]" />
+                  <span className="text-sm text-[#25194D] dark:text-[#EDEFFF]">
                     {event.location}
                   </span>
                 </div>
