@@ -1,6 +1,7 @@
-import React from 'react';
-import { CardProps } from '../../../types';
-import { IoCalendarOutline, IoLocationSharp } from 'react-icons/io5';
+import React from "react";
+import { CardProps } from "../../../types";
+import { IoCalendarOutline, IoLocationSharp } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const Card: React.FC<CardProps> = ({
   title,
@@ -20,7 +21,9 @@ const Card: React.FC<CardProps> = ({
         className={`absolute inset-0 flex items-start pt-32 justify-center bg-black bg-opacity-0 text-white transition-opacity duration-300 opacity-0 group-hover:bg-opacity-50 group-hover:opacity-100 rounded-xl dark:bg-opacity-70
         `}
       >
-        <span className="text-2xl font-bold">Get Tickets</span>
+        <Link to="/event-details" className="text-2xl font-bold">
+          Get Tickets
+        </Link>
       </div>
       <img
         src={imageUrl}
