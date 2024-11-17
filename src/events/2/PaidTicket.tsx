@@ -6,7 +6,7 @@ export default function PaidTicket() {
           <div>
             <label
               htmlFor="username"
-              className="block mb-2 text-sm font-medium text-[#25194D]"
+              className="dark:text-[#EDEFFF] block mb-2 text-sm font-medium text-[#25194D]"
             >
               Ticket Name <span className="text-[#FA776C]">*</span>
             </label>
@@ -14,31 +14,31 @@ export default function PaidTicket() {
               type="text"
               name="username"
               id="username"
-              className=" border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="dark:text-[#fff] dark:bg-[#1F1F1F] dark:border-none border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               required
             />
           </div>
           <div className="">
             <label
               htmlFor="username"
-              className="block mb-2 text-sm font-medium text-[#25194D]"
+              className="dark:text-[#EDEFFF] block mb-2 text-sm font-medium text-[#25194D]"
             >
               Ticket Stock <span className="text-[#FA776C]">*</span>
             </label>
             <div className="flex flex-row gap-x-2">
-              <select className="border text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <select className="border-[#1C1C1C] dark:text-[#fff] dark:bg-[#1F1F1F] dark:border-none border text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option value=""></option>
               </select>
               <input
                 type="number"
-                className="border text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className=" dark:text-[#fff] dark:bg-[#1F1F1F] dark:border-none border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               ></input>
             </div>
           </div>
           <div>
             <label
               htmlFor="username"
-              className="block mb-2 text-sm font-medium text-[#25194D]"
+              className="dark:text-[#EDEFFF] block mb-2 text-sm font-medium text-[#25194D]"
             >
               Ticket Purchase Limit <span className="text-[#FA776C]">*</span>
             </label>
@@ -46,14 +46,14 @@ export default function PaidTicket() {
               type="text"
               name="username"
               id="username"
-              className=" border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className=" dark:text-[#fff] dark:bg-[#1F1F1F] dark:border-none border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               required
             />
           </div>
           <div className="">
             <label
               htmlFor="username"
-              className="block mb-2 text-sm font-medium text-[#25194D]"
+              className="dark:text-[#EDEFFF] block mb-2 text-sm font-medium text-[#25194D]"
             >
               Ticket Price <span className="text-[#FA776C]">*</span>
             </label>
@@ -62,7 +62,7 @@ export default function PaidTicket() {
                 type="text"
                 name="username"
                 id="username"
-                className=" border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="  dark:text-[#fff] dark:bg-[#1F1F1F] dark:border-none border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
 
@@ -70,7 +70,7 @@ export default function PaidTicket() {
                 type="text"
                 name="username"
                 id="username"
-                className=" border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className=" dark:text-[#fff] dark:bg-[#1F1F1F] dark:border-none border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
             </div>
@@ -87,7 +87,7 @@ export default function PaidTicket() {
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                className="text-[#25194D] lucide lucide-circle-plus"
+                className="dark:text-[#EDEFFF] text-[#25194D] lucide lucide-circle-plus"
               >
                 <circle cx="12" cy="12" r="10" />
                 <path d="M8 12h8" />
@@ -98,44 +98,46 @@ export default function PaidTicket() {
               placeholder="Benefits of this ticket"
               type="text"
               id="online-location"
-              className="block w-full p-2.5 ps-10 text-sm text-gray-900 border rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="dark:text-[#fff] dark:bg-[#1F1F1F] dark:border-none block border-[#1C1C1C] w-full p-2.5 ps-10 text-sm text-gray-900 border rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               required
             />
           </div>
           <div className="col-span-2 mt-4 relative">
             <label
               htmlFor="username"
-              className="block mb-2 text-sm font-medium text-[#25194D]"
+              className="dark:text-[#EDEFFF] block mb-2 text-sm font-medium text-[#25194D]"
             >
               Ticket Description <span className="text-[#FA776C]">*</span>
             </label>
             <textarea
               cols={4}
               rows={5}
-              className="border text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className=" dark:text-[#fff] dark:bg-[#1F1F1F] dark:border-none border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600  dark:focus:ring-blue-500 dark:focus:border-blue-500"
               name=""
               id=""
             ></textarea>
           </div>
         </div>
 
-        <h2 className="mt-6 text-[#25194D] text-2xl font-semibold">Banking</h2>
+        <h2 className="dark:text-[#EDEFFF] mt-6 text-[#25194D] text-2xl font-semibold">
+          Banking
+        </h2>
         <div className="mt-4 grid gap-4 mb-4 sm:grid-cols-2">
           <div>
             <label
               htmlFor="username"
-              className="block mb-2 text-sm font-medium text-[#25194D]"
+              className="dark:text-[#EDEFFF] block mb-2 text-sm font-medium text-[#25194D]"
             >
               Bank <span className="text-[#FA776C]">*</span>
             </label>
-            <select className="border text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <select className=" dark:text-[#fff] dark:bg-[#1F1F1F] dark:border-none border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
               <option value=""></option>
             </select>
           </div>
           <div className="">
             <label
               htmlFor="username"
-              className="block mb-2 text-sm font-medium text-[#25194D]"
+              className="dark:text-[#EDEFFF] block mb-2 text-sm font-medium text-[#25194D]"
             >
               Account Number <span className="text-[#FA776C]">*</span>
             </label>
@@ -144,7 +146,7 @@ export default function PaidTicket() {
                 type="text"
                 name="username"
                 id="username"
-                className=" border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className=" dark:text-[#fff] dark:bg-[#1F1F1F] dark:border-none border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
             </div>
@@ -152,7 +154,7 @@ export default function PaidTicket() {
           <div className="col-span-2 mt-4 relative">
             <label
               htmlFor="username"
-              className="block mb-2 text-sm font-medium text-[#25194D]"
+              className="dark:text-[#EDEFFF] block mb-2 text-sm font-medium text-[#25194D]"
             >
               Account Name <span className="text-[#FA776C]">*</span>
             </label>
@@ -160,7 +162,7 @@ export default function PaidTicket() {
               type="text"
               name="username"
               id="username"
-              className=" border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className=" dark:text-[#fff] dark:bg-[#1F1F1F] dark:border-none border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               required
             />
           </div>

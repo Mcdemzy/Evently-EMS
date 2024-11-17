@@ -18,29 +18,29 @@ export default function Event2() {
   };
 
   return (
-    <main className="w-full">
-      <h2 className="text-[#25194D] font-semibold text-4xl text-center mt-14">
+    <main className="overflow-hidden w-full dark:bg-black">
+      <h2 className="dark:text-[#EDEFFF] text-[#25194D] font-semibold text-4xl text-center mt-14">
         CREATE EVENT
       </h2>
-      <p className="text-center mt-2 text-[#25194D]">
+      <p className="dark:text-[#EDEFFF] text-center mt-2 text-[#25194D]">
         Begin your journey to an unforgettable experience.
       </p>
       <Progress />
       {!showForm && !ticketType && (
-        <section className="mt-4 mb-10 bg-[#E9E8ED] space-y-4 flex flex-col jusitfy-center items-center w-[95%] md:w-[80%] m-auto h-[440px] rounded-md">
-          <div className="mt-10 w-[100px] h-[100px]  rounded-full ">
+        <section className="dark:bg-[#1F1F1F] mt-4 mb-10 bg-[#E9E8ED] space-y-4 flex flex-col jusitfy-center items-center w-[95%] md:w-[80%] m-auto h-[440px] rounded-md">
+          <div className="mt-16 w-[100px] h-[100px]  rounded-full ">
             <img src="/images/ticket.png" width={100} height={100} alt={""} />
           </div>
-          <p className="text-xl text-[#25194D] text-center font-semibold">
+          <p className="dark:text-[#EDEFFF] text-xl text-[#25194D] text-center font-semibold">
             CREATE EVENT
           </p>
-          <p className="text-center text-[#25194D]">
+          <p className="dark:text-[#EDEFFF] text-center text-[#25194D]">
             Create your first Ticket. It won’t take long.
           </p>
           <div className="flex justify-center items-center w-full">
             <button
               onClick={handleAddTicketClick}
-              className="m-auto text-[#25194D] bg-white px-4 p-1.5 border border-[#25194D] rounded-sm shadow-md"
+              className="font-semibold m-auto text-[#25194D] bg-white px-4 p-1.5 border border-[#25194D] rounded-sm shadow-md"
             >
               Add ticket +
             </button>
@@ -48,14 +48,14 @@ export default function Event2() {
         </section>
       )}
       {showForm && (
-        <section className="mt-4 mb-10 bg-[#E9E8ED] space-y-4 flex flex-col jusitfy-center items-center w-[95%] md:w-[80%] m-auto h-[440px] rounded-md">
-          <div className="mt-10 w-[100px] h-[100px]  rounded-full ">
+        <section className="dark:bg-[#1F1F1F] mt-4 mb-10 bg-[#E9E8ED] space-y-4 flex flex-col jusitfy-center items-center w-[95%] md:w-[80%] m-auto h-[440px] rounded-md">
+          <div className="mt-16 w-[100px] h-[100px]  rounded-full ">
             <img src="/images/ticket.png" width={100} height={100} alt={""} />
           </div>
-          <p className="text-xl text-[#25194D] text-center font-semibold">
+          <p className="dark:text-[#EDEFFF] text-xl text-[#25194D] text-center font-semibold">
             CREATE EVENT
           </p>
-          <p className="text-center text-[#25194D]">
+          <p className="dark:text-[#EDEFFF] text-center text-[#25194D]">
             Create your first Ticket. It won’t take long.
           </p>
           <div className="flex justify-center items-center w-full">
@@ -64,7 +64,7 @@ export default function Event2() {
                 <div className="flex items-center">
                   <label
                     htmlFor="default-radio-1"
-                    className="text-xl font-medium text-[#25194D]  me-2"
+                    className="dark:text-[#EDEFFF] text-xl font-medium text-[#25194D]  me-2"
                   >
                     Free Ticket
                   </label>
@@ -78,7 +78,7 @@ export default function Event2() {
                 <div className="flex items-center">
                   <label
                     htmlFor="default-radio-2"
-                    className="ms-2 text-xl font-medium text-[#25194D] me-2"
+                    className="dark:text-[#EDEFFF] ms-2 text-xl font-medium text-[#25194D] me-2"
                   >
                     Paid Ticket
                   </label>
@@ -101,7 +101,7 @@ export default function Event2() {
               <div className="flex items-center">
                 <label
                   htmlFor="default-radio-1"
-                  className="text-xl font-medium text-[#25194D]  me-2"
+                  className="dark:text-[#EDEFFF] text-xl font-medium text-[#25194D]  me-2"
                 >
                   Free Ticket
                 </label>
@@ -115,7 +115,7 @@ export default function Event2() {
               <div className="flex items-center">
                 <label
                   htmlFor="default-radio-2"
-                  className="ms-2 text-xl font-medium text-[#25194D] me-2"
+                  className="dark:text-[#EDEFFF] ms-2 text-xl font-medium text-[#25194D] me-2"
                 >
                   Paid Ticket
                 </label>
@@ -138,7 +138,7 @@ export default function Event2() {
       <section className="mt-20 my-6 mb-10 w-full flex flex-row justify-center gap-x-8 items-center">
         <Link
           to="/events/create"
-          className="flex justify-center items-center shaodw-md w-[240px] h-[48px] rounded-md text-primary text-md bg-[#624CF50D]"
+          className="dark:border flex justify-center items-center shaodw-md w-[240px] h-[48px] rounded-md dark:text-[#DFE1FF] text-primary text-md dark:bg-black bg-[#624CF50D]"
         >
           Receed
         </Link>
