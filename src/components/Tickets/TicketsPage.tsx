@@ -55,7 +55,7 @@ const TicketsPage = () => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-6">
+    <div className="w-full max-w-7xl mx-auto p-6">
       <h1 className="text-2xl font-bold mb-4">Checkout</h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Left Section */}
