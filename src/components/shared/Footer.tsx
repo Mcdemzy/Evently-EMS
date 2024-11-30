@@ -1,7 +1,7 @@
-import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { Link } from 'react-router-dom';
+import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { Link } from "react-router-dom";
 
 const Footer: React.FC = () => {
   const [ref, inView] = useInView({
@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
-          transition={{ duration: 0.5, delay: 0.4, ease: 'easeOut' }}
+          transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
           className="flex md:gap-14 gap-4 text-sm md:text-xl font-normal font-[inter] md:flex-row items-center"
         >
           <Link to="/events/all" className="hover:underline">
@@ -41,7 +41,7 @@ const Footer: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: inView ? 1 : 0, scale: inView ? 1 : 0.8 }}
-          transition={{ duration: 0.5, delay: 0.6, ease: 'easeOut' }}
+          transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
           className="flex gap-4 justify-center"
         >
           <Link
@@ -78,11 +78,11 @@ const Footer: React.FC = () => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
-        transition={{ duration: 0.5, delay: 0.8, ease: 'easeOut' }}
+        transition={{ duration: 0.5, delay: 0.8, ease: "easeOut" }}
         className="md:pt-12 pt-6 flex flex-col md:flex-row justify-between items-center gap-6 px-16 md:pb-10 pb-5 text-center text-sm "
       >
         <p className="font-[inter] font-normal md:text-xl text-sm">
-          © 2023 Evently. All rights reserved.
+          © 2024 Evently. All rights reserved.
         </p>
         <a href="/" className="flex items-center">
           <img
@@ -94,7 +94,7 @@ const Footer: React.FC = () => {
           <motion.span
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: inView ? 1 : 0, x: inView ? 0 : -20 }}
-            transition={{ duration: 0.5, delay: 0.2, ease: 'easeOut' }}
+            transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
             className="ml-2 text-3xl font-bold "
           >
             Evently
