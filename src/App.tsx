@@ -19,6 +19,7 @@ import NavBar from "./NavBar";
 import EventDetails from "./components/Events/EventDetails/EventDetails";
 import TicketsPage from "./components/Tickets/TicketsPage";
 import TicketsPage2 from "./components/Tickets/ContactPage";
+import TicketsPage3 from "./components/Tickets/PaymentPAge";
 
 const App = () => {
   const [isDarkMode, toggleDarkMode] = useDarkMode();
@@ -42,6 +43,7 @@ const App = () => {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/get-tickets" element={<TicketsPage />} />
           <Route path="/get-tickets2" element={<TicketsPage2 />} />
+          <Route path="/get-tickets3" element={<TicketsPage3 />} />
           <Route path="/event-details" element={<EventDetails />} />
           <Route path="/events/create" element={<CreateEvent />} />
           <Route path="/events/create/2" element={<Event2 />} />
