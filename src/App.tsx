@@ -19,7 +19,7 @@ import NavBar from "./NavBar";
 import EventDetails from "./components/Events/EventDetails/EventDetails";
 import TicketsPage from "./components/Tickets/TicketsPage";
 import TicketsPage2 from "./components/Tickets/ContactPage";
-import TicketsPage3 from "./components/Tickets/PaymentPAge";
+import TicketsPage3 from "./components/Tickets/PaymentPage";
 
 const App = () => {
   const [isDarkMode, toggleDarkMode] = useDarkMode();
