@@ -9,6 +9,7 @@ function NavBar({ isDarkMode, toggleDarkMode }: NavBarProps) {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const sidebarRef = useOutsideClick(() => setMobileMenuOpen(false));
+  // heyyyy
 
   return (
     <div
