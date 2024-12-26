@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // Define the type for ticket keys
 type TicketType = "standard" | "vip" | "vvip" | "group";
@@ -12,6 +13,11 @@ const TicketsPage = () => {
     group: 0,
   });
 
+  const navigate = useNavigate();
+
+  const click = () => {
+    navigate("/get-tickets/contact");
+  };
   // Define details for each ticket type
   const ticketDetails: Record<
     TicketType,
@@ -129,6 +135,7 @@ const TicketsPage = () => {
               <span>₦{totalPrice.toLocaleString()}</span>
             </div>
             <button
+              onClick={click}
               disabled={totalPrice === 0}
               className={`mt-4 w-full py-2 px-4 rounded-lg ${
                 totalPrice > 0

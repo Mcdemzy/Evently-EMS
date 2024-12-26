@@ -42,8 +42,8 @@ const App = () => {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/get-tickets" element={<TicketsPage />} />
-          <Route path="/get-tickets2" element={<TicketsPage2 />} />
-          <Route path="/get-tickets3" element={<TicketsPage3 />} />
+          <Route path="/get-tickets/contact" element={<TicketsPage2 />} />
+          <Route path="/get-tickets/checkout" element={<TicketsPage3 />} />
           <Route path="/event-details" element={<EventDetails />} />
           <Route path="/events/create" element={<CreateEvent />} />
           <Route path="/events/create/2" element={<Event2 />} />
