@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ContactPage = () => {
   // State to track the ticket option selection
@@ -6,6 +7,12 @@ const ContactPage = () => {
 
   const handleOptionChange = (event: any) => {
     setSendToDifferentEmail(event.target.value === "yes");
+  };
+
+  const navigate = useNavigate();
+
+  const click = () => {
+    navigate("/get-tickets/checkout");
   };
 
   return (
@@ -244,7 +251,10 @@ const ContactPage = () => {
               <span>Total:</span>
               <span>₦101,500</span>
             </div>
-            <button className="mt-6 w-full py-2 px-4 bg-purple-600 text-white rounded-lg hover:bg-purple-800">
+            <button
+              className="mt-6 w-full py-2 px-4 bg-purple-600 text-white rounded-lg hover:bg-purple-800"
+              onClick={click}
+            >
               Continue
             </button>
           </div>
