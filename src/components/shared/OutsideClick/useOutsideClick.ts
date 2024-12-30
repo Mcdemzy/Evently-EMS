@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
 const useOutsideClick = (callback: () => void) => {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -10,11 +10,18 @@ const useOutsideClick = (callback: () => void) => {
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+    const handleScroll = () => {
+      callback();
     };
-  }, [ref, callback]);
+
+    document.addEventListener("mousedown", handleClickOutside);
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [callback]);
 
   return ref;
 };

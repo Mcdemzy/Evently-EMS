@@ -1,6 +1,6 @@
 import Pricing from "../Pricing/Pricing"
 
-function Blog() {
+function Profile() {
   return (
     <div>
       <Pricing />
@@ -8,4 +8,4 @@ function Blog() {
   )
 }
 
-export default Blog
+export default Profile
