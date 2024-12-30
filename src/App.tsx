@@ -13,13 +13,13 @@ import Signup from "./components/Auth/Signup/Signup";
 import Login from "./components/Auth/Login/Login";
 import Test from "./Test";
 import ForgotPassword from "./components/Auth/ForgotPassword/ForgotPassword";
-import Blog from "./components/Blog/Blog";
 import Pricing from "./components/Pricing/Pricing";
 import NavBar from "./NavBar";
 import EventDetails from "./components/Events/EventDetails/EventDetails";
 import TicketsPage from "./components/Tickets/TicketsPage";
 import TicketsPage2 from "./components/Tickets/ContactPage";
 import TicketsPage3 from "./components/Tickets/PaymentPage";
+import Profile from "./components/Profile/Profile";
 
 const App = () => {
   const [isDarkMode, toggleDarkMode] = useDarkMode();
@@ -36,7 +36,7 @@ const App = () => {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/events/all" element={<AllEvents />} />
           <Route path="/pricing" element={<Pricing />} />
-          <Route path="/blog" element={<Blog />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
