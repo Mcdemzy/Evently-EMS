@@ -11,7 +11,7 @@ const HeroSection: React.FC = () => {
   return (
     <div
       ref={ref}
-      className="flex flex-col items-center justify-center text-center px-4 pt-10 md:pb-20 pb-14 dark:bg-black dark:text-white"
+      className="flex flex-col items-center justify-center text-center px-4 pt-48 md:pb-20 pb-14 dark:bg-black dark:text-white"
     >
       <motion.h1
         initial={{ opacity: 0, y: 50 }}
