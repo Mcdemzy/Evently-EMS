@@ -1,7 +1,7 @@
 const PaymentPAge = () => {
   return (
     <>
-      <main>
+      <main className="pt-[100px] md:pt-[124px]">
         <div className="min-h-screen bg-gray-50 flex justify-center items-center p-6">
           <div className="w-full max-w-3xl bg-white shadow-lg rounded-lg p-8">
             <h1 className="text-2xl font-semibold text-gray-800 mb-6">

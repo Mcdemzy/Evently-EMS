@@ -38,7 +38,7 @@ const ContactPage = () => {
   };
 
   return (
-    <main className="dark:bg-black">
+    <main className="dark:bg-black pt-[124px]">
       <ToastContainer />
       <section className="dark:bg-black pt-10">
         <h1 className="text-[#FA776C] text-3xl md:text-4xl font-semibold text-center">
