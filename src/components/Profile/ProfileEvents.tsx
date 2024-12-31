@@ -33,13 +33,20 @@ const ProfileEvents = () => {
     },
   ];
 
+  const handleSubmit = () => {
+    alert("Event Clicked");
+  };
+  const createNewEvent = () => {
+    alert("New Event Created");
+  };
+
   return (
     <main className="min-h-screen w-full mt-[124px] px-6 sm:px-10">
       <h1 className="text-2xl font-bold mb-6">My Events</h1>
 
       {/* Events Section */}
       {events.length === 0 ? (
-        <div className="w-full h-[22.5rem] border border-[#DCDCDC] rounded-lg shadow-md flex flex-col justify-center items-center">
+        <div className="w-full h-[22.5rem] border border-[#DCDCDC] rounded-lg shadow-md flex flex-col justify-center items-center cursor-pointer">
           <div className="w-20 h-20 bg-[#DCDCDC] rounded-xl flex justify-center items-center">
             <FaPlus className="text-3xl text-gray-600" />
           </div>
@@ -48,7 +55,10 @@ const ProfileEvents = () => {
       ) : (
         <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Create New Event Cards */}
-          <div className="w-full h-[22.5rem] border border-[#DCDCDC] rounded-lg shadow-md flex flex-col justify-center items-center">
+          <div
+            className="w-full h-[22.5rem] border border-[#DCDCDC] rounded-lg shadow-md flex flex-col justify-center items-center cursor-pointer"
+            onClick={createNewEvent}
+          >
             <div className="w-20 h-20 bg-[#DCDCDC] rounded-xl flex justify-center items-center">
               <FaPlus className="text-3xl text-gray-600" />
             </div>
@@ -59,7 +69,8 @@ const ProfileEvents = () => {
           {events.map((event) => (
             <div
               key={event.id}
-              className="w-full h-[22.5rem] border border-[#DCDCDC] rounded-lg shadow-md"
+              className="w-full h-[22.5rem] border border-[#DCDCDC] rounded-lg shadow-md cursor-pointer"
+              onClick={handleSubmit}
             >
               <div>
                 <img
