@@ -32,7 +32,7 @@ export interface NavBarProps {
   toggleDarkMode: () => void;
 }
 
-export interface UserProfileModalProps {
+export interface ModalProps {
   isOpen: boolean; 
   onClose: () => void; 
 }

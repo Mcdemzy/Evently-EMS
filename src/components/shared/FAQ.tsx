@@ -3,7 +3,7 @@ import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import useOutsideClick from './OutsideClick/useOutsideClick';
 import { FAQItem } from '../../types';
-import { faqData } from './FAQ/data';
+import { faqData } from './Data/data';
 
 const FaqItem: React.FC<{
   item: FAQItem;
