@@ -1,0 +1,11 @@
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px; /* Width of the scrollbar */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  border-radius: 8px;
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+}
