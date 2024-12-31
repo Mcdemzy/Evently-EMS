@@ -1,4 +1,5 @@
 import { IoTicketOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const ProfileTickets = () => {
   const events = [
@@ -32,9 +33,21 @@ const ProfileTickets = () => {
     },
   ];
 
+  const handleSubmit = () => {
+    alert("Ticket Viewed");
+  };
+
   return (
     <main className="min-h-screen w-full mt-[124px] px-6 sm:px-10">
-      <h1 className="text-2xl font-bold mb-6">My Tickets</h1>
+      <div className="flex items-center mb-6 justify-between">
+        <h1 className="text-2xl font-bold ">My Tickets</h1>
+        <Link
+          to="/events/all"
+          className="w-fit px-8 py-4 bg-[#624CF5] text-white text-xl rounded-full hidden md:flex"
+        >
+          Explore more events
+        </Link>
+      </div>
 
       {/* Events Section */}
       {events.length === 0 ? (
@@ -52,7 +65,8 @@ const ProfileTickets = () => {
           {events.map((event) => (
             <div
               key={event.id}
-              className="w-full h-[22.5rem] border border-[#DCDCDC] rounded-lg shadow-md"
+              className="w-full h-[22.5rem] border border-[#DCDCDC] rounded-lg shadow-md cursor-pointer"
+              onClick={handleSubmit}
             >
               <div>
                 <img
