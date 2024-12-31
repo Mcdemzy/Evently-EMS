@@ -16,7 +16,7 @@ const ContactPage = () => {
   };
 
   return (
-    <main className="dark:bg-black dark:text-white">
+    <main className="dark:bg-black dark:text-white pt-[100px] md:pt-[124px]">
       <div className="w-full max-w-7xl mx-auto p-6 ">
         <h1 className="text-2xl font-bold mb-4">Checkout</h1>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
