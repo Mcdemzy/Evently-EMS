@@ -1,11 +1,17 @@
-import Pricing from "../Pricing/Pricing"
+import Footer from "../shared/Footer";
+import ProfileEvents from "./ProfileEvents";
+import ProfileTickets from "./ProfileTickets";
 
-function Profile() {
+const Profile = () => {
   return (
-    <div>
-      <Pricing />
-    </div>
-  )
-}
+    <>
+      <main>
+        <ProfileEvents />
+        <ProfileTickets />
+        <Footer />
+      </main>
+    </>
+  );
+};
 
-export default Profile
+export default Profile;
