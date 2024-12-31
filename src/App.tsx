@@ -20,6 +20,7 @@ import TicketsPage from "./components/Tickets/TicketsPage";
 import TicketsPage2 from "./components/Tickets/ContactPage";
 import TicketsPage3 from "./components/Tickets/PaymentPage";
 import Profile from "./components/Profile/Profile";
+import ProfileEventDetails from "./components/Profile/EventDetails/ProfileEventDetails";
 
 const App = () => {
   const [isDarkMode, toggleDarkMode] = useDarkMode();
@@ -49,6 +50,12 @@ const App = () => {
           <Route path="/events/create/2" element={<Event2 />} />
           <Route path="/events/preview" element={<PreviewTicket />} />
           <Route path="/events/create/3" element={<Event3 />} />
+
+          {/* Profile Events Routes */}
+          <Route
+            path="/profile-event/details"
+            element={<ProfileEventDetails />}
+          />
         </Routes>
       </Router>
     </div>
