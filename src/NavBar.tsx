@@ -43,7 +43,7 @@ function NavBar({ isDarkMode, toggleDarkMode }: NavBarProps) {
             height={50}
             alt="Evently logo"
           />
-          <span className="ml-2 text-3xl font-bold">Evently</span>
+          <span className="ml-2 lg:text-3xl text-xl font-bold">Evently</span>
         </Link>
 
         <NavLinks
@@ -100,13 +100,13 @@ function NavBar({ isDarkMode, toggleDarkMode }: NavBarProps) {
           ref={sidebarRef}
           className={`
             ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"}
-            fixed lg:hidden top-0 right-0 h-full w-2/3 max-w-xs dark:text-white text-center flex flex-col items-center pt-20 space-y-6 text-lg border-l transform transition-transform duration-300 z-[9999] backdrop-blur-lg border-white/20 shadow-md dark:bg-black/50 bg-white/50
+            fixed lg:hidden top-0 right-0 h-full w-2/3 max-w-xs dark:text-white text-center flex flex-col items-center lg:pt-20 pt-16 space-y-6 text-lg border-l transform transition-transform duration-300 z-[9999] backdrop-blur-lg border-white/20 shadow-md dark:bg-black/50 bg-white/50
       `}
           style={{
             backdropFilter: "blur(10px)",
           }}
         >
-          <div className="flex items-center justify-between w-full absolute top-10 right-0 px-7 pr-10 ">
+          <div className="flex items-center justify-between w-full absolute lg:top-10 top-7 right-0 px-7 lg:pr-10 pr-7 ">
             <div
               onClick={toggleDarkMode}
               className="relative lg:hidden w-9 h-9 bg-slate-200 dark:bg-black rounded-full p-1 transition-all duration-500 flex items-center justify-between overflow-hidden cursor-pointer border border-gray-50"
