@@ -1,5 +1,6 @@
 import { IoTicketOutline } from "react-icons/io5";
 import { FaPlus } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 
 const ProfileEvents = () => {
   const events = [
@@ -33,8 +34,11 @@ const ProfileEvents = () => {
     },
   ];
 
+  const navigate = useNavigate();
+
   const handleSubmit = () => {
     alert("Event Clicked");
+    navigate("/profile-event/details");
   };
   const createNewEvent = () => {
     alert("New Event Created");
