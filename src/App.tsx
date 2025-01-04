@@ -51,6 +51,7 @@ const App = () => {
           <Route path="/events/preview" element={<PreviewTicket />} />
           <Route path="/events/create/3" element={<Event3 />} />
 
+          {/* Profile Events Routes */}
           <Route
             path="/profile-event/details"
             element={<ProfileEventDetails />}
