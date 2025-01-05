@@ -27,26 +27,29 @@ const Tickets = ({}: { eventId: string | undefined }) => {
           TICKETS
         </h2>
         <div className="overflow-x-auto">
-          <table className="w-full table-auto border-collapse">
+          <table className="w-full min-w-[600px] table-auto border-collapse">
             <thead>
-              <tr className="text-left text-gray-600 font-medium border-b">
-                <th className="p-2 md:p-3">ID</th>
-                <th className="p-2 md:p-3">Ticket Name</th>
-                <th className="p-2 md:p-3">Ticket Quantity</th>
-                <th className="p-2 md:p-3">Ticket Stock</th>
-                <th className="p-2 md:p-3">Ticket Price</th>
-                <th className="p-2 md:p-3"></th>
+              <tr className="bg-purple-100 text-left text-gray-600 font-medium border-b">
+                <th className="p-4 text-center">ID</th>
+                <th className="p-4 text-center">Ticket Name</th>
+                <th className="p-4 text-center">Ticket Quantity</th>
+                <th className="p-4 text-center">Ticket Stock</th>
+                <th className="p-4 text-center">Ticket Price</th>
+                <th className="p-4 text-center">Actions</th>
               </tr>
             </thead>
             <tbody>
               {tickets.map((ticket) => (
-                <tr key={ticket.id} className="hover:bg-gray-100">
-                  <td className="p-2 md:p-3">{ticket.id}</td>
-                  <td className="p-2 md:p-3">{ticket.name}</td>
-                  <td className="p-2 md:p-3">{ticket.quantity}</td>
-                  <td className="p-2 md:p-3">{ticket.stock}</td>
-                  <td className="p-2 md:p-3">{ticket.price}</td>
-                  <td className="p-2 md:p-3 text-right">
+                <tr
+                  key={ticket.id}
+                  className="hover:bg-gray-100 text-center border-b"
+                >
+                  <td className="p-4">{ticket.id}</td>
+                  <td className="p-4">{ticket.name}</td>
+                  <td className="p-4">{ticket.quantity}</td>
+                  <td className="p-4">{ticket.stock}</td>
+                  <td className="p-4">{ticket.price}</td>
+                  <td className="p-4">
                     <button className="text-purple-600 hover:underline">
                       Edit
                     </button>

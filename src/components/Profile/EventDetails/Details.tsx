@@ -8,7 +8,7 @@ const Details = ({}: { eventId: string | undefined }) => {
 
   return (
     <>
-      <main className="pt-[124px]">
+      <main>
         <section className="w-full py-6 px-4 md:px-8 h-full">
           <h2 className="dark:text-[#EDEFFF] text-[#25194D] text-2xl font-semibold">
             EVENT DETAILS

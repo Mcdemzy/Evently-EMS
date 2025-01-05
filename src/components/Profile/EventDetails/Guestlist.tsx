@@ -65,7 +65,7 @@ const exportToCSV = () => {
 
 const Guestlist = ({}: { eventId: string | undefined }) => {
   return (
-    <main className="px-6 md:px-16 lg:px-24 py-10 bg-[#F9F9FB] min-h-screen">
+    <main className="px-6 md:px-16 lg:px-24 py-10 min-h-screen">
       {/* Guest Count Section */}
       <section className="flex justify-between items-center bg-[#EDEFFF] p-6 rounded-lg mb-8">
         <div className="flex flex-col text-center">
@@ -80,19 +80,18 @@ const Guestlist = ({}: { eventId: string | undefined }) => {
 
       {/* Guestlist Table */}
       <section>
-        <div className="flex items-center mb-6 justify-between">
-          <h2 className="text-[#25194D] text-xl font-semibold mb-4">
-            Guest List
-          </h2>
-          {/* Export Button */}
+        <div className="flex items-center justify-between p-4 rounded-lg mb-6">
+          <h2 className="text-[#25194D] text-xl font-semibold">Guest List</h2>
 
+          {/* Export Button */}
           <button
-            className="bg-[#FA776C] text-white py-3 px-6 rounded-lg mt-6 block ml-auto hover:bg-[#e8645a] transition-all"
+            className="bg-[#FA776C] text-white py-2 px-4 sm:py-3 sm:px-6 rounded-lg hover:bg-[#e8645a] transition-all"
             onClick={exportToCSV}
           >
             Export
           </button>
         </div>
+
         <div className="overflow-x-auto bg-white rounded-lg shadow-md">
           <table className="table-auto w-full border-collapse">
             <thead>
