@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-const Tickets: React.FC = () => {
+const Tickets = ({}: { eventId: string | undefined }) => {
   const [tickets] = useState([
     {
       id: 1,
