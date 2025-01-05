@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Tickets = ({ eventId }: { eventId: string | undefined }) => {
+const Tickets = ({}: { eventId: string | undefined }) => {
   const [tickets] = useState([
     {
       id: 1,
