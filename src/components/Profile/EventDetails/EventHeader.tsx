@@ -1,15 +1,17 @@
 import { IoCalendarOutline } from "react-icons/io5";
 import { CiLocationOn } from "react-icons/ci";
-import { useState } from "react";
 
-const EventHeader = () => {
-  const [activeTab, setActiveTab] = useState<string>("Details");
-  const [isPublished, setIsPublished] = useState<boolean>(false);
+interface EventHeaderProps {
+  activeTab: string;
+  onTabChange: (tab: string) => void;
+}
 
+const EventHeader = ({ activeTab, onTabChange }: EventHeaderProps) => {
   const tabs = ["Details", "Tickets", "Appearance", "Guestlist", "Sales"];
+  const isPublished = false; // Simulating the state for now
 
   return (
-    <main className="w-full h-fit bg-[#EDEFFF] ">
+    <main className="w-full h-fit bg-[#EDEFFF] pt-[160px]">
       {/* Header Section */}
       <section className="w-full mb-6 py-6 px-4 md:px-8">
         <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center mb-6">
@@ -22,15 +24,10 @@ const EventHeader = () => {
               <input
                 type="checkbox"
                 checked={isPublished}
-                onChange={() => setIsPublished(!isPublished)}
                 className="sr-only peer"
               />
               <div className="w-10 h-6 bg-gray-300 rounded-full peer peer-checked:bg-green-500 transition"></div>
-              <div
-                className={`absolute top-1 left-1 w-4 h-4 bg-white rounded-full shadow-md transition-transform ${
-                  isPublished ? "transform translate-x-4" : ""
-                }`}
-              ></div>
+              <div className="absolute top-1 left-1 w-4 h-4 bg-white rounded-full shadow-md transition-transform"></div>
             </label>
           </div>
         </div>
@@ -51,7 +48,7 @@ const EventHeader = () => {
         {tabs.map((tab) => (
           <button
             key={tab}
-            onClick={() => setActiveTab(tab)}
+            onClick={() => onTabChange(tab)}
             className={`text-base px-2 pb-1 ${
               activeTab === tab
                 ? "text-red-500 font-medium border-b-2 border-red-500"

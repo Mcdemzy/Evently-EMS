@@ -63,9 +63,9 @@ const exportToCSV = () => {
   document.body.removeChild(link);
 };
 
-const Guestlist = () => {
+const Guestlist = ({}: { eventId: string | undefined }) => {
   return (
-    <main className="px-6 md:px-16 lg:px-24 py-10 bg-[#F9F9FB] min-h-screen pt-[160px]">
+    <main className="px-6 md:px-16 lg:px-24 py-10 bg-[#F9F9FB] min-h-screen">
       {/* Guest Count Section */}
       <section className="flex justify-between items-center bg-[#EDEFFF] p-6 rounded-lg mb-8">
         <div className="flex flex-col text-center">

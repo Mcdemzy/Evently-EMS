@@ -15,32 +15,32 @@ const salesData = [
 ];
 
 // Function to export sales as CSV
-const exportSalesToCSV = () => {
-  const csvHeaders = "Ticket Name,Ticket Price,Tickets Sold,Total Revenue\n";
-  const csvRows = salesData
-    .map((sale) =>
-      [
-        sale.ticketName,
-        sale.ticketPrice,
-        sale.ticketsSold,
-        sale.totalRevenue,
-      ].join(",")
-    )
-    .join("\n");
+// const exportSalesToCSV = () => {
+//   const csvHeaders = "Ticket Name,Ticket Price,Tickets Sold,Total Revenue\n";
+//   const csvRows = salesData
+//     .map((sale) =>
+//       [
+//         sale.ticketName,
+//         sale.ticketPrice,
+//         sale.ticketsSold,
+//         sale.totalRevenue,
+//       ].join(",")
+//     )
+//     .join("\n");
 
-  const csvContent = `data:text/csv;charset=utf-8,${csvHeaders}${csvRows}`;
-  const encodedUri = encodeURI(csvContent);
-  const link = document.createElement("a");
-  link.setAttribute("href", encodedUri);
-  link.setAttribute("download", "sales.csv");
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-};
+//   const csvContent = `data:text/csv;charset=utf-8,${csvHeaders}${csvRows}`;
+//   const encodedUri = encodeURI(csvContent);
+//   const link = document.createElement("a");
+//   link.setAttribute("href", encodedUri);
+//   link.setAttribute("download", "sales.csv");
+//   document.body.appendChild(link);
+//   link.click();
+//   document.body.removeChild(link);
+// };
 
-const Sales = () => {
+const Sales = ({}: { eventId: string | undefined }) => {
   return (
-    <main className="px-6 md:px-16 lg:px-24 py-10 bg-[#F9F9FB] min-h-screen pt-[160px]">
+    <main className="px-6 md:px-16 lg:px-24 py-10 bg-[#F9F9FB] min-h-screen">
       {/* Sales Overview */}
       <section className="flex justify-between items-center bg-[#FFF5F5] p-6 rounded-lg mb-8">
         <div className="flex flex-col text-center">
@@ -85,12 +85,12 @@ const Sales = () => {
         </div>
 
         {/* Export Button */}
-        <button
+        {/* <button
           onClick={exportSalesToCSV}
           className="bg-[#FA776C] text-white py-3 px-6 rounded-lg mt-6 block ml-auto hover:bg-[#e8645a] transition-all"
         >
           Export
-        </button>
+        </button> */}
       </section>
     </main>
   );
