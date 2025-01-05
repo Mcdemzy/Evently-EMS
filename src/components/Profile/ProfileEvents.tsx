@@ -36,10 +36,10 @@ const ProfileEvents = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
-    alert("Event Clicked");
-    navigate("/profile-event/details");
-  };
+  // const handleSubmit = () => {
+  //   alert("Event Clicked");
+  //   navigate("/profile-event/details");
+  // };
   const createNewEvent = () => {
     alert("New Event Created");
   };
@@ -74,7 +74,7 @@ const ProfileEvents = () => {
             <div
               key={event.id}
               className="w-full h-[22.5rem] border border-[#DCDCDC] rounded-lg shadow-md cursor-pointer"
-              onClick={handleSubmit}
+              onClick={() => navigate(`/profile-event/Details/${event.id}`)}
             >
               <div>
                 <img
