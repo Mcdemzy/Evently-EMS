@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Tickets = ({}: { eventId: string | undefined }) => {
+const Tickets = ({ eventId }: { eventId: string | undefined }) => {
   const [tickets] = useState([
     {
       id: 1,
@@ -20,46 +20,52 @@ const Tickets = ({}: { eventId: string | undefined }) => {
   };
 
   return (
-    <div className="p-6 bg-gray-50 min-h-screen">
+    <div className="p-4 md:p-6 bg-gray-50 min-h-screen">
       {/* Tickets Table */}
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-purple-800">TICKETS</h2>
-        <table className="w-full table-auto border-collapse">
-          <thead>
-            <tr className="text-left text-gray-600 font-medium border-b">
-              <th className="p-3">ID</th>
-              <th className="p-3">Ticket Name</th>
-              <th className="p-3">Ticket Quantity</th>
-              <th className="p-3">Ticket Stock</th>
-              <th className="p-3">Ticket Price</th>
-              <th className="p-3"></th>
-            </tr>
-          </thead>
-          <tbody>
-            {tickets.map((ticket) => (
-              <tr key={ticket.id} className="hover:bg-gray-100">
-                <td className="p-3">{ticket.id}</td>
-                <td className="p-3">{ticket.name}</td>
-                <td className="p-3">{ticket.quantity}</td>
-                <td className="p-3">{ticket.stock}</td>
-                <td className="p-3">{ticket.price}</td>
-                <td className="p-3 text-right">
-                  <button className="text-purple-600 hover:underline">
-                    Edit
-                  </button>
-                </td>
+      <div className="bg-white p-4 md:p-6 rounded-lg shadow-md mb-8">
+        <h2 className="text-xl md:text-2xl font-bold mb-4 text-purple-800">
+          TICKETS
+        </h2>
+        <div className="overflow-x-auto">
+          <table className="w-full table-auto border-collapse">
+            <thead>
+              <tr className="text-left text-gray-600 font-medium border-b">
+                <th className="p-2 md:p-3">ID</th>
+                <th className="p-2 md:p-3">Ticket Name</th>
+                <th className="p-2 md:p-3">Ticket Quantity</th>
+                <th className="p-2 md:p-3">Ticket Stock</th>
+                <th className="p-2 md:p-3">Ticket Price</th>
+                <th className="p-2 md:p-3"></th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {tickets.map((ticket) => (
+                <tr key={ticket.id} className="hover:bg-gray-100">
+                  <td className="p-2 md:p-3">{ticket.id}</td>
+                  <td className="p-2 md:p-3">{ticket.name}</td>
+                  <td className="p-2 md:p-3">{ticket.quantity}</td>
+                  <td className="p-2 md:p-3">{ticket.stock}</td>
+                  <td className="p-2 md:p-3">{ticket.price}</td>
+                  <td className="p-2 md:p-3 text-right">
+                    <button className="text-purple-600 hover:underline">
+                      Edit
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
         <button className="mt-4 bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">
           Add Ticket +
         </button>
       </div>
 
       {/* Customize Ticket Email */}
-      <div className="bg-white p-6 rounded-lg shadow-md mb-8">
-        <h3 className="text-xl font-semibold mb-2">Customize ticket e-mail</h3>
+      <div className="bg-white p-4 md:p-6 rounded-lg shadow-md mb-8">
+        <h3 className="text-lg md:text-xl font-semibold mb-2">
+          Customize ticket e-mail
+        </h3>
         <p className="text-sm text-gray-600 mb-4">
           Ticket email notification message{" "}
           <span className="text-red-600">*</span>
@@ -71,7 +77,7 @@ const Tickets = ({}: { eventId: string | undefined }) => {
           value={emailContent}
           onChange={(e) => setEmailContent(e.target.value)}
         />
-        <div className="flex items-center gap-4">
+        <div className="flex flex-col sm:flex-row items-center gap-4">
           <input
             type="email"
             className="border rounded p-2 flex-1"
@@ -96,8 +102,8 @@ const Tickets = ({}: { eventId: string | undefined }) => {
       </div>
 
       {/* Discount Section */}
-      <div className="bg-red-100 p-6 rounded-lg text-center shadow-md">
-        <h3 className="text-xl font-semibold text-red-600 mb-2">
+      <div className="bg-red-100 p-4 md:p-6 rounded-lg text-center shadow-md">
+        <h3 className="text-lg md:text-xl font-semibold text-red-600 mb-2">
           Create discount codes
         </h3>
         <p className="text-gray-700 mb-4">Create your first discount</p>
