@@ -39,7 +39,7 @@ const EventDetailsPage = () => {
   return (
     <div>
       <EventHeader activeTab={tab} onTabChange={handleTabChange} />
-      <div className="p-4">{renderTabContent()}</div>
+      <div className="">{renderTabContent()}</div>
     </div>
   );
 };

@@ -20,22 +20,41 @@ const Tickets = ({}: { eventId: string | undefined }) => {
   };
 
   return (
-    <div className="p-4 md:p-6 bg-gray-50 min-h-screen">
+    <main className=" md:p-6 min-h-screen pt-6">
       {/* Tickets Table */}
       <div className="bg-white p-4 md:p-6 rounded-lg shadow-md mb-8">
-        <h2 className="text-xl md:text-2xl font-bold mb-4 text-purple-800">
-          TICKETS
-        </h2>
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-xl md:text-2xl font-bold text-purple-800 mb-4 md:mb-0">
+            TICKETS
+          </h2>
+
+          <button className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition-all">
+            Add Ticket +
+          </button>
+        </div>
+
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[600px] table-auto border-collapse">
+          <table className="w-full min-w-[800px] table-auto border-collapse">
             <thead>
               <tr className="bg-purple-100 text-left text-gray-600 font-medium border-b">
-                <th className="p-4 text-center">ID</th>
-                <th className="p-4 text-center">Ticket Name</th>
-                <th className="p-4 text-center">Ticket Quantity</th>
-                <th className="p-4 text-center">Ticket Stock</th>
-                <th className="p-4 text-center">Ticket Price</th>
-                <th className="p-4 text-center">Actions</th>
+                <th className="p-4 text-center whitespace-nowrap min-w-[50px]">
+                  NO
+                </th>
+                <th className="p-4 text-center whitespace-nowrap min-w-[150px]">
+                  Ticket Name
+                </th>
+                <th className="p-4 text-center whitespace-nowrap min-w-[150px]">
+                  Ticket Quantity
+                </th>
+                <th className="p-4 text-center whitespace-nowrap min-w-[150px]">
+                  Ticket Stock
+                </th>
+                <th className="p-4 text-center whitespace-nowrap min-w-[150px]">
+                  Ticket Price
+                </th>
+                <th className="p-4 text-center whitespace-nowrap min-w-[100px]">
+                  Actions
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -59,9 +78,6 @@ const Tickets = ({}: { eventId: string | undefined }) => {
             </tbody>
           </table>
         </div>
-        <button className="mt-4 bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">
-          Add Ticket +
-        </button>
       </div>
 
       {/* Customize Ticket Email */}
@@ -114,7 +130,7 @@ const Tickets = ({}: { eventId: string | undefined }) => {
           Create discount +
         </button>
       </div>
-    </div>
+    </main>
   );
 };
 

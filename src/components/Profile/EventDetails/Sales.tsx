@@ -40,7 +40,7 @@ const salesData = [
 
 const Sales = ({}: { eventId: string | undefined }) => {
   return (
-    <main className="px-6 md:px-16 lg:px-24 py-10 bg-[#F9F9FB] min-h-screen">
+    <main className="py-6 px-4 md:px-8 min-h-screen">
       {/* Sales Overview */}
       <section className="flex justify-between items-center bg-[#FFF5F5] p-6 rounded-lg mb-8">
         <div className="flex flex-col text-center">
@@ -54,23 +54,36 @@ const Sales = ({}: { eventId: string | undefined }) => {
       </section>
 
       {/* Sales Table */}
-      <section>
-        <h2 className="text-[#25194D] text-xl font-semibold mb-4">Sales</h2>
-        <div className="overflow-x-auto bg-white rounded-lg shadow-md">
-          <table className="table-auto w-full border-collapse">
+      <section className="bg-white p-2 md:p-4 rounded-lg shadow-md mb-8">
+        <div className="flex items-center justify-between p-4 rounded-lg mb-6">
+          <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-0  text-[#FA776C]">
+            Sales
+          </h2>
+        </div>
+
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[800px] table-auto border-collapse">
             <thead>
-              <tr className="bg-[#FFF5F5] text-[#25194D] text-left">
-                <th className="px-4 py-3">Ticket Name</th>
-                <th className="px-4 py-3">Ticket Price</th>
-                <th className="px-4 py-3">Total Tickets Sold</th>
-                <th className="px-4 py-3">Total Revenue</th>
+              <tr className="bg-[#FFF5F5] text-left text-gray-600 font-medium border-b">
+                <th className="p-4 text-center whitespace-nowrap min-w-[50px]">
+                  Ticket Name
+                </th>
+                <th className="p-4 text-center whitespace-nowrap min-w-[150px]">
+                  Ticket Price
+                </th>
+                <th className="p-4 text-center whitespace-nowrap min-w-[150px]">
+                  Total Tickets Sold
+                </th>
+                <th className="p-4 text-center whitespace-nowrap min-w-[150px]">
+                  Total Sales Revenue
+                </th>
               </tr>
             </thead>
             <tbody>
               {salesData.map((sale, index) => (
                 <tr
                   key={index}
-                  className={`${
+                  className={` hover:bg-gray-100 text-center border-b ${
                     index % 2 === 0 ? "bg-[#F9F9FB]" : "bg-white"
                   } text-[#25194D]`}
                 >
