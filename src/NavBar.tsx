@@ -62,7 +62,7 @@ function NavBar({ isDarkMode, toggleDarkMode }: NavBarProps) {
 
           <AuthButtons isBigScreen={true} />
 
-            {/* Light and dark modes */}
+          {/* Light and dark modes */}
           <div
             onClick={toggleDarkMode}
             className="relative hidden w-9 h-9 bg-slate-200 dark:bg-black rounded-full p-1 transition-all duration-500 lg:flex items-center justify-between overflow-hidden cursor-pointer"
@@ -142,7 +142,7 @@ function NavBar({ isDarkMode, toggleDarkMode }: NavBarProps) {
               { path: "/pricing", label: "Pricing" },
               { path: "/about", label: "About" },
               { path: "/contact", label: "Contact" },
-              { path: "/blog", label: "My Profile" },
+              { path: "/profile", label: "My Profile" },
             ]}
             orientation="vertical"
             onClick={() => setMobileMenuOpen(false)}
