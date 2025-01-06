@@ -14,21 +14,21 @@ const Appearance = ({}: { eventId: string | undefined }) => {
   };
 
   return (
-    <main className="min-h-[140vh]  pt-10">
+    <main className="min-h-[140vh] pt-6 py-6 px-4 md:px-8">
       {/* Header Section */}
-      <section className="py-6 px-4 md:px-8">
+      <section>
         <h1 className="text-[#25194D] text-2xl font-bold uppercase">
           Theme Customization for Event Page
         </h1>
-        <p className="text-[#25194D] font-normal mt-4">
+        <p className="text-[#25194D] font-normal my-4">
           Upload an image of your event or stick with our default theme
         </p>
       </section>
 
       {/* Image Upload Section */}
-      <section className="w-full py-6 px-4 md:px-8">
-        <div className="bg-[#EDEFFF] w-full h-[90vh] rounded-tl-[40px] rounded-br-[40px] flex justify-center items-center p-6">
-          <div className="bg-white w-full max-w-md h-full max-h-[400px] rounded-[20px] flex flex-col justify-center items-center gap-4 p-4">
+      <section className="w-full">
+        <div className="bg-[#EDEFFF] w-full h-[60vh] md:h-[90vh] rounded-tl-[40px] rounded-br-[40px] flex justify-center items-center p-4 md:p-6">
+          <div className="bg-white w-full max-w-sm h-full max-h-[350px] md:max-h-[400px] rounded-[20px] flex flex-col justify-center items-center gap-4 p-4 md:p-6">
             {selectedImage ? (
               <img
                 src={selectedImage}
@@ -38,11 +38,11 @@ const Appearance = ({}: { eventId: string | undefined }) => {
             ) : (
               <>
                 <FaImage size={40} className="text-[#25194D]" />
-                <p className="text-center text-gray-600">
+                <p className="text-center text-gray-600 text-sm md:text-base">
                   Drag an image here or{" "}
                   <label
                     htmlFor="file-upload"
-                    className="text-[#FA776C] cursor-pointer"
+                    className="text-[#FA776C] cursor-pointer font-medium"
                   >
                     click to upload
                   </label>
@@ -63,7 +63,7 @@ const Appearance = ({}: { eventId: string | undefined }) => {
       {/* Save Button */}
       <div className="flex justify-center items-center">
         <button
-          className="bg-[#FA776C] text-white py-3 px-6 rounded-lg mt-8 hover:bg-[#e8645a] transition-all"
+          className="bg-[#FA776C] text-white rounded-lg hover:bg-[#e8645a] transition-all py-3 px-6 mt-8"
           onClick={() => {
             alert("Image Updated");
           }}
