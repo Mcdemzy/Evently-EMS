@@ -69,7 +69,7 @@ const ProfileEvents = () => {
             <p className="mt-4 text-gray-600 font-medium">Create new event</p>
           </div>
 
-          {/* Render Existing Events */}
+          {/* Render Existing Event */}
           {events.map((event) => (
             <div
               key={event.id}
