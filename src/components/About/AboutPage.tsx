@@ -12,7 +12,7 @@ import Footer from "../shared/Footer";
 
 const AboutPage: React.FC = () => {
   return (
-    <main className="dark:bg-black">
+    <main className="dark:bg-black pt-[124px]">
       <PageHeader />
       <IntroSection />
       <WhatIsEvently />
