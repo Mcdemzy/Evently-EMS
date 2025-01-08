@@ -26,6 +26,7 @@ import TicketsPage2 from "./components/Tickets/ContactPage";
 import TicketsPage3 from "./components/Tickets/PaymentPage";
 import Profile from "./components/Profile/Profile";
 import { NavBarProps } from "./types";
+import EventDetailsPage from "./components/shared/EventDetailsPage";
 
 const App = () => {
   const [isDarkMode, toggleDarkMode] = useDarkMode();
@@ -74,6 +75,11 @@ const App = () => {
           <Route path="/events/create/2" element={<Event2 />} />
           <Route path="/events/preview" element={<PreviewTicket />} />
           <Route path="/events/create/3" element={<Event3 />} />
+
+          <Route
+            path="/profile-event/:tab/:eventId"
+            element={<EventDetailsPage />}
+          />
         </Routes>
       </Router>
     </div>

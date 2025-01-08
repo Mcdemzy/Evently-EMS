@@ -17,7 +17,7 @@ const AllEvents = () => {
 
   return (
     <>
-      <main className=" py-10 dark:bg-black dark:text-white">
+      <main className=" py-10 dark:bg-black dark:text-white pt-[124px]">
         {/* Search Bar with Filter */}
         <div className="flex justify-center items-center mb-6">
           <div className="flex flex-col md:flex-row items-center justify-between w-3/4 md:w-1/2 space-x-4">

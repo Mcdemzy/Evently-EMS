@@ -8,7 +8,7 @@ import Footer from "../../shared/Footer";
 const EventDetails = () => {
   return (
     <>
-      <div className="min-h-screen flex flex-col items-center py-8 dark:bg-black">
+      <div className="min-h-screen flex flex-col items-center py-8 dark:bg-black pt-[124px]">
         <div className="w-full max-w-6xl p-4 lg:flex lg:space-x-8">
           {/* Event Image Section */}
           <div className="lg:w-1/2 flex flex-col items-center">

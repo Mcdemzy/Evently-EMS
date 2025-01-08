@@ -1,5 +1,6 @@
 import { IoTicketOutline } from "react-icons/io5";
 import { FaPlus } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 
 const ProfileEvents = () => {
   const events = [
@@ -33,9 +34,12 @@ const ProfileEvents = () => {
     },
   ];
 
-  const handleSubmit = () => {
-    alert("Event Clicked");
-  };
+  const navigate = useNavigate();
+
+  // const handleSubmit = () => {
+  //   alert("Event Clicked");
+  //   navigate("/profile-event/details");
+  // };
   const createNewEvent = () => {
     alert("New Event Created");
   };
@@ -65,12 +69,12 @@ const ProfileEvents = () => {
             <p className="mt-4 text-gray-600 font-medium">Create new event</p>
           </div>
 
-          {/* Render Existing Events */}
+          {/* Render Existing Event */}
           {events.map((event) => (
             <div
               key={event.id}
               className="w-full h-[22.5rem] border border-[#DCDCDC] rounded-lg shadow-md cursor-pointer"
-              onClick={handleSubmit}
+              onClick={() => navigate(`/profile-event/Details/${event.id}`)}
             >
               <div>
                 <img
