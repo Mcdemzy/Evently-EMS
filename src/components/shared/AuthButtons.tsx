@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthButtonsProps } from "../../types";
 
 const AuthButtons: React.FC<AuthButtonsProps> = ({
-  onCloseMenu = () => {}, 
+  onCloseMenu = () => {},
   containerClass = "",
   isBigScreen = false,
 }) => {
@@ -29,16 +29,18 @@ const AuthButtons: React.FC<AuthButtonsProps> = ({
           Login
         </button>
       </Link>
-      <button
-        className={`${defaultButtonClass} ${
-          isBigScreen
-            ? "bg-[#624CF5] hover:bg-[#4f46e5] text-white"
-            : "bg-[#624CF5] hover:bg-[#4f46e5] text-white"
-        }`}
-        onClick={onCloseMenu}
-      >
-        Sign Up
-      </button>
+      <Link to="/signup">
+        <button
+          className={`${defaultButtonClass} ${
+            isBigScreen
+              ? "bg-[#624CF5] hover:bg-[#4f46e5] text-white"
+              : "bg-[#624CF5] hover:bg-[#4f46e5] text-white"
+          }`}
+          onClick={onCloseMenu}
+        >
+          Sign Up
+        </button>
+      </Link>
     </div>
   );
 };

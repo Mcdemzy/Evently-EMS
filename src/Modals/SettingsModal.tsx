@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ModalProps } from "../types";
 import Security from "./Security";
 import { HiX } from "react-icons/hi";
@@ -10,16 +10,40 @@ import "./customScrollbar.css";
 const SettingsModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
   const [activeTab, setActiveTab] = useState<"Account" | "Security">("Account");
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+      const scrollY = window.scrollY;
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = "100%";
+    } else {
+      const scrollY = document.body.style.top;
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.overflow = "";
+      document.body.style.width = "";
+      window.scrollTo(0, parseInt(scrollY || "0") * -1);
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   return (
-    <div className="fixed h-screen inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 border-white/20 border">
-      <div className="bg-white/60 dark:bg-black/40 lg:rounded-3xl rounded-none w-full lg:max-w-4xl lg:h-[680px] h-full backdrop-blur-lg backdrop-brightness-90 border border-white/20 shadow-md relative overflow-hidden">
+    <div className="fixed h-screen inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
+      <div className="bg-white dark:bg-black/40 lg:rounded-3xl rounded-none w-full lg:max-w-4xl lg:h-[680px] h-full backdrop-blur-lg backdrop-brightness-90 border border-white/20 shadow-md relative overflow-hidden">
         {/* Close Button */}
         <div className="absolute right-6 top-6 z-[10000] cursor-pointer">
           <button
             onClick={onClose}
-            className="text-xl font-bold dark:text-gray-500 text-black hover:text-white"
+            className="text-xl font-bold dark:text-gray-500 text-black dark:hover:text-white/50 hover:text-black/50"
           >
             <HiX />
           </button>

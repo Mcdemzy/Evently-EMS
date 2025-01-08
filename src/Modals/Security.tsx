@@ -58,6 +58,7 @@ const Security: React.FC = () => {
                   ? "border-b dark:border-[#464646] border-[#E7E7E7]"
                   : ""
               }`}
+              onClick={() => toggleMethod(method.id)}
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
@@ -68,7 +69,10 @@ const Security: React.FC = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <button
-                    onClick={() => toggleMethod(method.id)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleMethod(method.id); 
+                    }}
                     className="dark:text-[#DCDCDC] text-[#1C1A24]"
                   >
                     {activeMethod === method.id ? (
@@ -80,7 +84,7 @@ const Security: React.FC = () => {
                 </div>
               </div>
               {activeMethod === method.id && (
-                <div className="mt-4 ml-8">
+                <div className="mt-4 ml-8" onClick={(e) => e.stopPropagation()}>
                   <div className="flex items-center justify-between gap-6">
                     <p className="text-xs font-normal dark:text-[#989898] text-[#474059]">
                       {method.description}

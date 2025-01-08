@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import useDarkMode from "./hooks/useDarkMode";
 
 import ContactPage from "./components/Contact/ContactPage";
@@ -20,16 +25,36 @@ import TicketsPage from "./components/Tickets/TicketsPage";
 import TicketsPage2 from "./components/Tickets/ContactPage";
 import TicketsPage3 from "./components/Tickets/PaymentPage";
 import Profile from "./components/Profile/Profile";
+import { NavBarProps } from "./types";
 
 const App = () => {
   const [isDarkMode, toggleDarkMode] = useDarkMode();
+
+  const NavBarWrapper = ({
+    isDarkMode,
+    toggleDarkMode,
+  }: NavBarProps): JSX.Element | null => {
+    const location = useLocation();
+
+    const authRoutes = ["/login", "/signup", "/forgot-password"];
+
+    if (authRoutes.includes(location.pathname)) {
+      return null;
+    }
+
+    return <NavBar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />;
+  };
 
   return (
     <div
       className={`${isDarkMode ? "dark" : "light"} transition-all duration-500`}
     >
       <Router>
-        <NavBar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+        <NavBarWrapper
+          isDarkMode={isDarkMode}
+          toggleDarkMode={toggleDarkMode}
+        />
+
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/test" element={<Test />} />
