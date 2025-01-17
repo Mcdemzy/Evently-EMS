@@ -1,5 +1,3 @@
-// import "swiper/css";
-// import "swiper/css/pagination";
 import { Link } from "react-router-dom";
 import ImageSlider from "../../shared/ImageSlider/ImageSlider";
 
