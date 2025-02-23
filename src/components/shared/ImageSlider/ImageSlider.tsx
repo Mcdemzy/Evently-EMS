@@ -7,15 +7,15 @@ import { FaArrowRight } from "react-icons/fa";
 
 const slides = [
   {
-    image: "images/Event 1.png",
+    image: "/images/Event 1.png",
     caption: "Dream big, plan bigger, and make magic happen.",
   },
   {
-    image: "images/Event 2.png",
+    image: "/images/Event 2.png",
     caption: "Create unforgettable moments.",
   },
   {
-    image: "images/Event 3.png",
+    image: "/images/Event 3.png",
     caption: "Plan events that matter.",
   },
 ];
