@@ -17,7 +17,7 @@ function ForgotPassword() {
         </div>
 
         {/* Forgot Password Heading */}
-        <div className="mt-[40px] mb-[40px] md:mb-[80px]">
+        <div className="mt-[40px] md:mt-[100px] mb-[40px] md:mb-[80px]">
           <h1 className="text-4xl font-semibold mb-3">Forgot Password</h1>
           <p className="text-lg text-gray-600">
             Please input your email address to reset your password
@@ -38,13 +38,15 @@ function ForgotPassword() {
           </div>
 
           {/* Submit Button */}
-          <button
-            type="submit"
-            className="w-full py-3 bg-gray-400 text-white rounded-md cursor-not-allowed"
-            disabled
-          >
-            Get Code
-          </button>
+          <Link to="/forgot-password/email-code">
+            <button
+              type="submit"
+              className="w-full py-3 bg-gray-400 text-white rounded-md cursor-not-allowed"
+              // disabled
+            >
+              Get Code
+            </button>
+          </Link>
         </form>
 
         {/* Sign-up Link */}

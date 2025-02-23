@@ -27,6 +27,7 @@ import TicketsPage3 from "./components/Tickets/PaymentPage";
 import Profile from "./components/Profile/Profile";
 import { NavBarProps } from "./types";
 import EventDetailsPage from "./components/shared/EventDetailsPage";
+import EmailCode from "./components/Auth/ForgotPassword/EmailCode";
 
 const App = () => {
   const [isDarkMode, toggleDarkMode] = useDarkMode();
@@ -37,7 +38,12 @@ const App = () => {
   }: NavBarProps): JSX.Element | null => {
     const location = useLocation();
 
-    const authRoutes = ["/login", "/signup", "/forgot-password"];
+    const authRoutes = [
+      "/login",
+      "/signup",
+      "/forgot-password",
+      "/forgot-password/email-code",
+    ];
 
     if (authRoutes.includes(location.pathname)) {
       return null;
@@ -66,6 +72,7 @@ const App = () => {
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/forgot-password/email-code" element={<EmailCode />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/get-tickets" element={<TicketsPage />} />
           <Route path="/get-tickets/contact" element={<TicketsPage2 />} />
