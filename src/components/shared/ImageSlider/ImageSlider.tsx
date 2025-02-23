@@ -55,7 +55,7 @@ const ImageSlider = () => {
       </Swiper>
       <Link
         to={location.pathname === "/login" ? "/signup" : "/login"}
-        className="absolute top-4 right-4 text-white bg-opacity-30 bg-black p-2 border border-white border-solid flex items-center gap-1 rounded-3xl z-30 hover:bg-opacity-50"
+        className="absolute top-4 right-8 text-white bg-opacity-30 bg-black p-2 border border-white border-solid flex items-center gap-1 rounded-3xl z-30 hover:bg-opacity-50"
       >
         {location.pathname === "/login" ? "Sign up" : "Sign in"}
         <FaArrowRight className="ml-1" />

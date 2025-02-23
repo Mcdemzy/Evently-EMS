@@ -1,64 +1,60 @@
-import { FaRegEnvelope } from 'react-icons/fa6';
-import ImageSlider from '../../shared/ImageSlider/ImageSlider';
-import { Link } from 'react-router-dom';
+import { FaRegEnvelope } from "react-icons/fa6";
+import ImageSlider from "../../shared/ImageSlider/ImageSlider";
+import { Link } from "react-router-dom";
 
 function ForgotPassword() {
   return (
-    <div className="flex w-full h-screen">
+    <div className="h-screen flex flex-col md:flex-row">
+      {/* Left side - Image slider */}
       <ImageSlider />
-      <div className="flex flex-col w-full h-full">
-        <div className="mt-10 mx-10">
-          <div className="flex gap-2">
-            <img
-              src="images/logo.svg"
-              width={30}
-              height={50}
-              alt="Event Image"
+
+      {/* Right side - Forgot Password form */}
+      <main className="pt-8 min-h-screen w-full md:w-1/2 px-4 md:px-10">
+        {/* Logo Section */}
+        <div className="flex items-center gap-2">
+          <img src="/images/logo.svg" width={28} alt="logo" />
+          <p className="text-3xl font-bold">Evently</p>
+        </div>
+
+        {/* Forgot Password Heading */}
+        <div className="mt-[40px] mb-[40px] md:mb-[80px]">
+          <h1 className="text-4xl font-semibold mb-3">Forgot Password</h1>
+          <p className="text-lg text-gray-600">
+            Please input your email address to reset your password
+          </p>
+        </div>
+
+        {/* Form Section */}
+        <form className="w-full">
+          {/* Email Field */}
+          <div className="relative mb-6">
+            <FaRegEnvelope className="absolute left-4 top-5 text-gray-500" />
+            <input
+              type="email"
+              placeholder="Email address"
+              className="border w-full p-4 pl-10 rounded-md"
+              required
             />
-            <span className="md:text-2xl text-xl font-bold">Evently</span>
           </div>
-        </div>
 
-        <div className="mx-10 flex flex-col justify-center flex-grow">
-          <h2 className="text-[#25194D] font-semibold text-4xl leading-10 font-[lora]">
-            Forgot password
-          </h2>
-          <span className="font-medium text-xs leading-3 text-[#25194D] mt-2">
-            Please input your email address
-          </span>
+          {/* Submit Button */}
+          <button
+            type="submit"
+            className="w-full py-3 bg-gray-400 text-white rounded-md cursor-not-allowed"
+            disabled
+          >
+            Get Code
+          </button>
+        </form>
 
-          <form className="w-full mt-10">
-            <div className="relative rounded-md flex items-center mb-4">
-              <FaRegEnvelope className="absolute text-gray-400 w-4 h-4 ml-3" />
-              <input
-                required
-                type="text"
-                placeholder="Email address"
-                className="w-full p-2 pl-9 rounded-md border-[#BDBDBD] border outline-[#292929] outline-1"
-              />
-            </div>
-          </form>
-        </div>
-
-        <div className="mx-10">
-          <div className=" mx-auto mb-10">
-            <button
-              type="submit"
-              className="w-full p-3 bg-[#DCDCDC] hover:bg-[#6440EB] rounded-md text-white font-bold text-xs leading-4"
-            >
-              Get code
-            </button>
-            <div className="mt-4 text-center">
-              <p className="font-normal text-sm leading-5">
-                Don’t have an account?{' '}
-                <Link to="/login" className="text-[#25194D] font-medium">
-                  Sign up
-                </Link>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+        {/* Sign-up Link */}
+        <p className="text-center mt-4 text-gray-600">
+          Don’t have an account?{" "}
+          <Link to="/signup" className="text-blue-600 cursor-pointer">
+            Sign up
+          </Link>
+        </p>
+      </main>
     </div>
   );
 }
