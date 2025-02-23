@@ -39,7 +39,7 @@ const EmailCode = () => {
           <h1 className="text-4xl font-semibold mb-3">Email Verification</h1>
           <p className="text-lg text-gray-600">
             We’ve sent a 6-digit code to{" "}
-            <span className="font-medium">adenijiadeoluwa05@gmail.com</span>
+            <span className="font-medium">the entered email address</span>
           </p>
         </div>
 
