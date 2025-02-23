@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FaEye, FaEyeSlash, FaLock } from "react-icons/fa";
 import ImageSlider from "../../shared/ImageSlider/ImageSlider";
 import { Link } from "react-router-dom";
