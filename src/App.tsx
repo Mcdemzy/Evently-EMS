@@ -28,6 +28,7 @@ import Profile from "./components/Profile/Profile";
 import { NavBarProps } from "./types";
 import EventDetailsPage from "./components/shared/EventDetailsPage";
 import EmailCode from "./components/Auth/ForgotPassword/EmailCode";
+import ResetPassword from "./components/Auth/ForgotPassword/ResetPassword";
 
 const App = () => {
   const [isDarkMode, toggleDarkMode] = useDarkMode();
@@ -42,6 +43,7 @@ const App = () => {
       "/login",
       "/signup",
       "/forgot-password",
+      "/reset-password",
       "/forgot-password/email-code",
     ];
 
@@ -72,6 +74,7 @@ const App = () => {
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/forgot-password/email-code" element={<EmailCode />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/get-tickets" element={<TicketsPage />} />

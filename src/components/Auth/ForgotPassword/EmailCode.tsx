@@ -71,18 +71,20 @@ const EmailCode = () => {
         </p>
 
         {/* Confirm Code Button */}
-        <button
-          type="button"
-          className="w-full p-3 rounded-md text-white font-bold text-xs leading-4 disabled:opacity-50"
-          style={{
-            backgroundColor: code.every((digit) => digit)
-              ? "#6440EB"
-              : "#DCDCDC",
-          }}
-          disabled={!code.every((digit) => digit)}
-        >
-          Confirm code
-        </button>
+        <Link to="/reset-password">
+          <button
+            type="button"
+            className="w-full p-3 rounded-md text-white font-bold text-xs leading-4 disabled:opacity-50"
+            style={{
+              backgroundColor: code.every((digit) => digit)
+                ? "#6440EB"
+                : "#DCDCDC",
+            }}
+            disabled={!code.every((digit) => digit)}
+          >
+            Confirm code
+          </button>
+        </Link>
 
         {/* Sign-up Link */}
         <p className="text-center text-sm mt-4 text-gray-600">
