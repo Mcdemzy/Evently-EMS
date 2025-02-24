@@ -64,6 +64,9 @@ const Login = () => {
   return (
     <div className="h-screen flex flex-col md:flex-row">
       {/* Left side - Login form */}
+      <ImageSlider />
+
+      {/* Right side - Image slider */}
       <main className="pt-8 min-h-screen w-full md:w-1/2 px-4 md:px-10">
         {/* Logo Section */}
         <div className="flex items-center gap-2">
@@ -168,9 +171,6 @@ const Login = () => {
           </p>
         </form>
       </main>
-
-      {/* Right side - Image slider */}
-      <ImageSlider />
     </div>
   );
 };
