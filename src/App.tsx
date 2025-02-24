@@ -5,7 +5,9 @@ import {
   useLocation,
 } from "react-router-dom";
 import useDarkMode from "./hooks/useDarkMode";
+import ProtectedRoute from "./components/Auth/ProtectedRoute"; // Import the ProtectedRoute component
 
+// Import all your components
 import ContactPage from "./components/Contact/ContactPage";
 import AboutPage from "./components/About/AboutPage";
 import LandingPage from "./components/Home/LandingPage";
@@ -65,12 +67,12 @@ const App = () => {
         />
 
         <Routes>
+          {/* Public Routes */}
           <Route path="/" element={<LandingPage />} />
           <Route path="/test" element={<Test />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/events/all" element={<AllEvents />} />
           <Route path="/pricing" element={<Pricing />} />
-          <Route path="/profile" element={<Profile />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
@@ -81,15 +83,23 @@ const App = () => {
           <Route path="/get-tickets/contact" element={<TicketsPage2 />} />
           <Route path="/get-tickets/checkout" element={<TicketsPage3 />} />
           <Route path="/event-details" element={<EventDetails />} />
-          <Route path="/events/create" element={<CreateEvent />} />
-          <Route path="/events/create/2" element={<Event2 />} />
+          {/* <Route path="/events/create" element={<CreateEvent />} /> */}
+          {/* <Route path="/events/create/2" element={<Event2 />} /> */}
           <Route path="/events/preview" element={<PreviewTicket />} />
-          <Route path="/events/create/3" element={<Event3 />} />
+          {/* <Route path="/events/create/3" element={<Event3 />} /> */}
 
-          <Route
-            path="/profile-event/:tab/:eventId"
-            element={<EventDetailsPage />}
-          />
+          {/* Protected Routes */}
+          <Route element={<ProtectedRoute />}>
+            <Route path="/profile" element={<Profile />} />
+            {/* Add more protected routes here */}
+            <Route path="/events/create" element={<CreateEvent />} />
+            <Route path="/events/create/2" element={<Event2 />} />
+            <Route path="/events/create/3" element={<Event3 />} />
+            <Route
+              path="/profile-event/:tab/:eventId"
+              element={<EventDetailsPage />}
+            />
+          </Route>
         </Routes>
       </Router>
     </div>
