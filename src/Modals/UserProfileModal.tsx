@@ -4,8 +4,9 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { HiLogout } from "react-icons/hi";
 import SettingsModal from "./SettingsModal";
 import { ModalProps } from "../types";
+import { useNavigate } from "react-router-dom";
 
-const UserProfileModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
+const UserProfileModal: React.FC<ModalProps> = ({ isOpen }) => {
   const [hasShadow, setHasShadow] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
@@ -21,6 +22,13 @@ const UserProfileModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
   }, []);
 
   if (!isOpen) return null;
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token"); // Remove the token
+    navigate("/login"); // Redirect to login page
+  };
 
   return (
     <>
@@ -55,7 +63,7 @@ const UserProfileModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
             <HiLogout className="text-xl lg:w-14 w-12 text-[#989898]" />
             <button
               className="flex items-center hover:text-[#FA776C] space-x-5 font-medium"
-              onClick={onClose}
+              onClick={handleLogout}
             >
               <span>Sign out</span>
             </button>

@@ -48,7 +48,7 @@ const Login = () => {
         localStorage.setItem("token", response.data.token);
 
         // Redirect to profile page after successful login
-        navigate("/events/all");
+        navigate("/");
       }
     } catch (err: any) {
       if (err.response) {
