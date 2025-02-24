@@ -1,13 +1,51 @@
 import { useState } from "react";
 import { FaEye, FaEyeSlash, FaLock } from "react-icons/fa";
 import ImageSlider from "../../shared/ImageSlider/ImageSlider";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const ResetPassword = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+  const { state } = useLocation();
+  const email = state?.email; // Get email from the previous page
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!password || !confirmPassword) {
+      setError("Please fill in all fields.");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match.");
+      return;
+    }
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/users/reset-password",
+        { email, newPassword: password }
+      );
+
+      if (response.status === 200) {
+        navigate("/login"); // Redirect to login page
+      }
+    } catch (err: any) {
+      setError(err.response?.data?.message || "An error occurred.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="h-screen flex flex-col md:flex-row">
@@ -31,7 +69,7 @@ const ResetPassword = () => {
         </div>
 
         {/* Form Section */}
-        <form className="w-full">
+        <form onSubmit={handleSubmit} className="w-full">
           {/* Password Input */}
           <div className="relative mb-6">
             <FaLock className="absolute left-4 top-5 text-gray-500" />
@@ -72,18 +110,17 @@ const ResetPassword = () => {
             </span>
           </div>
 
+          {/* Error Message */}
+          {error && <div className="mb-4 text-red-500 text-sm">{error}</div>}
+
           {/* Submit Button */}
-          <Link to="/login">
-            <button
-              type="submit"
-              className="w-full py-3 bg-[#6440EB] text-white rounded-md disabled:bg-[#DCDCDC] disabled:cursor-not-allowed"
-              // disabled={
-              //   !password || !confirmPassword || password !== confirmPassword
-              // }
-            >
-              Create password
-            </button>
-          </Link>
+          <button
+            type="submit"
+            className="w-full py-3 bg-[#6440EB] text-white rounded-md disabled:bg-[#DCDCDC] disabled:cursor-not-allowed"
+            disabled={loading}
+          >
+            {loading ? "Resetting..." : "Create password"}
+          </button>
         </form>
 
         {/* Sign-up Link */}

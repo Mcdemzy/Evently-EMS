@@ -1,10 +1,16 @@
 import { useState, useEffect } from "react";
 import ImageSlider from "../../shared/ImageSlider/ImageSlider";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const EmailCode = () => {
   const [code, setCode] = useState<string[]>(["", "", "", "", "", ""]);
   const [timeLeft, setTimeLeft] = useState<number>(300);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+  const { state } = useLocation();
+  const email = state?.email; // Get email from the previous page
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (timeLeft > 0) {
@@ -20,10 +26,36 @@ const EmailCode = () => {
     setCode(newCode);
   };
 
+  const handleSubmit = async () => {
+    const otp = code.join("");
+
+    if (!otp || otp.length !== 6) {
+      setError("Please enter a valid 6-digit OTP.");
+      return;
+    }
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/users/verify-otp",
+        { email, otp }
+      );
+
+      if (response.status === 200) {
+        navigate("/reset-password", { state: { email } }); // Redirect to reset password page
+      }
+    } catch (err: any) {
+      setError(err.response?.data?.message || "Invalid or expired OTP.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="h-screen flex flex-col md:flex-row">
       {/* Left side - Image slider */}
-      {/* <ImageSlider /> */}
       <ImageSlider />
 
       {/* Right side - Email verification form */}
@@ -39,7 +71,7 @@ const EmailCode = () => {
           <h1 className="text-4xl font-semibold mb-3">Email Verification</h1>
           <p className="text-lg text-gray-600">
             We’ve sent a 6-digit code to{" "}
-            <span className="font-medium">the entered email address</span>
+            <span className="font-medium">{email}</span>
           </p>
         </div>
 
@@ -49,13 +81,16 @@ const EmailCode = () => {
             <input
               key={index}
               type="text"
-              maxLength={1} // Fixed: maxLength should be a number
+              maxLength={1}
               value={digit}
               onChange={(e) => handleChange(index, e.target.value)}
               className="w-12 h-12 text-center border border-gray-300 rounded-md text-lg focus:border-[#6440EB] outline-none"
             />
           ))}
         </div>
+
+        {/* Error Message */}
+        {error && <div className="mb-4 text-red-500 text-sm">{error}</div>}
 
         {/* Countdown and Resend Code */}
         <p className="text-sm text-gray-600 mb-6">
@@ -71,20 +106,19 @@ const EmailCode = () => {
         </p>
 
         {/* Confirm Code Button */}
-        <Link to="/reset-password">
-          <button
-            type="button"
-            className="w-full p-3 rounded-md text-white font-bold text-xs leading-4 disabled:opacity-50"
-            style={{
-              backgroundColor: code.every((digit) => digit)
-                ? "#6440EB"
-                : "#DCDCDC",
-            }}
-            disabled={!code.every((digit) => digit)}
-          >
-            Confirm code
-          </button>
-        </Link>
+        <button
+          type="button"
+          onClick={handleSubmit}
+          className="w-full p-3 rounded-md text-white font-bold text-xs leading-4 disabled:opacity-50"
+          style={{
+            backgroundColor: code.every((digit) => digit)
+              ? "#6440EB"
+              : "#DCDCDC",
+          }}
+          disabled={!code.every((digit) => digit) || loading}
+        >
+          {loading ? "Verifying..." : "Confirm code"}
+        </button>
 
         {/* Sign-up Link */}
         <p className="text-center text-sm mt-4 text-gray-600">
