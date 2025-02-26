@@ -5,7 +5,10 @@ import { FaEnvelope, FaLock, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
 
+import { useUser } from "../../../context/UserContext"; // Import useUser
+
 const Login = () => {
+  const { setUser } = useUser(); // Access setUser from UserContext
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
@@ -44,10 +47,23 @@ const Login = () => {
       );
 
       if (response.status === 200) {
-        // Save the token to localStorage or context (optional)
+        // Save the token to localStorage
         localStorage.setItem("token", response.data.token);
 
-        // Redirect to profile page after successful login
+        // Fetch the user's data
+        const userResponse = await axios.get(
+          "http://localhost:5000/api/users/me",
+          {
+            headers: {
+              Authorization: `Bearer ${response.data.token}`,
+            },
+          }
+        );
+
+        // Store the user's data in UserContext
+        setUser(userResponse.data.user);
+
+        // Redirect to home page after successful login
         navigate("/");
       }
     } catch (err: any) {
