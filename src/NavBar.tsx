@@ -7,10 +7,12 @@ import AuthButtons from "./components/shared/AuthButtons";
 import NavLinks from "./components/shared/NavLinks";
 import ProfileMenu from "./components/shared/ProfileMenu";
 import useOutsideClick from "./components/shared/OutsideClick/useOutsideClick";
+import { isLoggedIn } from "./utils/auth"; // Import the helper function
 
 function NavBar({ isDarkMode, toggleDarkMode }: NavBarProps) {
   const [hasShadow, setHasShadow] = useState(false);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [loggedIn] = useState(isLoggedIn()); // Track authentication state
 
   const sidebarRef = useOutsideClick(() => {
     setMobileMenuOpen(false);
@@ -24,6 +26,14 @@ function NavBar({ isDarkMode, toggleDarkMode }: NavBarProps) {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const navLinks = [
+    { path: "/events/all", label: "Events" },
+    { path: "/pricing", label: "Pricing" },
+    { path: "/about", label: "About" },
+    { path: "/contact", label: "Contact" },
+    ...(loggedIn ? [{ path: "/profile", label: "My Profile" }] : []),
+  ];
 
   return (
     <>
@@ -46,21 +56,14 @@ function NavBar({ isDarkMode, toggleDarkMode }: NavBarProps) {
           <span className="ml-2 lg:text-3xl text-xl font-bold">Evently</span>
         </Link>
 
-        <NavLinks
-          links={[
-            { path: "/events/all", label: "Events" },
-            { path: "/pricing", label: "Pricing" },
-            { path: "/about", label: "About" },
-            { path: "/contact", label: "Contact" },
-            { path: "/profile", label: "My Profile" },
-          ]}
-          orientation="horizontal"
-        />
+        <NavLinks links={navLinks} orientation="horizontal" />
 
         <div className="flex items-center gap-6">
-          <ProfileMenu />
+          {/* Conditionally render ProfileMenu if logged in */}
+          {loggedIn && <ProfileMenu />}
 
-          <AuthButtons isBigScreen={true} />
+          {/* Conditionally render AuthButtons if not logged in */}
+          {!loggedIn && <AuthButtons isBigScreen={true} />}
 
           {/* Light and dark modes */}
           <div
@@ -137,18 +140,13 @@ function NavBar({ isDarkMode, toggleDarkMode }: NavBarProps) {
           </div>
 
           <NavLinks
-            links={[
-              { path: "/events/all", label: "Events" },
-              { path: "/pricing", label: "Pricing" },
-              { path: "/about", label: "About" },
-              { path: "/contact", label: "Contact" },
-              { path: "/profile", label: "My Profile" },
-            ]}
+            links={navLinks}
             orientation="vertical"
             onClick={() => setMobileMenuOpen(false)}
           />
 
-          <AuthButtons isBigScreen={false} />
+          {/* Conditionally render AuthButtons if not logged in */}
+          {!loggedIn && <AuthButtons isBigScreen={false} />}
         </div>
       )}
     </>
