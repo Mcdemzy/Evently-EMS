@@ -245,7 +245,7 @@ const Signup = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+            className="w-full py-3 bg-[#6440EB] text-white rounded-md hover:bg-[#5b3ad2]"
             disabled={loading}
           >
             {loading ? "Registering..." : "Continue"}
