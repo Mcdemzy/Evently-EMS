@@ -71,7 +71,7 @@ const Security: React.FC = () => {
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      toggleMethod(method.id); 
+                      toggleMethod(method.id);
                     }}
                     className="dark:text-[#DCDCDC] text-[#1C1A24]"
                   >
@@ -92,7 +92,7 @@ const Security: React.FC = () => {
                     <label className="relative">
                       <input
                         type="checkbox"
-                        id={`checkbox-${method.id}`}
+                        id={`cuatom-checkbox-${method.id}`}
                         className="hidden"
                         checked={checkedState === method.id}
                         onChange={() => toggleCheckbox(method.id)}

@@ -106,15 +106,17 @@ const ContactPage = () => {
               <input
                 type="checkbox"
                 id="agree"
-                className="mr-2 cursor-pointer"
+                className="w-4 h-4 rounded bg-red-500 text-white cursor-pointer"
                 required
               />
               <label
                 htmlFor="agree"
-                className="text-gray-700 dark:text-white cursor-pointer"
+                className="ml-2 text-gray-700 dark:text-white"
               >
                 I agree to the{" "}
-                <span className="text-red-500">Terms & conditions</span>
+                <span className="text-red-500 hover:underline cursor-pointer">
+                  Terms & conditions
+                </span>
               </label>
             </div>
 
