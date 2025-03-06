@@ -1,15 +1,15 @@
-input[type="checkbox"] {
+/* input[type="checkbox"] {
   display: none;
-}
+} */
 
 .dark {
-  --toggle-bg: #7C7C7C;
+  --toggle-bg: #7c7c7c;
   --toggle-thumb-border: #464646;
 }
 
 .light {
-  --toggle-bg: #DAD9DE;
-  --toggle-thumb-border: #FFFFFF;
+  --toggle-bg: #dad9de;
+  --toggle-thumb-border: #ffffff;
 }
 
 .toggleSwitch {
@@ -40,16 +40,14 @@ input[type="checkbox"] {
   border: 5px solid var(--toggle-thumb-border);
 }
 
-
 input[type="checkbox"]:checked + .toggleSwitch {
-  background-color: #12B76A;
-  transition-duration: .2s;
+  background-color: #12b76a;
+  transition-duration: 0.2s;
 }
 
 input[type="checkbox"]:checked + .toggleSwitch::after {
   transform: translateX(20px);
-  transition-duration: .2s;
+  transition-duration: 0.2s;
   background-color: white;
   border: 5px solid white;
-
 }

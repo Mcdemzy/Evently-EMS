@@ -4,7 +4,8 @@ import React from "react";
 const IntroSection: React.FC = () => {
   return (
     <section className="px-4 py-8 flex flex-col lg:flex-row gap-8 justify-center items-center">
-      <div className="w-full lg:w-1/2">
+      <div className="w-full lg:w-1/2 relative">
+        <div className="absolute inset-0 bg-[#EDEFFF33] rounded-tl-[40px] rounded-br-[40px]"></div>
         <img
           src="/images/event.png"
           alt="Event Image"
