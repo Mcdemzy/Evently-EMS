@@ -6,9 +6,10 @@ import SettingsModal from "./SettingsModal";
 import { ModalProps } from "../types";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../context/UserContext"; // Import useUser
+import axios from "axios";
 
 const UserProfileModal: React.FC<ModalProps> = ({ isOpen }) => {
-  const { user } = useUser();
+  const { user, setUser, logout } = useUser(); // Access user data and logout function
   const [hasShadow, setHasShadow] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const navigate = useNavigate();
@@ -24,10 +25,31 @@ const UserProfileModal: React.FC<ModalProps> = ({ isOpen }) => {
     };
   }, []);
 
+  // Fetch user data if not available
+  useEffect(() => {
+    if (!user) {
+      const token = localStorage.getItem("token");
+      if (token) {
+        axios
+          .get("http://localhost:5000/api/users/me", {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          .then((response) => {
+            setUser(response.data.user); // Set user data in context
+          })
+          .catch(() => {
+            logout(); // Logout if the token is invalid
+          });
+      }
+    }
+  }, [user, setUser, logout]);
+
   if (!isOpen) return null;
 
   const handleLogout = () => {
-    localStorage.removeItem("token"); // Remove the token
+    logout(); // Use the logout function from UserContext
     navigate("/login"); // Redirect to login page
   };
 
