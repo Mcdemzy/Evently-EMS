@@ -39,7 +39,7 @@ const EmailCode = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/users/verify-otp",
+        "https://evently-ems-backend.vercel.app/api/users/verify-otp",
         { email, otp }
       );
 
