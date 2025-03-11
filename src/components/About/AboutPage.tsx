@@ -9,6 +9,7 @@ import QuestionSection from "./QuestionSection";
 import NewsLetter from "../shared/NewsLetter";
 import PricingSection from "../shared/PricingSection";
 import Footer from "../shared/Footer";
+import MissionSection from "./MissionSection";
 
 const AboutPage: React.FC = () => {
   return (
@@ -16,6 +17,7 @@ const AboutPage: React.FC = () => {
       <PageHeader />
       <IntroSection />
       <WhatIsEvently />
+      <MissionSection />
       <VisionSection />
       <HistorySection />
       <QuestionSection />
