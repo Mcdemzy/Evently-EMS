@@ -23,7 +23,7 @@ function ForgotPassword() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/users/forgot-password",
+        "https://evently-ems-backend.vercel.app/api/users/forgot-password",
         { email }
       );
 

@@ -31,7 +31,7 @@ const UserProfileModal: React.FC<ModalProps> = ({ isOpen }) => {
       const token = localStorage.getItem("token");
       if (token) {
         axios
-          .get("http://localhost:5000/api/users/me", {
+          .get("https://evently-ems-backend.vercel.app/api/users/me", {
             headers: {
               Authorization: `Bearer ${token}`,
             },

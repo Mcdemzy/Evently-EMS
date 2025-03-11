@@ -33,7 +33,7 @@ const ResetPassword = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/users/reset-password",
+        "https://evently-ems-backend.vercel.app/api/users/reset-password",
         { email, newPassword: password }
       );
 
