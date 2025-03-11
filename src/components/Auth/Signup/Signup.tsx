@@ -77,7 +77,7 @@ const Signup = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/users/register",
+        "https://evently-ems-backend.vercel.app/api/users/register",
         {
           firstName,
           lastName,

@@ -39,7 +39,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/users/login",
+        "https://evently-ems-backend.vercel.app/api/users/login",
         {
           email,
           password,
@@ -52,7 +52,7 @@ const Login = () => {
 
         // Fetch the user's data
         const userResponse = await axios.get(
-          "http://localhost:5000/api/users/me",
+          "https://evently-ems-backend.vercel.app/api/users/me",
           {
             headers: {
               Authorization: `Bearer ${response.data.token}`,
