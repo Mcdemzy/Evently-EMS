@@ -49,7 +49,7 @@ const SettingsModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
 
     try {
       const response = await axios.put(
-        `https://evently-ems-backend.vercel.app/api/users/${user.id}`,
+        `http://localhost:5000/api/users/${user.id}`,
         formData,
         {
           headers: {
