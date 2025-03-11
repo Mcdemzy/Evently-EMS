@@ -4,11 +4,70 @@ import Security from "./Security";
 import { HiX } from "react-icons/hi";
 import { AiOutlineUser } from "react-icons/ai";
 import { BsShieldLock } from "react-icons/bs";
+import { useUser } from "../context/UserContext"; // Import useUser
+import axios from "axios";
 import "./checkbox.css";
 import "./customScrollbar.css";
 
 const SettingsModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
+  const { user, setUser } = useUser();
   const [activeTab, setActiveTab] = useState<"Account" | "Security">("Account");
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    username: "",
+    email: "",
+  });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (user) {
+      setFormData({
+        firstName: user.firstName,
+        lastName: user.lastName,
+        username: user.username,
+        email: user.email,
+      });
+    }
+  }, [user]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!user) return;
+
+    setLoading(true);
+    setError(null);
+    setSuccess(null);
+
+    try {
+      const response = await axios.put(
+        `http://localhost:5000/api/users/${user.id}`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        setUser(response.data.user);
+        setSuccess("Profile updated successfully!");
+      }
+    } catch (err: any) {
+      setError(err.response?.data?.message || "An error occurred.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     if (isOpen) {
@@ -101,14 +160,19 @@ const SettingsModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
               {activeTab === "Account" ? (
                 <div>
                   {/* Account Details Section */}
-                  <form className="space-y-4 border dark:border-[#464646] border-[#DCDCDC] rounded-xl lg:p-6 p-3">
+                  <form
+                    onSubmit={handleSubmit}
+                    className="space-y-4 border dark:border-[#464646] border-[#DCDCDC] rounded-xl lg:p-6 p-3"
+                  >
                     <div>
                       <label className="block text-sm font-medium mb-2 dark:text-[#DCDCDC] text-[#454545]">
                         Firstname
                       </label>
                       <input
                         type="text"
-                        defaultValue="Admin"
+                        name="firstName"
+                        value={formData.firstName}
+                        onChange={handleChange}
                         className="block w-full border-[#E7E7E7] border dark:border-none dark:bg-[#1F1F1F] bg-white bg-opacity-0 dark:text-[#989898] text-[#5D5D5D] rounded-md p-2 text-xs"
                       />
                     </div>
@@ -118,7 +182,9 @@ const SettingsModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                       </label>
                       <input
                         type="text"
-                        defaultValue="Sec"
+                        name="lastName"
+                        value={formData.lastName}
+                        onChange={handleChange}
                         className="block w-full border-[#E7E7E7] border dark:border-none dark:bg-[#1F1F1F] bg-white bg-opacity-0 dark:text-[#989898] text-[#5D5D5D] rounded-md p-2 text-xs"
                       />
                     </div>
@@ -128,7 +194,9 @@ const SettingsModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                       </label>
                       <input
                         type="text"
-                        defaultValue="AdminSec"
+                        name="username"
+                        value={formData.username}
+                        onChange={handleChange}
                         className="block w-full border-[#E7E7E7] border dark:border-none dark:bg-[#1F1F1F] bg-white bg-opacity-0 dark:text-[#989898] text-[#5D5D5D] rounded-md p-2 text-xs"
                       />
                     </div>
@@ -138,17 +206,31 @@ const SettingsModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                       </label>
                       <input
                         type="email"
-                        defaultValue="adminsec@gmail.com"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
                         className="block w-full border-[#E7E7E7] border dark:border-none dark:bg-[#1F1F1F] bg-white bg-opacity-0 dark:text-[#989898] text-[#5D5D5D] rounded-md p-2 text-xs"
                       />
                     </div>
-                  </form>
 
-                  <div className="text-right">
-                    <button className="dark:bg-[#DCDCDC] bg-[#000000] dark:hover:bg-white/80 hover:bg-black/80 text-white dark:text-[#3D3D3D] px-4 py-2 rounded-lg font-medium text-xs mt-4">
-                      Save Changes
-                    </button>
-                  </div>
+                    {/* Error and Success Messages */}
+                    {error && (
+                      <div className="text-red-500 text-sm">{error}</div>
+                    )}
+                    {success && (
+                      <div className="text-green-500 text-sm">{success}</div>
+                    )}
+
+                    <div className="text-right">
+                      <button
+                        type="submit"
+                        className="dark:bg-[#DCDCDC] bg-[#000000] dark:hover:bg-white/80 hover:bg-black/80 text-white dark:text-[#3D3D3D] px-4 py-2 rounded-lg font-medium text-xs mt-4"
+                        disabled={loading}
+                      >
+                        {loading ? "Saving..." : "Save Changes"}
+                      </button>
+                    </div>
+                  </form>
 
                   {/* Session Management Section */}
                   <div className="mt-6">
