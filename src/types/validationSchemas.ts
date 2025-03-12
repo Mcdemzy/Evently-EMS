@@ -1,5 +1,9 @@
 import { z } from "zod";
 
+// Common password regex to include all special characters
+const passwordRegex =
+  /^(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
+
 // Signup Schema
 export const signupSchema = z
   .object({
@@ -11,7 +15,7 @@ export const signupSchema = z
       .string()
       .min(8, "Password must be at least 8 characters long")
       .regex(
-        /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{8,}$/,
+        passwordRegex,
         "Password must contain a number and a special character"
       ),
     confirmPassword: z.string(),
@@ -46,7 +50,7 @@ export const resetPasswordSchema = z
       .string()
       .min(8, "Password must be at least 8 characters long")
       .regex(
-        /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{8,}$/,
+        passwordRegex,
         "Password must contain a number and a special character"
       ),
     confirmPassword: z.string(),
