@@ -1,77 +1,43 @@
-import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
+import { Link, useNavigate } from "react-router-dom";
 import ImageSlider from "../../shared/ImageSlider/ImageSlider";
-import axios from "axios"; // Import Axios
+import axios from "axios";
 import { FaEnvelope, FaLock, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
-
-import { useUser } from "../../../context/UserContext"; // Import useUser
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { loginSchema, LoginFormData } from "../../../types/validationSchemas"; // Import Zod schema and type
 
 const Login = () => {
-  const { setUser } = useUser(); // Access setUser from UserContext
-  const [showPassword, setShowPassword] = useState(false);
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginFormData>({
+    resolver: zodResolver(loginSchema), // Integrate Zod validation
   });
+
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    const { email, password } = formData;
-
-    // Validate all fields
-    if (!email || !password) {
-      setError("All fields are required.");
-      return;
-    }
-
+  const onSubmit = async (data: LoginFormData) => {
     setLoading(true);
     setError(null);
 
     try {
       const response = await axios.post(
         "https://evently-ems-backend.vercel.app/api/users/login",
-        {
-          email,
-          password,
-        }
+        data
       );
 
       if (response.status === 200) {
-        // Save the token to localStorage
         localStorage.setItem("token", response.data.token);
-
-        // Fetch the user's data
-        const userResponse = await axios.get(
-          "https://evently-ems-backend.vercel.app/api/users/me",
-          {
-            headers: {
-              Authorization: `Bearer ${response.data.token}`,
-            },
-          }
-        );
-
-        // Store the user's data in UserContext
-        setUser(userResponse.data.user);
-
-        // Redirect to home page after successful login
         navigate("/");
       }
     } catch (err: any) {
-      if (err.response) {
-        setError(err.response.data.message || "Invalid email or password.");
-      } else {
-        setError("An error occurred. Please try again.");
-      }
+      setError(err.response?.data?.message || "Invalid email or password.");
     } finally {
       setLoading(false);
     }
@@ -99,7 +65,7 @@ const Login = () => {
         </div>
 
         {/* Form Section */}
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           {/* Error Message */}
           {error && <div className="mb-4 text-red-500 text-sm">{error}</div>}
 
@@ -108,12 +74,15 @@ const Login = () => {
             <FaEnvelope className="absolute left-4 top-5 text-gray-500" />
             <input
               type="email"
-              name="email"
               placeholder="Email address"
-              value={formData.email}
-              onChange={handleChange}
+              {...register("email")}
               className="border w-full p-4 pl-10 rounded-md"
             />
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.email.message}
+              </p>
+            )}
           </div>
 
           {/* Password Field */}
@@ -121,10 +90,8 @@ const Login = () => {
             <FaLock className="absolute left-4 top-5 text-gray-500" />
             <input
               type={showPassword ? "text" : "password"}
-              name="password"
               placeholder="Password"
-              value={formData.password}
-              onChange={handleChange}
+              {...register("password")}
               className="border w-full p-4 pl-10 pr-10 rounded-md"
             />
             {showPassword ? (
@@ -137,6 +104,11 @@ const Login = () => {
                 className="absolute right-4 top-5 text-gray-500 cursor-pointer"
                 onClick={() => setShowPassword(true)}
               />
+            )}
+            {errors.password && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.password.message}
+              </p>
             )}
           </div>
 
