@@ -37,7 +37,16 @@ const Login = () => {
         navigate("/");
       }
     } catch (err: any) {
-      setError(err.response?.data?.message || "Invalid email or password.");
+      if (
+        err.response?.data?.message ===
+        "Please verify your email before logging in."
+      ) {
+        setError(
+          "Your email is not verified. Please check your inbox or resend the verification email."
+        );
+      } else {
+        setError(err.response?.data?.message || "Invalid email or password.");
+      }
     } finally {
       setLoading(false);
     }
