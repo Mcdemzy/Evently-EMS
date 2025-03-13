@@ -42,10 +42,7 @@ const Signup = () => {
       );
 
       if (response.status === 201) {
-        setSuccess("Account Created Successfully!");
-        setTimeout(() => {
-          navigate("/login");
-        }, 2000);
+        navigate("/check-email", { state: { email: data.email } });
       }
     } catch (err: any) {
       setError(
