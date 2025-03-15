@@ -8,7 +8,7 @@ const Profile = () => {
       <main>
         <ProfileEvents />
         <ProfileTickets />
-        <Footer />
+        {/* <Footer /> */}
       </main>
     </>
   );

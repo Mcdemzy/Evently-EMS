@@ -18,7 +18,7 @@ function LandingPage() {
         <FAQ />
         <PricingSection />
         <NewsLetter />
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </main>
   );

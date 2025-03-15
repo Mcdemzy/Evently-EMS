@@ -110,7 +110,7 @@ export default function Event3() {
           Create Event
         </Link>
       </section>
-      <Footer />
+      {/* <Footer /> */}
     </main>
   );
 }

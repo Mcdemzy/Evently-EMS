@@ -283,7 +283,7 @@ export default function CreateEvent() {
             </section>
           </form>
         </section>
-        <Footer />
+        {/* <Footer /> */}
       </main>
     </>
   );
