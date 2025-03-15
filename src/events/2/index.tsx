@@ -150,7 +150,7 @@ export default function Event2() {
           Proceed
         </Link>
       </section>
-      <Footer />
+      {/* <Footer /> */}
     </main>
   );
 }

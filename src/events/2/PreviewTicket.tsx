@@ -189,7 +189,7 @@ export default function PreviewTicket() {
           Proceed
         </Link>
       </section>
-      <Footer />
+      {/* <Footer /> */}
     </main>
   );
 }

@@ -52,7 +52,7 @@ const AllEvents = () => {
 
         <div onClick={toggleDarkMode}></div>
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

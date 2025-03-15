@@ -114,7 +114,7 @@ const EventDetails = () => {
 
       <div className="dark:bg-black">
         <RelatedEvents />
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </>
   );
