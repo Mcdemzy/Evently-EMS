@@ -1,4 +1,4 @@
-import Footer from "../shared/Footer"
+// import Footer from "../shared/Footer"
 import NewsLetter from "../shared/NewsLetter"
 
 function Pricing() {

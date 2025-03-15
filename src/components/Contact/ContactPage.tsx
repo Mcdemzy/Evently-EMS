@@ -4,7 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import emailjs from "@emailjs/browser";
 import PricingSection from "../shared/PricingSection";
 import NewsLetter from "../shared/NewsLetter";
-import Footer from "../shared/Footer";
+// import Footer from "../shared/Footer";
 
 const ContactPage = () => {
   const form = useRef<HTMLFormElement>(null);
