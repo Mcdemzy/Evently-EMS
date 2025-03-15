@@ -2,7 +2,7 @@ import { Dot, EllipsisVertical, Plus } from "lucide-react";
 import Progress from "./Progress";
 import Socials from "./Socials";
 import { Link } from "react-router-dom";
-import Footer from "../../components/shared/Footer";
+// import Footer from "../../components/shared/Footer";
 
 export default function PreviewTicket() {
   return (
