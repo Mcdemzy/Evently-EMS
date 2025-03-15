@@ -1,9 +1,9 @@
-import Footer from "../shared/Footer"
+// import Footer from "../shared/Footer"
 import NewsLetter from "../shared/NewsLetter"
 
 function Pricing() {
   return (
-    <div className="dark:bg-black dark:text-white">
+    <div className="dark:bg-black dark:text-white py-16">
       <div className="w-full text-center mx-auto px-16 py-40">
         <h2 className="text-[#FA776C] text-7xl font-semibold mb-7">
           Coming Soon!!!
@@ -13,7 +13,7 @@ function Pricing() {
         </span>
       </div>
       <NewsLetter />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

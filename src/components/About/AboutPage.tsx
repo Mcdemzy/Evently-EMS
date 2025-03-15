@@ -8,12 +8,12 @@ import HistorySection from "./HistorySection";
 import QuestionSection from "./QuestionSection";
 import NewsLetter from "../shared/NewsLetter";
 import PricingSection from "../shared/PricingSection";
-import Footer from "../shared/Footer";
+// import Footer from "../shared/Footer";
 import MissionSection from "./MissionSection";
 
 const AboutPage: React.FC = () => {
   return (
-    <main className="dark:bg-black pt-[124px]">
+    <main className="dark:bg-black pt-[124px] pb-16">
       <PageHeader />
       <IntroSection />
       <WhatIsEvently />
@@ -23,7 +23,7 @@ const AboutPage: React.FC = () => {
       <QuestionSection />
       <PricingSection />
       <NewsLetter />
-      <Footer />
+      {/* <Footer /> */}
     </main>
   );
 };

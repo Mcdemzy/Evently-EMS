@@ -3,7 +3,7 @@ import { FiPhone, FiInstagram } from "react-icons/fi";
 import { MdEmail } from "react-icons/md";
 import { Link } from "react-router-dom";
 import RelatedEvents from "./RelatedEvents";
-import Footer from "../../shared/Footer";
+// import Footer from "../../shared/Footer";
 
 const EventDetails = () => {
   return (
@@ -114,7 +114,7 @@ const EventDetails = () => {
 
       <div className="dark:bg-black">
         <RelatedEvents />
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </>
   );
