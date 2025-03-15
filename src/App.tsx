@@ -33,6 +33,8 @@ import EmailCode from "./components/Auth/ForgotPassword/EmailCode";
 import ResetPassword from "./components/Auth/ForgotPassword/ResetPassword";
 import CheckEmail from "./components/Auth/ForgotPassword/CheckEmail";
 import VerifyEmail from "./components/Auth/ForgotPassword/VerifyEmail";
+import NotFound from "./components/NotFound";
+import Footer from "./components/shared/Footer";
 
 const App = () => {
   const [isDarkMode, toggleDarkMode] = useDarkMode();
@@ -92,6 +94,7 @@ const App = () => {
           {/* <Route path="/events/create" element={<CreateEvent />} /> */}
           {/* <Route path="/events/create/2" element={<Event2 />} /> */}
           <Route path="/events/preview" element={<PreviewTicket />} />
+          <Route path="*" element={<NotFound />} />
           {/* <Route path="/events/create/3" element={<Event3 />} /> */}
 
           {/* Protected Routes */}
@@ -107,6 +110,7 @@ const App = () => {
             />
           </Route>
         </Routes>
+        <Footer />
       </Router>
     </div>
   );
