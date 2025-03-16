@@ -34,7 +34,9 @@ function ForgotPassword() {
       );
 
       if (response.status === 200) {
-        navigate("/email-code", { state: { email: data.email } });
+        navigate("/forgot-password/email-code", {
+          state: { email: data.email },
+        });
       }
     } catch (err: any) {
       setError(err.response?.data?.message || "An error occurred.");
