@@ -1,4 +1,5 @@
-import { z } from "zod";
+// import { z } from "zod";
+import * as z from "zod";
 
 // Common password regex to include all special characters
 const passwordRegex =
