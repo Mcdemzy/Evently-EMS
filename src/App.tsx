@@ -61,6 +61,23 @@ const App = () => {
 
     return <NavBar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />;
   };
+  const FooterWrapper = (): JSX.Element | null => {
+    const location = useLocation();
+
+    const authRoutes = [
+      "/login",
+      "/signup",
+      "/forgot-password",
+      "/reset-password",
+      "/forgot-password/email-code",
+    ];
+
+    if (authRoutes.includes(location.pathname)) {
+      return null; // Don't render the footer on auth screens
+    }
+
+    return <Footer />; // Render the footer on all other screens
+  };
 
   return (
     <div
@@ -110,7 +127,8 @@ const App = () => {
             />
           </Route>
         </Routes>
-        <Footer />
+
+        <FooterWrapper />
       </Router>
     </div>
   );
