@@ -3,32 +3,40 @@ import { FaRegEnvelope } from "react-icons/fa6";
 import ImageSlider from "../../shared/ImageSlider/ImageSlider";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  forgotPasswordSchema,
+  ForgotPasswordFormData,
+} from "../../../types/validationSchemas";
 
 function ForgotPassword() {
-  const [email, setEmail] = useState("");
-  const [error, setError] = useState<string | null>(null);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ForgotPasswordFormData>({
+    resolver: zodResolver(forgotPasswordSchema),
+  });
+
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!email) {
-      setError("Email is required.");
-      return;
-    }
-
+  const onSubmit = async (data: ForgotPasswordFormData) => {
     setLoading(true);
     setError(null);
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/users/forgot-password",
-        { email }
+        "https://evently-ems-backend.vercel.app/api/users/forgot-password",
+        { email: data.email }
       );
 
       if (response.status === 200) {
-        navigate("/forgot-password/email-code", { state: { email } }); // Pass email to the next page
+        navigate("/forgot-password/email-code", {
+          state: { email: data.email },
+        });
       }
     } catch (err: any) {
       setError(err.response?.data?.message || "An error occurred.");
@@ -59,18 +67,21 @@ function ForgotPassword() {
         </div>
 
         {/* Form Section */}
-        <form onSubmit={handleSubmit} className="w-full">
+        <form onSubmit={handleSubmit(onSubmit)} className="w-full">
           {/* Email Field */}
           <div className="relative mb-6">
             <FaRegEnvelope className="absolute left-4 top-5 text-gray-500" />
             <input
               type="email"
               placeholder="Email address"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              {...register("email")}
               className="border w-full p-4 pl-10 rounded-md"
-              required
             />
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.email.message}
+              </p>
+            )}
           </div>
 
           {/* Error Message */}

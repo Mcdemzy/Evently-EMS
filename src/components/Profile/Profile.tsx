@@ -1,4 +1,4 @@
-import Footer from "../shared/Footer";
+// import Footer from "../shared/Footer";
 import ProfileEvents from "./ProfileEvents";
 import ProfileTickets from "./ProfileTickets";
 
@@ -8,7 +8,7 @@ const Profile = () => {
       <main>
         <ProfileEvents />
         <ProfileTickets />
-        <Footer />
+        {/* <Footer /> */}
       </main>
     </>
   );

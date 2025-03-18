@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Footer from "../components/shared/Footer";
+// import Footer from "../components/shared/Footer";
 export default function CreateEvent() {
   const [physicalEvent, setPhysicalEvent] = useState(false);
   const [onlineEvent, setOnlineEvent] = useState(false);
@@ -283,7 +283,7 @@ export default function CreateEvent() {
             </section>
           </form>
         </section>
-        <Footer />
+        {/* <Footer /> */}
       </main>
     </>
   );

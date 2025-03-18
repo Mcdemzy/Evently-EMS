@@ -6,7 +6,7 @@ import {
 import { FaChevronDown } from "react-icons/fa6";
 import TrendingEvents from "../../shared/TrendingEvents";
 import { useState } from "react";
-import Footer from "../../shared/Footer";
+// import Footer from "../../shared/Footer";
 
 const AllEvents = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -52,7 +52,7 @@ const AllEvents = () => {
 
         <div onClick={toggleDarkMode}></div>
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

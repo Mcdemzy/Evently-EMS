@@ -4,7 +4,7 @@ import FreeTicket from "./FreeTicket";
 import PaidTicket from "./PaidTicket";
 import Socials from "./Socials";
 import { useState } from "react";
-import Footer from "../../components/shared/Footer";
+// import Footer from "../../components/shared/Footer";
 export default function Event2() {
   const [showForm, setShowForm] = useState(false);
   const [ticketType, setTicketType] = useState<"free" | "paid" | null>(null);
@@ -150,7 +150,7 @@ export default function Event2() {
           Proceed
         </Link>
       </section>
-      <Footer />
+      {/* <Footer /> */}
     </main>
   );
 }

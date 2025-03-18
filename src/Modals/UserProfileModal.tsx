@@ -5,10 +5,14 @@ import { HiLogout } from "react-icons/hi";
 import SettingsModal from "./SettingsModal";
 import { ModalProps } from "../types";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../context/UserContext"; // Import useUser
+import axios from "axios";
 
 const UserProfileModal: React.FC<ModalProps> = ({ isOpen }) => {
+  const { user, setUser, logout } = useUser(); // Access user data and logout function
   const [hasShadow, setHasShadow] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,12 +25,31 @@ const UserProfileModal: React.FC<ModalProps> = ({ isOpen }) => {
     };
   }, []);
 
+  // Fetch user data if not available
+  useEffect(() => {
+    if (!user) {
+      const token = localStorage.getItem("token");
+      if (token) {
+        axios
+          .get("https://evently-ems-backend.vercel.app/api/users/me", {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          .then((response) => {
+            setUser(response.data.user); // Set user data in context
+          })
+          .catch(() => {
+            logout(); // Logout if the token is invalid
+          });
+      }
+    }
+  }, [user, setUser, logout]);
+
   if (!isOpen) return null;
 
-  const navigate = useNavigate();
-
   const handleLogout = () => {
-    localStorage.removeItem("token"); // Remove the token
+    logout(); // Use the logout function from UserContext
     navigate("/login"); // Redirect to login page
   };
 
@@ -45,8 +68,12 @@ const UserProfileModal: React.FC<ModalProps> = ({ isOpen }) => {
             <FaUserLarge className="w-10 h-full text-[#FA776C] mt-3" />
           </div>
           <div className="space-y-1">
-            <h3 className="font-bold whitespace-nowrap">Adeoluwa Ademola</h3>
-            <p className="text-sm font-medium whitespace-nowrap">Zion_Stella</p>
+            <h3 className="font-bold whitespace-nowrap">
+              {user?.firstName} {user?.lastName}
+            </h3>
+            <p className="text-sm font-medium whitespace-nowrap">
+              {user?.username}
+            </p>
           </div>
         </div>
         <div className="space-y-6">
@@ -54,7 +81,7 @@ const UserProfileModal: React.FC<ModalProps> = ({ isOpen }) => {
             <IoSettingsOutline className="text-xl lg:w-14 w-12 text-[#989898]" />
             <button
               className="flex items-center hover:text-[#FA776C] space-x-5 font-medium"
-              onClick={() => setIsSettingsOpen(true)} // Open settings modal
+              onClick={() => setIsSettingsOpen(true)}
             >
               <span>Settings</span>
             </button>
