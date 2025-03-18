@@ -96,7 +96,6 @@ const App = () => {
           <Route path="/events/preview" element={<PreviewTicket />} />
           <Route path="*" element={<NotFound />} />
           {/* <Route path="/events/create/3" element={<Event3 />} /> */}
-
           {/* Protected Routes */}
           <Route element={<ProtectedRoute />}>
             <Route path="/profile" element={<Profile />} />
@@ -109,6 +108,7 @@ const App = () => {
               element={<EventDetailsPage />}
             />
           </Route>
+          //
         </Routes>
         <Footer />
       </Router>
