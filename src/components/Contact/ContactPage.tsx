@@ -4,7 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import emailjs from "@emailjs/browser";
 import PricingSection from "../shared/PricingSection";
 import NewsLetter from "../shared/NewsLetter";
-import Footer from "../shared/Footer";
+// import Footer from "../shared/Footer";
 
 const ContactPage = () => {
   const form = useRef<HTMLFormElement>(null);
@@ -38,7 +38,7 @@ const ContactPage = () => {
   };
 
   return (
-    <main className="dark:bg-black pt-[124px]">
+    <main className="dark:bg-black pt-[124px] pb-16">
       <ToastContainer />
       <section className="dark:bg-black pt-10">
         <h1 className="text-[#FA776C] text-3xl md:text-4xl font-semibold text-center">
@@ -145,7 +145,7 @@ const ContactPage = () => {
 
       <PricingSection />
       <NewsLetter />
-      <Footer />
+      {/* <Footer /> */}
     </main>
   );
 };

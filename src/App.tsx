@@ -31,6 +31,8 @@ import { NavBarProps } from "./types";
 import EventDetailsPage from "./components/shared/EventDetailsPage";
 import EmailCode from "./components/Auth/ForgotPassword/EmailCode";
 import ResetPassword from "./components/Auth/ForgotPassword/ResetPassword";
+import CheckEmail from "./components/Auth/ForgotPassword/CheckEmail";
+import VerifyEmail from "./components/Auth/ForgotPassword/VerifyEmail";
 import NotFound from "./components/NotFound";
 import Footer from "./components/shared/Footer";
 
@@ -49,6 +51,8 @@ const App = () => {
       "/forgot-password",
       "/reset-password",
       "/forgot-password/email-code",
+      "/check-email",
+      "/verify-email",
     ];
 
     if (authRoutes.includes(location.pathname)) {
@@ -102,6 +106,8 @@ const App = () => {
           <Route path="/get-tickets/contact" element={<TicketsPage2 />} />
           <Route path="/get-tickets/checkout" element={<TicketsPage3 />} />
           <Route path="/event-details" element={<EventDetails />} />
+          <Route path="/check-email" element={<CheckEmail />} />
+          <Route path="/verify-email" element={<VerifyEmail />} />
           {/* <Route path="/events/create" element={<CreateEvent />} /> */}
           {/* <Route path="/events/create/2" element={<Event2 />} /> */}
           <Route path="/events/preview" element={<PreviewTicket />} />

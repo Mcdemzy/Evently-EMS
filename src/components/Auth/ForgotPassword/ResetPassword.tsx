@@ -3,42 +3,42 @@ import { FaEye, FaEyeSlash, FaLock } from "react-icons/fa";
 import ImageSlider from "../../shared/ImageSlider/ImageSlider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  resetPasswordSchema,
+  ResetPasswordFormData,
+} from "../../../types/validationSchemas";
 
 const ResetPassword = () => {
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ResetPasswordFormData>({
+    resolver: zodResolver(resetPasswordSchema),
+  });
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const { state } = useLocation();
-  const email = state?.email; // Get email from the previous page
+  const email = state?.email;
   const navigate = useNavigate();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!password || !confirmPassword) {
-      setError("Please fill in all fields.");
-      return;
-    }
-
-    if (password !== confirmPassword) {
-      setError("Passwords do not match.");
-      return;
-    }
-
+  const onSubmit = async (data: ResetPasswordFormData) => {
     setLoading(true);
     setError(null);
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/users/reset-password",
-        { email, newPassword: password }
+        "https://evently-ems-backend.vercel.app/api/users/reset-password",
+        { email, newPassword: data.password }
       );
 
       if (response.status === 200) {
-        navigate("/login"); // Redirect to login page
+        navigate("/login");
       }
     } catch (err: any) {
       setError(err.response?.data?.message || "An error occurred.");
@@ -69,15 +69,14 @@ const ResetPassword = () => {
         </div>
 
         {/* Form Section */}
-        <form onSubmit={handleSubmit} className="w-full">
+        <form onSubmit={handleSubmit(onSubmit)} className="w-full">
           {/* Password Input */}
           <div className="relative mb-6">
             <FaLock className="absolute left-4 top-5 text-gray-500" />
             <input
               type={showPassword ? "text" : "password"}
               placeholder="Create new password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              {...register("password")}
               className="border w-full p-4 pl-10 rounded-md focus:outline-none focus:ring-1 focus:ring-[#6440EB]"
             />
             <span
@@ -86,6 +85,11 @@ const ResetPassword = () => {
             >
               {showPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
             </span>
+            {errors.password && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.password.message}
+              </p>
+            )}
           </div>
 
           {/* Confirm Password Input */}
@@ -94,8 +98,7 @@ const ResetPassword = () => {
             <input
               type={showConfirmPassword ? "text" : "password"}
               placeholder="Confirm new password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              {...register("confirmPassword")}
               className="border w-full p-4 pl-10 rounded-md focus:outline-none focus:ring-1 focus:ring-[#6440EB]"
             />
             <span
@@ -108,6 +111,11 @@ const ResetPassword = () => {
                 <FaEye size={20} />
               )}
             </span>
+            {errors.confirmPassword && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.confirmPassword.message}
+              </p>
+            )}
           </div>
 
           {/* Error Message */}
