@@ -31,6 +31,8 @@ import { NavBarProps } from "./types";
 import EventDetailsPage from "./components/shared/EventDetailsPage";
 import EmailCode from "./components/Auth/ForgotPassword/EmailCode";
 import ResetPassword from "./components/Auth/ForgotPassword/ResetPassword";
+import NotFound from "./components/NotFound";
+import Footer from "./components/shared/Footer";
 
 const App = () => {
   const [isDarkMode, toggleDarkMode] = useDarkMode();
@@ -54,6 +56,23 @@ const App = () => {
     }
 
     return <NavBar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />;
+  };
+  const FooterWrapper = (): JSX.Element | null => {
+    const location = useLocation();
+
+    const authRoutes = [
+      "/login",
+      "/signup",
+      "/forgot-password",
+      "/reset-password",
+      "/forgot-password/email-code",
+    ];
+
+    if (authRoutes.includes(location.pathname)) {
+      return null; // Don't render the footer on auth screens
+    }
+
+    return <Footer />; // Render the footer on all other screens
   };
 
   return (
@@ -86,6 +105,7 @@ const App = () => {
           {/* <Route path="/events/create" element={<CreateEvent />} /> */}
           {/* <Route path="/events/create/2" element={<Event2 />} /> */}
           <Route path="/events/preview" element={<PreviewTicket />} />
+          <Route path="*" element={<NotFound />} />
           {/* <Route path="/events/create/3" element={<Event3 />} /> */}
 
           {/* Protected Routes */}
@@ -101,6 +121,8 @@ const App = () => {
             />
           </Route>
         </Routes>
+
+        <FooterWrapper />
       </Router>
     </div>
   );
