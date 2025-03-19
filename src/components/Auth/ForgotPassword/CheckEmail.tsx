@@ -26,12 +26,12 @@ const CheckEmail = () => {
   };
 
   return (
-    <div className="h-screen flex flex-col md:flex-row">
+    <div className="h-screen flex flex-col lg:flex-row">
       {/* Left side - Image slider */}
       <ImageSlider />
 
       {/* Right side - Check Email form */}
-      <main className="pt-8 min-h-screen w-full md:w-1/2 px-4 md:px-10">
+      <main className="pt-8 min-h-screen w-full lg:w-1/2 px-4 lg:px-10 overflow-y-auto">
         {/* Logo Section */}
         <div className="flex items-center gap-2">
           <img src="/images/logo.svg" width={28} alt="logo" />
