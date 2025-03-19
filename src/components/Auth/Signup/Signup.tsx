@@ -13,6 +13,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signupSchema, SignupFormData } from "../../../types/validationSchemas"; // Import Zod schema and type
+import Loader from "../../shared/Loader/Loader";
 
 const Signup = () => {
   const {
@@ -54,9 +55,9 @@ const Signup = () => {
   };
 
   return (
-    <div className="h-screen flex flex-col md:flex-row">
+    <div className="h-screen flex flex-col lg:flex-row">
       {/* Left side - Signup form */}
-      <main className="pt-8 min-h-screen w-full md:w-1/2 px-4 md:px-10">
+      <main className="pt-8 min-h-screen w-full lg:w-1/2 px-4 lg:px-10 overflow-y-auto">
         {/* Logo Section */}
         <div className="flex items-center gap-2">
           <img src="/images/logo.svg" width={28} alt="logo" />
@@ -80,8 +81,8 @@ const Signup = () => {
           )}
 
           {/* Name Fields */}
-          <div className="flex flex-col md:flex-row gap-x-2 mb-6">
-            <div className="relative w-full md:w-1/2 mb-4 md:mb-0">
+          <div className="flex flex-col lg:flex-row gap-x-2 mb-6">
+            <div className="relative w-full lg:w-1/2 mb-4 lg:mb-0">
               <FaUser className="absolute left-4 top-5 text-gray-500" />
               <input
                 type="text"
@@ -95,7 +96,7 @@ const Signup = () => {
                 </p>
               )}
             </div>
-            <div className="relative w-full md:w-1/2">
+            <div className="relative w-full lg:w-1/2">
               <FaUser className="absolute left-4 top-5 text-gray-500" />
               <input
                 type="text"
@@ -203,7 +204,7 @@ const Signup = () => {
             className="w-full py-3 bg-[#6440EB] text-white rounded-md hover:bg-[#5b3ad2]"
             disabled={loading}
           >
-            {loading ? "Registering..." : "Continue"}
+            {loading ? <Loader /> : "Continue"}
           </button>
 
           {/* Divider */}
@@ -223,7 +224,7 @@ const Signup = () => {
           </div>
 
           {/* Sign-in Link */}
-          <p className="text-center mt-4 text-gray-600">
+          <p className="text-center mt-4 text-gray-600 mb-10">
             Already have an account?{" "}
             <Link to="/login" className="text-blue-600 cursor-pointer">
               Sign in
