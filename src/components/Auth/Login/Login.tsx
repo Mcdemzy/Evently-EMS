@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, LoginFormData } from "../../../types/validationSchemas"; // Import Zod schema and type
+import Loader from "../../shared/Loader/Loader";
 
 const Login = () => {
   const {
@@ -53,12 +54,13 @@ const Login = () => {
   };
 
   return (
-    <div className="h-screen flex flex-col md:flex-row">
+    <div className="h-screen flex flex-col lg:flex-row">
+      {loading && <Loader />}
       {/* Left side - Login form */}
       <ImageSlider />
 
       {/* Right side - Image slider */}
-      <main className="pt-8 min-h-screen w-full md:w-1/2 px-4 md:px-10">
+      <main className="pt-8 min-h-screen w-full lg:w-1/2 px-4 lg:px-10 overflow-y-auto">
         {/* Logo Section */}
         <div className="flex items-center gap-2">
           <img src="/images/logo.svg" width={28} alt="logo" />
