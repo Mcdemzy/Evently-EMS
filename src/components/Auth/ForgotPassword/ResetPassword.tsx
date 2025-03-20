@@ -48,12 +48,12 @@ const ResetPassword = () => {
   };
 
   return (
-    <div className="h-screen flex flex-col md:flex-row">
+    <div className="h-screen flex flex-col lg:flex-row">
       {/* Left side - Image slider */}
       <ImageSlider />
 
       {/* Right side - Reset Password form */}
-      <main className="pt-8 min-h-screen w-full md:w-1/2 px-4 md:px-10">
+      <main className="pt-8 min-h-screen w-full lg:w-1/2 px-4 lg:px-10 overflow-y-auto">
         {/* Logo Section */}
         <div className="flex items-center gap-2">
           <img src="/images/logo.svg" width={28} alt="logo" />
@@ -61,7 +61,7 @@ const ResetPassword = () => {
         </div>
 
         {/* Reset Password Heading */}
-        <div className="mt-[40px] md:mt-[100px] mb-[40px] md:mb-[80px]">
+        <div className="mt-[40px] lg:mt-[100px] mb-[40px] lg:mb-[80px]">
           <h1 className="text-4xl font-semibold mb-3">Set new password</h1>
           <p className="text-lg text-gray-600">
             Please create a new password for your account
