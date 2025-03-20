@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "/images/logo.svg";
-import "./Loader.css"; 
+import "./Loader.css";
 
 const Loader: React.FC = () => {
   return (

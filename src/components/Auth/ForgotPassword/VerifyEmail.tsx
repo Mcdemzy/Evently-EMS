@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import ImageSlider from "../../shared/ImageSlider/ImageSlider";
 
 const VerifyEmail = () => {
   const [message, setMessage] = useState("");
@@ -49,7 +50,11 @@ const VerifyEmail = () => {
   return (
     <div className="h-screen flex flex-col lg:flex-row">
       {/* Left side - Image slider or placeholder */}
+<<<<<<< HEAD
       <div className="w-full lg:w-1/2 bg-gray-100"></div>
+=======
+      <ImageSlider />
+>>>>>>> 8be86a179be12c7950467c6205b45ee189b818c7
 
       {/* Right side - Verification message */}
       <main className="pt-8 min-h-screen w-full lg:w-1/2 px-4 lg:px-10 overflow-y-auto">

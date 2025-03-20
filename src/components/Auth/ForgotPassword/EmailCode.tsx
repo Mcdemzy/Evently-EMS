@@ -56,7 +56,6 @@ const EmailCode = () => {
     <div className="h-screen flex flex-col lg:flex-row">
       {/* Left side - Image slider */}
       <ImageSlider />
-
       {/* Right side - Email verification form */}
       <main className="pt-8 min-h-screen w-full lg:w-1/2 px-4 lg:px-10 overflow-y-auto">
         {/* Logo Section */}
@@ -66,7 +65,11 @@ const EmailCode = () => {
         </div>
 
         {/* Email Verification Heading */}
+<<<<<<< HEAD
         <div className="mt-[40px] mb-[40px] lg:mb-[80px]">
+=======
+        <div className="mt-[40px] mb-[40px] lg:mb-[80px]">
+>>>>>>> 8be86a179be12c7950467c6205b45ee189b818c7
           <h1 className="text-4xl font-semibold mb-3">Email Verification</h1>
           <p className="text-lg text-gray-600">
             We’ve sent a 6-digit code to{" "}

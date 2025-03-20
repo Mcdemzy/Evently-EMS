@@ -70,6 +70,8 @@ const App = () => {
       "/forgot-password",
       "/reset-password",
       "/forgot-password/email-code",
+      "/check-email",
+      "/verify-email",
     ];
 
     if (authRoutes.includes(location.pathname)) {
