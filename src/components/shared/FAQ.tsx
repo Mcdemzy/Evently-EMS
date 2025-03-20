@@ -27,11 +27,18 @@ const FaqItem: React.FC<{
     }
   }, [isOpen]);
 
+  // Split the answer by \n and map each part to a <p> element
+  const formattedAnswer = item.answer.split("\n").map((line, i) => (
+    <p key={i} className="mb-2 last:mb-0">
+      {line}
+    </p>
+  ));
+
   return (
     <div
       ref={ref}
       className={`mb-4 rounded-2xl ${
-        isOpen ? 'bg-[#624CF5] text-white' : 'bg-[#EDEFFF] dark:bg-[#624CF5]'
+        isOpen ? "bg-[#624CF5] text-white" : "bg-[#EDEFFF] dark:bg-[#624CF5]"
       }`}
     >
       <button
@@ -44,7 +51,7 @@ const FaqItem: React.FC<{
           </span>
           <svg
             className={`md:w-6 md:h-6 w-4 h-4 transition-transform text-right ${
-              isOpen ? 'transform rotate-180' : ''
+              isOpen ? "transform rotate-180" : ""
             }`}
             fill="none"
             viewBox="0 0 20 20"
@@ -62,12 +69,12 @@ const FaqItem: React.FC<{
       <div
         ref={contentRef}
         className={`faq-answer ease-in-out overflow-hidden ${
-          isOpen ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
+          isOpen ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
         }`}
         style={{ height: isOpen ? contentHeight : 0 }}
       >
         <div className="px-4 pb-4 bg-[#624CF5] text-white font-normal text-sm rounded-lg">
-          <p>{item.answer}</p>
+          {formattedAnswer}
         </div>
       </div>
     </div>

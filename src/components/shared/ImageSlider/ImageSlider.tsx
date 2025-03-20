@@ -24,7 +24,7 @@ const ImageSlider = () => {
   const location = useLocation();
 
   return (
-    <div className="hidden md:block w-1/2 relative min-h-[140vh]">
+    <div className="hidden lg:block w-1/2 relative h-full">
       <div className="inset-0 bg-black bg-opacity-50 absolute z-10"></div>
       <Swiper
         spaceBetween={30}

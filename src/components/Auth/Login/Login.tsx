@@ -1,60 +1,52 @@
-import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
+import { Link, useNavigate } from "react-router-dom";
 import ImageSlider from "../../shared/ImageSlider/ImageSlider";
-import axios from "axios"; // Import Axios
+import axios from "axios";
 import { FaEnvelope, FaLock, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { loginSchema, LoginFormData } from "../../../types/validationSchemas"; // Import Zod schema and type
+import Loader from "../../shared/Loader/Loader";
 
 const Login = () => {
-  const [showPassword, setShowPassword] = useState(false);
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginFormData>({
+    resolver: zodResolver(loginSchema), // Integrate Zod validation
   });
+
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    const { email, password } = formData;
-
-    // Validate all fields
-    if (!email || !password) {
-      setError("All fields are required.");
-      return;
-    }
-
+  const onSubmit = async (data: LoginFormData) => {
     setLoading(true);
     setError(null);
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/users/login",
-        {
-          email,
-          password,
-        }
+        "https://evently-ems-backend.vercel.app/api/users/login",
+        data
       );
 
       if (response.status === 200) {
-        // Save the token to localStorage or context (optional)
         localStorage.setItem("token", response.data.token);
-
-        // Redirect to profile page after successful login
         navigate("/");
       }
     } catch (err: any) {
-      if (err.response) {
-        setError(err.response.data.message || "Invalid email or password.");
+      if (
+        err.response?.data?.message ===
+        "Please verify your email before logging in."
+      ) {
+        setError(
+          "Your email is not verified. Please check your inbox or resend the verification email."
+        );
       } else {
-        setError("An error occurred. Please try again.");
+        setError(err.response?.data?.message || "Invalid email or password.");
       }
     } finally {
       setLoading(false);
@@ -62,12 +54,13 @@ const Login = () => {
   };
 
   return (
-    <div className="h-screen flex flex-col md:flex-row">
+    <div className="h-screen flex flex-col lg:flex-row">
+      {loading && <Loader />}
       {/* Left side - Login form */}
       <ImageSlider />
 
       {/* Right side - Image slider */}
-      <main className="pt-8 min-h-screen w-full md:w-1/2 px-4 md:px-10">
+      <main className="pt-8 min-h-screen w-full lg:w-1/2 px-4 lg:px-10 overflow-y-auto">
         {/* Logo Section */}
         <div className="flex items-center gap-2">
           <img src="/images/logo.svg" width={28} alt="logo" />
@@ -83,7 +76,7 @@ const Login = () => {
         </div>
 
         {/* Form Section */}
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           {/* Error Message */}
           {error && <div className="mb-4 text-red-500 text-sm">{error}</div>}
 
@@ -92,12 +85,15 @@ const Login = () => {
             <FaEnvelope className="absolute left-4 top-5 text-gray-500" />
             <input
               type="email"
-              name="email"
               placeholder="Email address"
-              value={formData.email}
-              onChange={handleChange}
+              {...register("email")}
               className="border w-full p-4 pl-10 rounded-md"
             />
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.email.message}
+              </p>
+            )}
           </div>
 
           {/* Password Field */}
@@ -105,10 +101,8 @@ const Login = () => {
             <FaLock className="absolute left-4 top-5 text-gray-500" />
             <input
               type={showPassword ? "text" : "password"}
-              name="password"
               placeholder="Password"
-              value={formData.password}
-              onChange={handleChange}
+              {...register("password")}
               className="border w-full p-4 pl-10 pr-10 rounded-md"
             />
             {showPassword ? (
@@ -121,6 +115,11 @@ const Login = () => {
                 className="absolute right-4 top-5 text-gray-500 cursor-pointer"
                 onClick={() => setShowPassword(true)}
               />
+            )}
+            {errors.password && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.password.message}
+              </p>
             )}
           </div>
 
@@ -140,7 +139,7 @@ const Login = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+            className="w-full py-3 bg-[#6440EB] text-white rounded-md hover:bg-[#5b3ad2]"
             disabled={loading}
           >
             {loading ? "Logging in..." : "Sign in"}
