@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Link } from "react-router-dom";
 import Progress from "./Progress";
-import Footer from "../../components/shared/Footer";
+// import Footer from "../../components/shared/Footer";
 import { useState } from "react";
 export default function Event3() {
   const [imagePreview, setImagePreview] = useState(null);
@@ -110,7 +110,7 @@ export default function Event3() {
           Create Event
         </Link>
       </section>
-      <Footer />
+      {/* <Footer /> */}
     </main>
   );
 }

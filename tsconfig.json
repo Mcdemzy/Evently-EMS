@@ -5,9 +5,11 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "zod": ["node_modules/zod"]
     }
   }
 }
