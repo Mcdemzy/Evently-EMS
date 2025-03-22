@@ -1,11 +1,18 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import ImageSlider from "../../shared/ImageSlider/ImageSlider";
 import axios from "axios";
+import { useEffect } from "react";
 
 const CheckEmail = () => {
   const { state } = useLocation();
   const email = state?.email;
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!email) {
+      navigate("/login");
+    }
+  }, [email, navigate]);
 
   const handleResendEmail = async () => {
     try {
@@ -16,7 +23,6 @@ const CheckEmail = () => {
 
       if (response.status === 200) {
         alert("Verification email sent successfully!");
-        navigate("/login");
       }
     } catch (err: any) {
       alert(

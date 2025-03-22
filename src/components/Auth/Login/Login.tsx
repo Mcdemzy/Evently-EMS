@@ -42,9 +42,7 @@ const Login = () => {
         err.response?.data?.message ===
         "Please verify your email before logging in."
       ) {
-        setError(
-          "Your email is not verified. Please check your inbox or resend the verification email."
-        );
+        navigate("/check-email", { state: { email: data.email } });
       } else {
         setError(err.response?.data?.message || "Invalid email or password.");
       }
