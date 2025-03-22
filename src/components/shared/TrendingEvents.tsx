@@ -73,7 +73,9 @@ const TrendingEvents: React.FC = () => {
 
         setLoading(false);
       } catch (err) {
-        setError("Failed to fetch data. Please try again later.");
+        setError(
+          "Failed to fetch events. Please refresh the page or try again later."
+        );
         setLoading(false);
       }
     };
