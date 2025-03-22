@@ -8,6 +8,7 @@ import "swiper/css/navigation";
 import "swiper/css/autoplay";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { Link } from "react-router-dom"; // Import Link
 
 // Define the structure of the event data from the API
 interface Event {
@@ -95,6 +96,11 @@ const TrendingEvents: React.FC = () => {
     return ticketWithImage?.image || "https://via.placeholder.com/400";
   };
 
+  // Function to handle event click
+  // const handleEventClick = (eventId: string) => {
+  //   navigate(`/event-details/${eventId}`); // Navigate to the event details page
+  // };
+
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0 },
@@ -176,15 +182,19 @@ const TrendingEvents: React.FC = () => {
               animate={inView ? "visible" : "hidden"}
               transition={{ duration: 0.5, delay: index * 0.2 }}
             >
-              <Card
-                title={event.eventName}
-                price={0} // You can update this if the API provides a price field
-                description={event.description}
-                date={new Date(event.startDate).toLocaleDateString()}
-                time={event.startTime}
-                organizer={event.eventLocation}
-                imageUrl={getEventImage(event._id)} // Get the image from the tickets
-              />
+              <Link to={`/event-details/${event._id}`}>
+                {" "}
+                {/* Use Link for navigation */}
+                <Card
+                  title={event.eventName}
+                  price={0} // You can update this if the API provides a price field
+                  description={event.description}
+                  date={new Date(event.startDate).toLocaleDateString()}
+                  time={event.startTime}
+                  organizer={event.eventLocation}
+                  imageUrl={getEventImage(event._id)} // Get the image from the tickets
+                />
+              </Link>
             </motion.div>
           </SwiperSlide>
         ))}

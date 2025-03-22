@@ -11,7 +11,7 @@ const RelatedEvents = () => {
       date: "Sep 13, 2025",
       time: "1:00 PM",
       location: "The Zone, Gbagada",
-      image: "images/details1.png",
+      image: "/images/details1.png",
     },
     {
       id: 2,
@@ -21,7 +21,7 @@ const RelatedEvents = () => {
       date: "Sep 13, 2025",
       time: "1:00 PM",
       location: "Elegushi Beach, Ikate, Lagos",
-      image: "images/details2.png",
+      image: "/images/details2.png",
     },
     {
       id: 3,
@@ -31,7 +31,7 @@ const RelatedEvents = () => {
       date: "Sep 13, 2025",
       time: "1:00 PM",
       location: "The Zone, Gbagada",
-      image: "images/details3.png",
+      image: "/images/details3.png",
     },
   ];
 
