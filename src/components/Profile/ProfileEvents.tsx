@@ -36,10 +36,6 @@ const ProfileEvents = () => {
 
   const navigate = useNavigate();
 
-  // const handleSubmit = () => {
-  //   alert("Event Clicked");
-  //   navigate("/profile-event/details");
-  // };
   const createNewEvent = () => {
     alert("New Event Created");
   };
