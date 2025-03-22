@@ -35,7 +35,7 @@ const EventHeader = ({ activeTab, onTabChange }: EventHeaderProps) => {
         {/* Event Info */}
         <div className="flex items-center gap-4 text-lg text-gray-700 mb-4">
           <IoCalendarOutline size={24} />
-          <p>Fri, Aug 30 2024 at 11:30 AM - 3:00 PM WAT</p>
+          <p>Fri, Aug 30 2025 at 11:30 AM - 3:00 PM WAT</p>
         </div>
         <div className="flex items-center gap-4 text-lg text-gray-700">
           <CiLocationOn size={24} />

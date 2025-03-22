@@ -42,7 +42,7 @@ const EventDetails = () => {
               <div className="flex items-center space-x-3">
                 <FaCalendarAlt className="text-[#25194D] text-xl dark:text-[#DFE1FF]" />
                 <span className="text-[#25194D] text-lg dark:text-[#DFE1FF]">
-                  Sep 13, 2024
+                  Sep 13, 2025
                 </span>
               </div>
               <div className="flex items-center space-x-3 mt-4">

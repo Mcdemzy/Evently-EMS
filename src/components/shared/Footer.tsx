@@ -82,7 +82,7 @@ const Footer: React.FC = () => {
         className="md:pt-12 pt-6 flex flex-col md:flex-row justify-between items-center gap-6 px-16 md:pb-10 pb-5 text-center text-sm "
       >
         <p className="font-[inter] font-normal md:text-xl text-sm">
-          © 2024 Evently. All rights reserved.
+          © 2025 Evently. All rights reserved.
         </p>
         <a href="/" className="flex items-center">
           <img
