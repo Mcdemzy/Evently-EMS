@@ -51,7 +51,7 @@ const EventDetails = () => {
 
         // Fetch tickets for the event
         const ticketsResponse = await axios.get<{ tickets: Ticket[] }>(
-          `http://localhost:5000/api/tickets/event/${eventId}`
+          `https://evently-ems-backend.vercel.app/api/tickets/event/${eventId}`
         );
 
         if (eventResponse.status === 200 && ticketsResponse.status === 200) {

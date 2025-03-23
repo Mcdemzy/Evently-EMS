@@ -30,7 +30,7 @@ const TicketsPage = () => {
       try {
         // Fetch tickets for the event
         const ticketsResponse = await axios.get<{ tickets: Ticket[] }>(
-          `http://localhost:5000/api/tickets/event/${eventId}`
+          `https://evently-ems-backend.vercel.app/api/tickets/event/${eventId}`
         );
 
         // Fetch event details
@@ -39,8 +39,6 @@ const TicketsPage = () => {
         );
 
         if (ticketsResponse.status === 200 && eventResponse.status === 200) {
-          console.log("Tickets:", ticketsResponse.data.tickets); // Log tickets
-          console.log("Event:", eventResponse.data); // Log event
           setTickets(ticketsResponse.data.tickets);
           setEvent(eventResponse.data);
         }
@@ -65,6 +63,10 @@ const TicketsPage = () => {
       const price = ticket.ticketPrice || 0; // Fallback to 0 if ticketPrice is undefined
       return total + price * quantity;
     }, 0);
+  };
+
+  const isAnyTicketSelected = () => {
+    return Object.values(selectedTickets).some((quantity) => quantity > 0);
   };
 
   const handleProceed = () => {
@@ -160,9 +162,9 @@ const TicketsPage = () => {
             </div>
             <button
               onClick={handleProceed}
-              disabled={calculateTotalPrice() === 0}
+              disabled={!isAnyTicketSelected()} // Disable only if no tickets are selected
               className={`mt-4 w-full py-2 px-4 rounded-lg ${
-                calculateTotalPrice() > 0
+                isAnyTicketSelected()
                   ? "bg-purple-600 text-white hover:bg-purple-800"
                   : "bg-gray-300 text-gray-600 cursor-not-allowed"
               }`}
