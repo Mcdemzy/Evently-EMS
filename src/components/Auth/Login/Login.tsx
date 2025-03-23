@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import ImageSlider from "../../shared/ImageSlider/ImageSlider";
 import axios from "axios";
 import { FaEnvelope, FaLock, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
@@ -6,7 +6,7 @@ import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { loginSchema, LoginFormData } from "../../../types/validationSchemas"; // Import Zod schema and type
+import { loginSchema, LoginFormData } from "../../../types/validationSchemas";
 import Loader from "../../shared/Loader/Loader";
 
 const Login = () => {
@@ -15,13 +15,14 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<LoginFormData>({
-    resolver: zodResolver(loginSchema), // Integrate Zod validation
+    resolver: zodResolver(loginSchema),
   });
 
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation(); // Get the current location
 
   const onSubmit = async (data: LoginFormData) => {
     setLoading(true);
@@ -35,7 +36,10 @@ const Login = () => {
 
       if (response.status === 200) {
         localStorage.setItem("token", response.data.token);
-        navigate("/");
+
+        // Redirect logic
+        const from = location.state?.from?.pathname || "/"; // Get the intended route or default to home
+        navigate(from, { replace: true });
       }
     } catch (err: any) {
       if (
@@ -54,10 +58,7 @@ const Login = () => {
   return (
     <div className="h-screen flex flex-col lg:flex-row">
       {loading && <Loader />}
-      {/* Left side - Login form */}
       <ImageSlider />
-
-      {/* Right side - Image slider */}
       <main className="pt-8 min-h-screen w-full lg:w-1/2 px-4 lg:px-10 overflow-y-auto">
         {/* Logo Section */}
         <div className="flex items-center gap-2">

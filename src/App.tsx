@@ -105,9 +105,6 @@ const App = () => {
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/forgot-password/email-code" element={<EmailCode />} />
           <Route path="/contact" element={<ContactPage />} />
-          <Route path="/get-tickets" element={<TicketsPage />} />
-          <Route path="/get-tickets/contact" element={<TicketsPage2 />} />
-          <Route path="/get-tickets/checkout" element={<TicketsPage3 />} />
           <Route
             path="/event-details/:eventId"
             element={<EventDetails />}
@@ -131,6 +128,9 @@ const App = () => {
               path="/profile-event/:tab/:eventId"
               element={<EventDetailsPage />}
             />
+            <Route path="/get-tickets" element={<TicketsPage />} />
+            <Route path="/get-tickets/contact" element={<TicketsPage2 />} />
+            <Route path="/get-tickets/checkout" element={<TicketsPage3 />} />
           </Route>
         </Routes>
 
