@@ -128,7 +128,7 @@ const App = () => {
               path="/profile-event/:tab/:eventId"
               element={<EventDetailsPage />}
             />
-            <Route path="/get-tickets" element={<TicketsPage />} />
+            <Route path="/get-tickets/:eventId" element={<TicketsPage />} />
             <Route path="/get-tickets/contact" element={<TicketsPage2 />} />
             <Route path="/get-tickets/checkout" element={<TicketsPage3 />} />
           </Route>

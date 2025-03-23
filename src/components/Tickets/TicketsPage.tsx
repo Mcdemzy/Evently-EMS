@@ -1,64 +1,91 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
 
-// Define the type for ticket keys
-type TicketType = "standard" | "vip" | "vvip" | "group";
+// Define the structure of a ticket
+interface Ticket {
+  _id: string;
+  ticketName: string;
+  ticketType: string;
+  ticketPrice?: number; // Make ticketPrice optional
+  benefits: string[];
+  ticketDescription: string;
+  image?: string; // Image URL for the ticket
+}
 
 const TicketsPage = () => {
-  // Define the state for selected tickets
-  const [tickets, setTickets] = useState<Record<TicketType, number>>({
-    standard: 0,
-    vip: 0,
-    vvip: 0,
-    group: 0,
-  });
-
+  const { eventId } = useParams<{ eventId: string }>(); // Get eventId from the URL
+  const [tickets, setTickets] = useState<Ticket[]>([]);
+  const [event, setEvent] = useState<any>(null); // Replace 'any' with the correct event type
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+  const [selectedTickets, setSelectedTickets] = useState<
+    Record<string, number>
+  >({});
   const navigate = useNavigate();
 
-  const click = () => {
-    navigate("/get-tickets/contact");
-  };
-  // Define details for each ticket type
-  const ticketDetails: Record<
-    TicketType,
-    { price: number; description: string; fee: number }
-  > = {
-    standard: {
-      price: 5200,
-      description: "Grants access to the event",
-      fee: 200,
-    },
-    vip: {
-      price: 15400,
-      description:
-        "Grants access to the event, a special sit, and a complementary cocktail.",
-      fee: 400,
-    },
-    vvip: {
-      price: 25600,
-      description:
-        "Comes with VIP benefits, backstage pass, complimentary meal, and a complementary cocktail.",
-      fee: 600,
-    },
-    group: {
-      price: 80900,
-      description:
-        "Comes with VIP benefits, a table for 5 people, backstage pass, complimentary meal, and a complementary cocktail.",
-      fee: 900,
-    },
+  // Fetch tickets and event details
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Fetch tickets for the event
+        const ticketsResponse = await axios.get<{ tickets: Ticket[] }>(
+          `http://localhost:5000/api/tickets/event/${eventId}`
+        );
+
+        // Fetch event details
+        const eventResponse = await axios.get(
+          `https://evently-ems-backend.vercel.app/api/events/${eventId}`
+        );
+
+        if (ticketsResponse.status === 200 && eventResponse.status === 200) {
+          console.log("Tickets:", ticketsResponse.data.tickets); // Log tickets
+          console.log("Event:", eventResponse.data); // Log event
+          setTickets(ticketsResponse.data.tickets);
+          setEvent(eventResponse.data);
+        }
+
+        setLoading(false);
+      } catch (err) {
+        setError("Failed to fetch tickets. Please try again later.");
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [eventId]);
+
+  const handleChange = (ticketId: string, value: number) => {
+    setSelectedTickets({ ...selectedTickets, [ticketId]: value });
   };
 
-  // Calculate total price
-  const totalPrice = Object.entries(tickets).reduce(
-    (total, [key, quantity]) =>
-      total + ticketDetails[key as TicketType].price * quantity,
-    0
-  );
-
-  // Handle dropdown value changes
-  const handleChange = (ticketType: TicketType, value: number) => {
-    setTickets({ ...tickets, [ticketType]: value });
+  const calculateTotalPrice = () => {
+    return tickets.reduce((total: number, ticket: Ticket) => {
+      const quantity = selectedTickets[ticket._id] || 0;
+      const price = ticket.ticketPrice || 0; // Fallback to 0 if ticketPrice is undefined
+      return total + price * quantity;
+    }, 0);
   };
+
+  const handleProceed = () => {
+    navigate("/get-tickets/contact", { state: { selectedTickets, event } });
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center dark:bg-black">
+        <p>Loading tickets...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center dark:bg-black">
+        <p className="text-red-500">{error}</p>
+      </div>
+    );
+  }
 
   return (
     <main className="min-h-screen dark:bg-[#000000] dark:text-white pt-[100px] md:pt-[124px]">
@@ -68,32 +95,28 @@ const TicketsPage = () => {
           {/* Left Section */}
           <div className="md:col-span-2">
             <h2 className="text-lg font-semibold mb-4">Choose Tickets</h2>
-            {Object.keys(ticketDetails).map((key) => (
+            {tickets.map((ticket: Ticket) => (
               <div
-                key={key}
-                className="flex items-center justify-between border-b py-4 gap-[100px] "
+                key={ticket._id}
+                className="flex items-center justify-between border-b py-4 gap-[100px]"
               >
                 <div>
-                  <h3 className="font-bold">{key.toUpperCase()}</h3>
+                  <h3 className="font-bold">{ticket.ticketName}</h3>
                   <p className="text-sm text-gray-600 dark:text-[#656565]">
                     <span className="dark:text-[#F24F41]">
-                      {`₦${ticketDetails[
-                        key as TicketType
-                      ].price.toLocaleString()}`}
+                      {`₦${(ticket.ticketPrice || 0).toLocaleString()}`}{" "}
+                      {/* Fallback to 0 if ticketPrice is undefined */}
                     </span>
-                    {` includes ₦${ticketDetails[
-                      key as TicketType
-                    ].fee.toLocaleString()} fee`}
                   </p>
                   <p className="text-sm dark:text-[#656565]">
-                    {ticketDetails[key as TicketType].description}
+                    {ticket.ticketDescription}
                   </p>
                 </div>
                 <select
                   className="border rounded-md p-2 dark:text-[#3D3D3D]"
-                  value={tickets[key as TicketType]}
+                  value={selectedTickets[ticket._id] || 0}
                   onChange={(e) =>
-                    handleChange(key as TicketType, Number(e.target.value))
+                    handleChange(ticket._id, Number(e.target.value))
                   }
                 >
                   {[...Array(11)].map((_, index) => (
@@ -110,20 +133,21 @@ const TicketsPage = () => {
           <div className="border p-4 rounded-lg shadow-lg">
             <h2 className="text-lg font-semibold mb-4">Summary</h2>
             <div className="mb-6">
-              <h3 className="font-bold">PARTY W ZEIGHT</h3>
-              {totalPrice === 0 ? (
+              <h3 className="font-bold">{event?.eventName}</h3>
+              {calculateTotalPrice() === 0 ? (
                 <p className="text-sm text-gray-600">
                   Please choose a ticket type to continue
                 </p>
               ) : (
                 <ul className="text-sm space-y-2">
-                  {Object.entries(tickets)
-                    .filter(([_, quantity]) => quantity > 0)
-                    .map(([key, quantity]) => (
-                      <li key={key}>
-                        {quantity} x {key.toUpperCase()} = ₦
+                  {tickets
+                    .filter((ticket: Ticket) => selectedTickets[ticket._id] > 0)
+                    .map((ticket: Ticket) => (
+                      <li key={ticket._id}>
+                        {selectedTickets[ticket._id]} x {ticket.ticketName} = ₦
                         {(
-                          ticketDetails[key as TicketType].price * quantity
+                          (ticket.ticketPrice || 0) *
+                          selectedTickets[ticket._id]
                         ).toLocaleString()}
                       </li>
                     ))}
@@ -132,13 +156,13 @@ const TicketsPage = () => {
             </div>
             <div className="flex justify-between items-center font-bold">
               <span>Total:</span>
-              <span>₦{totalPrice.toLocaleString()}</span>
+              <span>₦{calculateTotalPrice().toLocaleString()}</span>
             </div>
             <button
-              onClick={click}
-              disabled={totalPrice === 0}
+              onClick={handleProceed}
+              disabled={calculateTotalPrice() === 0}
               className={`mt-4 w-full py-2 px-4 rounded-lg ${
-                totalPrice > 0
+                calculateTotalPrice() > 0
                   ? "bg-purple-600 text-white hover:bg-purple-800"
                   : "bg-gray-300 text-gray-600 cursor-not-allowed"
               }`}

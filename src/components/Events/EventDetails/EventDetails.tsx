@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { FaMapMarkerAlt, FaClock, FaCalendarAlt } from "react-icons/fa";
 import { FiPhone, FiInstagram } from "react-icons/fi";
 import { MdEmail } from "react-icons/md";
-import { Link } from "react-router-dom";
 import RelatedEvents from "./RelatedEvents";
 import axios from "axios";
 
@@ -25,6 +24,11 @@ interface Event {
 interface Ticket {
   _id: string;
   eventId: string;
+  ticketName: string;
+  ticketType: string;
+  ticketPrice: number;
+  benefits: string[];
+  ticketDescription: string;
   image?: string; // Image URL for the ticket
 }
 
@@ -34,6 +38,7 @@ const EventDetails = () => {
   const [tickets, setTickets] = useState<Ticket[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   // Fetch event details and tickets
   useEffect(() => {
@@ -44,14 +49,14 @@ const EventDetails = () => {
           `https://evently-ems-backend.vercel.app/api/events/${eventId}`
         );
 
-        // Fetch all tickets
-        const ticketsResponse = await axios.get<Ticket[]>(
-          "https://evently-ems-backend.vercel.app/api/tickets"
+        // Fetch tickets for the event
+        const ticketsResponse = await axios.get<{ tickets: Ticket[] }>(
+          `http://localhost:5000/api/tickets/event/${eventId}`
         );
 
         if (eventResponse.status === 200 && ticketsResponse.status === 200) {
           setEvent(eventResponse.data);
-          setTickets(ticketsResponse.data);
+          setTickets(ticketsResponse.data.tickets); // Access the `tickets` property
         }
 
         setLoading(false);
@@ -74,6 +79,11 @@ const EventDetails = () => {
 
     // Return the image or fallback
     return ticketWithImage?.image || "https://via.placeholder.com/400";
+  };
+
+  // Navigate to the Get Tickets page with the event's tickets
+  const handleGetTickets = () => {
+    navigate(`/get-tickets/${eventId}`); // Pass only the eventId
   };
 
   if (loading) {
@@ -111,12 +121,12 @@ const EventDetails = () => {
               alt="Event Poster"
               className="w-full rounded-lg shadow-2xl"
             />
-            <Link
-              to="/get-tickets"
+            <button
+              onClick={handleGetTickets}
               className="w-full text-center bg-purple-600 hover:bg-purple-800 text-white font-bold py-3 px-6 rounded-lg mt-6 text-lg"
             >
               Get Tickets
-            </Link>
+            </button>
           </div>
 
           {/* Event Details Section */}
