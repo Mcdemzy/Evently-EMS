@@ -26,6 +26,7 @@ export default function FreeTicket() {
           </label>
           <div className="flex flex-row gap-x-2">
             <select className="dark:bg-[#1F1F1F] dark:border-none dark:text-[#fff] border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <option value="">Select</option>
               <option value="">Limited</option>
               <option value="">Unlimited</option>
             </select>

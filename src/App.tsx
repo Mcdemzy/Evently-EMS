@@ -120,7 +120,7 @@ const App = () => {
             <Route path="/profile" element={<Profile />} />
             {/* Add more protected routes here */}
             <Route path="/events/create" element={<CreateEvent />} />
-            <Route path="/events/create/2" element={<Event2 />} />
+            <Route path="/events/create/2/:eventID" element={<Event2 />} />
             <Route path="/events/create/3" element={<Event3 />} />
             <Route
               path="/profile-event/:tab/:eventId"
