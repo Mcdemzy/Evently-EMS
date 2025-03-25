@@ -5,7 +5,6 @@ import Progress from "./Progress";
 import { useState } from "react";
 export default function Event3() {
   const [imagePreview, setImagePreview] = useState(null);
-
   const handleImageUpload = (event: any) => {
     const file = event.target.files[0];
     if (file) {
