@@ -1,12 +1,39 @@
+import { fetchBanks, verifyAccountNumber } from "@/data/nigerianBanks";
+import { useEffect, useState } from "react";
+
 export default function PaidTicket({ formData, setFormData }: any) {
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev: any) => ({ ...prev, [name]: value }));
+  const [banks, setBanks] = useState<any>([]);
+
+  useEffect(() => {
+    const getBanks = async () => {
+      const bankList = await fetchBanks();
+      setBanks(bankList);
+    };
+
+    getBanks();
+  }, []);
+
+  const handleChange = (e: any) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  useEffect(() => {
+    if (formData.bank && formData.accountNumber.length === 10) {
+      const selectedBank = banks.find((b: any) => b.name === formData.bank);
+      if (!selectedBank) return;
+
+      verifyAccountNumber(selectedBank?.code, formData.accountNumber)
+        .then((accountName) => {
+          if (accountName) {
+            setFormData((prev: any) => ({ ...prev, accountName }));
+          }
+        })
+        .catch(() =>
+          setFormData((prev: any) => ({ ...prev, accountName: "" }))
+        );
+    }
+  }, [formData.bank, formData.accountNumber]);
+
   return (
     <>
       <section>
@@ -30,19 +57,35 @@ export default function PaidTicket({ formData, setFormData }: any) {
           </div>
           <div className="">
             <label
-              htmlFor="username"
+              htmlFor="ticketStock"
               className="dark:text-[#EDEFFF] block mb-2 text-sm font-medium text-[#25194D]"
             >
               Ticket Stock <span className="text-[#FA776C]">*</span>
             </label>
             <div className="flex flex-row gap-x-2">
-              <select className="border-[#1C1C1C] dark:text-[#fff] dark:bg-[#1F1F1F] dark:border-none border text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option value=""></option>
+              <select
+                name="ticketStock"
+                value={formData.ticketStock}
+                onChange={(e) =>
+                  setFormData({ ...formData, ticketStock: e.target.value })
+                }
+                className="border-[#1C1C1C] dark:text-[#fff] dark:bg-[#1F1F1F] dark:border-none border text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              >
+                <option value="">Select</option>
+                <option value="limited">Limited</option>
+                <option value="unlimited">Unlimited</option>
               </select>
-              <input
-                type="number"
-                className=" dark:text-[#fff] dark:bg-[#1F1F1F] dark:border-none border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              ></input>
+              {formData.ticketStock == "limited" ? (
+                <input
+                  type="number"
+                  name="availableTickets"
+                  value={formData.availableTickets}
+                  onChange={handleChange}
+                  className="dark:bg-[#1F1F1F] dark:border-none dark:text-[#fff] border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                />
+              ) : (
+                ""
+              )}
             </div>
           </div>
           <div>
@@ -52,13 +95,22 @@ export default function PaidTicket({ formData, setFormData }: any) {
             >
               Ticket Purchase Limit <span className="text-[#FA776C]">*</span>
             </label>
-            <input
-              type="text"
-              name="username"
-              id="username"
-              className=" dark:text-[#fff] dark:bg-[#1F1F1F] dark:border-none border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              required
-            />
+            {formData.ticketStock == "limited" ? (
+              <input
+                type="text"
+                name="purchaseLimit"
+                id="username"
+                className=" dark:text-[#fff] dark:bg-[#1F1F1F] dark:border-none border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                required
+                value={formData.purchaseLimit}
+                onChange={handleChange}
+              />
+            ) : (
+              <div
+                id="purchaseLimit"
+                className="cursor-not-allowed border-none bg-[#e8e8e8] p-5 dark:text-[#fff] dark:bg-[#0a0a0a] dark:border-none dark:border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              ></div>
+            )}
           </div>
           <div className="">
             <label
@@ -68,18 +120,15 @@ export default function PaidTicket({ formData, setFormData }: any) {
               Ticket Price <span className="text-[#FA776C]">*</span>
             </label>
             <div className="flex flex-row gap-x-2">
+              <select className="border-[#1C1C1C] dark:text-[#fff] dark:bg-[#1F1F1F] dark:border-none border text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option value="₦">₦</option>
+              </select>
               <input
-                type="text"
-                name="username"
-                id="username"
-                className="  dark:text-[#fff] dark:bg-[#1F1F1F] dark:border-none border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                required
-              />
-
-              <input
-                type="text"
-                name="username"
-                id="username"
+                type="number"
+                name="ticketPrice"
+                id="ticketPrice"
+                value={formData.ticketPrice}
+                onChange={handleChange}
                 className=" dark:text-[#fff] dark:bg-[#1F1F1F] dark:border-none border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
@@ -107,14 +156,17 @@ export default function PaidTicket({ formData, setFormData }: any) {
             <input
               placeholder="Benefits of this ticket"
               type="text"
-              id="online-location"
+              id="benefits"
               className="dark:text-[#fff] dark:bg-[#1F1F1F] dark:border-none block border-[#1C1C1C] w-full p-2.5 ps-10 text-sm text-gray-900 border rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               required
+              name="benefits"
+              value={formData.benefits}
+              onChange={handleChange}
             />
           </div>
           <div className="col-span-2 mt-4 relative">
             <label
-              htmlFor="username"
+              htmlFor="ticketDescription"
               className="dark:text-[#EDEFFF] block mb-2 text-sm font-medium text-[#25194D]"
             >
               Ticket Description <span className="text-[#FA776C]">*</span>
@@ -123,8 +175,10 @@ export default function PaidTicket({ formData, setFormData }: any) {
               cols={4}
               rows={5}
               className=" dark:text-[#fff] dark:bg-[#1F1F1F] dark:border-none border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600  dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              name=""
-              id=""
+              name="ticketDescription"
+              id="ticketDescription"
+              value={formData.ticketDescription}
+              onChange={handleChange}
             ></textarea>
           </div>
         </div>
@@ -140,13 +194,23 @@ export default function PaidTicket({ formData, setFormData }: any) {
             >
               Bank <span className="text-[#FA776C]">*</span>
             </label>
-            <select className=" dark:text-[#fff] dark:bg-[#1F1F1F] dark:border-none border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
-              <option value=""></option>
+            <select
+              name="bank"
+              value={formData.bank}
+              onChange={handleChange}
+              className="dark:text-[#fff] dark:bg-[#1F1F1F] dark:border-none border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            >
+              <option value="">Select a Bank</option>
+              {banks.map((bank: any) => (
+                <option key={bank.id} value={bank.name}>
+                  {bank.name}
+                </option>
+              ))}
             </select>
           </div>
           <div className="">
             <label
-              htmlFor="username"
+              htmlFor="accountNumber"
               className="dark:text-[#EDEFFF] block mb-2 text-sm font-medium text-[#25194D]"
             >
               Account Number <span className="text-[#FA776C]">*</span>
@@ -154,8 +218,10 @@ export default function PaidTicket({ formData, setFormData }: any) {
             <div className="flex flex-row gap-x-2">
               <input
                 type="text"
-                name="username"
-                id="username"
+                name="accountNumber"
+                id="accountNumber"
+                value={formData.accountNumber}
+                onChange={handleChange}
                 className=" dark:text-[#fff] dark:bg-[#1F1F1F] dark:border-none border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
               />
@@ -168,13 +234,11 @@ export default function PaidTicket({ formData, setFormData }: any) {
             >
               Account Name <span className="text-[#FA776C]">*</span>
             </label>
-            <input
-              type="text"
-              name="username"
-              id="username"
-              className=" dark:text-[#fff] dark:bg-[#1F1F1F] dark:border-none border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              required
-            />
+            {formData.accountName && (
+              <p className="text-green-500 border border-[#1C1C1C] block w-full p-2.5 rounded-lg">
+                {formData.accountName}
+              </p>
+            )}
           </div>
         </div>
       </section>

@@ -23,8 +23,12 @@ export default function Event2() {
     ticketStock: "",
     availableTickets: "",
     purchaseLimit: "",
+    ticketPrice: "",
     benefits: "",
     ticketDescription: "",
+    bank: "",
+    accountNumber: "",
+    accountName: "",
   });
   const handleAddTicketClick = () => {
     setShowForm(true);
