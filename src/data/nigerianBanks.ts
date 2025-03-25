@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_KEY = "sk_live_b22f4ac1ebf7a1cd33df099a7de8a731f08d24f7"; // Replace with your Paystack secret key
+const API_KEY = ""; // Replace with your Paystack secret key
 
 export const fetchBanks = async () => {
   try {
