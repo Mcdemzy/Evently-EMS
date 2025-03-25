@@ -1,19 +1,29 @@
-export default function PaidTicket() {
+export default function PaidTicket({ formData, setFormData }: any) {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev: any) => ({ ...prev, [name]: value }));
+  };
   return (
     <>
       <section>
         <div className="mt-4 grid gap-4 mb-4 sm:grid-cols-2">
           <div>
             <label
-              htmlFor="username"
+              htmlFor="ticketName"
               className="dark:text-[#EDEFFF] block mb-2 text-sm font-medium text-[#25194D]"
             >
               Ticket Name <span className="text-[#FA776C]">*</span>
             </label>
             <input
               type="text"
-              name="username"
-              id="username"
+              name="ticketName"
+              id="ticketName"
+              value={formData.ticketName}
+              onChange={handleChange}
               className="dark:text-[#fff] dark:bg-[#1F1F1F] dark:border-none border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               required
             />

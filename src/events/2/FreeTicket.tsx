@@ -1,4 +1,12 @@
-export default function FreeTicket() {
+export default function FreeTicket({ formData, setFormData }: any) {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev: any) => ({ ...prev, [name]: value }));
+  };
   return (
     <>
       <div className="mt-4 grid gap-4 mb-4 sm:grid-cols-2">
@@ -11,29 +19,44 @@ export default function FreeTicket() {
           </label>
           <input
             type="text"
-            name="username"
+            name="ticketName"
             id="username"
             className="dark:text-[#fff] dark:bg-[#1F1F1F] dark:border-none border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
             required
+            onChange={handleChange}
+            value={formData.ticketName}
           />
         </div>
         <div className="">
           <label
-            htmlFor="username"
+            htmlFor="stock"
             className="dark:text-[#EDEFFF] block mb-2 text-sm font-medium text-[#25194D]"
           >
             Ticket Stock <span className="text-[#FA776C]">*</span>
           </label>
           <div className="flex flex-row gap-x-2">
-            <select className="dark:bg-[#1F1F1F] dark:border-none dark:text-[#fff] border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
-              <option value="">Select</option>
-              <option value="">Limited</option>
-              <option value="">Unlimited</option>
-            </select>
-            <input
-              type="number"
+            <select
+              value={formData.ticketStock}
+              onChange={(e) =>
+                setFormData({ ...formData, ticketStock: e.target.value })
+              }
               className="dark:bg-[#1F1F1F] dark:border-none dark:text-[#fff] border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            />
+            >
+              <option value="">Select</option>
+              <option value="limited">Limited</option>
+              <option value="unlimited">Unlimited</option>
+            </select>
+            {formData.ticketStock == "limited" ? (
+              <input
+                type="number"
+                name="availableTickets"
+                value={formData.availableTickets}
+                onChange={handleChange}
+                className="dark:bg-[#1F1F1F] dark:border-none dark:text-[#fff] border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              />
+            ) : (
+              ""
+            )}
           </div>
         </div>
         <div className="col-span-2">
@@ -43,9 +66,17 @@ export default function FreeTicket() {
           >
             Ticket Purchase Limit <span className="text-[#FA776C]">*</span>
           </label>
-          <select className="dark:bg-[#1F1F1F] dark:border-none dark:text-[#fff] border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
-            <option value=""></option>
-          </select>
+          {formData.ticketStock == "limited" ? (
+            <input
+              type="number"
+              name="purchaseLimit"
+              value={formData.purchaseLimit}
+              onChange={handleChange}
+              className="dark:bg-[#1F1F1F] dark:border-none dark:text-[#fff] border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            />
+          ) : (
+            ""
+          )}
           <div className="col-span-2 mt-4 relative">
             <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
               <svg
@@ -68,7 +99,10 @@ export default function FreeTicket() {
             <input
               placeholder="Benefits of this ticket"
               type="text"
-              id="online-location"
+              id="benefits"
+              name="benefits"
+              value={formData.benefits}
+              onChange={handleChange}
               className="dark:bg-[#1F1F1F] dark:border-none dark:text-[#fff] block w-full p-2.5 ps-10 text-sm text-gray-900 border border-[#1C1C1C] rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
               required
             />
@@ -76,7 +110,7 @@ export default function FreeTicket() {
         </div>
         <div className="col-span-2 mt-4 relative">
           <label
-            htmlFor="username"
+            htmlFor="description"
             className="dark:text-[#EDEFFF] block mb-2 text-sm font-medium text-[#25194D]"
           >
             Ticket Description <span className="text-[#FA776C]">*</span>
@@ -84,9 +118,11 @@ export default function FreeTicket() {
           <textarea
             cols={4}
             rows={5}
+            value={formData.ticketDescription}
+            onChange={handleChange}
             className="dark:bg-[#1F1F1F] dark:border-none dark:text-[#fff] border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600  dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            name=""
-            id=""
+            name="ticketDescription"
+            id="ticketDescription"
           ></textarea>
         </div>
       </div>

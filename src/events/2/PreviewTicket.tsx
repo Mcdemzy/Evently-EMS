@@ -1,10 +1,19 @@
 import { Dot, EllipsisVertical, Plus } from "lucide-react";
 import Progress from "./Progress";
 import Socials from "./Socials";
-import { Link } from "react-router-dom";
-// import Footer from "../../components/shared/Footer";
+import { Link, useLocation, useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function PreviewTicket() {
+  const { eventID } = useParams();
+  const eventId = eventID;
+  const location = useLocation();
+  const { ticketType, ticketData } = location.state || {};
+
+  useEffect(() => {
+    console.log("Previewing Ticket Data:", ticketType, ticketData);
+    console.log("Event id :", eventId);
+  }, [ticketType, ticketData]);
   return (
     <main className="overflow-hidden w-full dark:bg-black">
       <h2 className="dark:text-[#EDEFFF] text-[#25194D] font-semibold text-4xl text-center mt-14">
