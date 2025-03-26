@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_KEY = ""; // Replace with your Paystack secret key
+const API_KEY = import.meta.env.VITE_PAYSTACK_SECRET_KEY;
 
 export const fetchBanks = async () => {
   try {
