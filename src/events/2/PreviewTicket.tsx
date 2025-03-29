@@ -1,19 +1,29 @@
 import { Dot, EllipsisVertical, Plus } from "lucide-react";
 import Progress from "./Progress";
 import Socials from "./Socials";
-import { Link, useLocation, useParams } from "react-router-dom";
-import { useEffect } from "react";
-
+import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 export default function PreviewTicket() {
-  const { eventID } = useParams();
-  const eventId = eventID;
-  const location = useLocation();
-  const { ticketType, ticketData } = location.state || {};
+  const [isOpen, setIsOpen] = useState(false);
+  const { eventId } = useParams();
 
+  const [tickets, setTickets] = useState<any>([]);
   useEffect(() => {
-    console.log("Previewing Ticket Data:", ticketType, ticketData);
-    console.log("Event id :", eventId);
-  }, [ticketType, ticketData]);
+    const fetchTicket = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/api/events/${eventId}`
+        );
+        console.log(response.data.tickets);
+        setTickets(response.data.tickets);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    fetchTicket();
+  }, []);
   return (
     <main className="overflow-hidden w-full dark:bg-black">
       <h2 className="dark:text-[#EDEFFF] text-[#25194D] font-semibold text-4xl text-center mt-14">
@@ -29,15 +39,15 @@ export default function PreviewTicket() {
             TICEKTS
           </h2>
           <Link
-            to="/events/create/2"
+            to={`/events/create/2/${eventId}`}
             className="dark:text-[#EDEFFF] dark:dark:border-[#EDEFFF] flex justify-start items-center gap-x-2 text-[#25194D] border-2 px-2.5 py-1 rounded-md border-[#25194D]"
           >
             Add Ticket <Plus />
           </Link>
         </div>
 
-        <div className="w-full mt-4 relative overflow-x-auto">
-          <table className=" w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <div className="max-h-[500px] w-full mt-4 relative overflow-auto">
+          <table className="min-w-full table-fixed text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead className="dark:text-[#EDEFFF] border-b text-xs text-[#25194D] text-[20px] uppercase">
               <tr>
                 <th scope="" className="px-6 py-3">
@@ -120,64 +130,43 @@ export default function PreviewTicket() {
               </tr>
             </thead>
             <tbody className="text-primary text-[16px]">
-              <tr className="dark:border-b-primary dark:text-white border-b border-b-[#E4E5E9]">
-                <th
-                  scope="row"
-                  className="dark:text-white px-6 py-4 font-medium text-primary whitespace-nowrap"
+              {tickets.map((ticket: any, index: any) => (
+                <tr
+                  key={index}
+                  className="dark:border-b-primary dark:text-white border-b border-b-[#E4E5E9]"
                 >
-                  1
-                </th>
-                <td className="px-6 py-4">
-                  <div className="flex justify-start items-center">
-                    <Dot /> Regular
-                  </div>
-                </td>
-                <td className="px-6 py-4">
-                  <div className="flex justify-start items-center">
-                    <Dot /> Unlimited
-                  </div>
-                </td>
-                <td className="px-6 py-4">
-                  <div className="flex justify-start items-center">
-                    <Dot /> Unlimited
-                  </div>
-                </td>
-                <td className="px-6 py-4">Free</td>
-                <td>
-                  <button className="dark:border-white border border-primary px-0.5 py-1 rounded-md">
-                    <EllipsisVertical size={20} />
-                  </button>
-                </td>
-              </tr>
-              <tr className="dark:border-b-primary dark:text-white border-b border-b-[#E4E5E9]">
-                <th
-                  scope="row"
-                  className="dark:text-white px-6 py-4 font-medium text-primary whitespace-nowrap"
-                >
-                  2
-                </th>
-                <td className="px-6 py-4">
-                  <div className="flex justify-start items-center">
-                    <Dot /> VIP
-                  </div>
-                </td>
-                <td className="px-6 py-4">
-                  <div className="flex justify-start items-center">
-                    <Dot /> 30/300
-                  </div>
-                </td>
-                <td className="px-6 py-4">
-                  <div className="flex justify-start items-center">
-                    <Dot /> 300
-                  </div>
-                </td>
-                <td className="px-6 py-4">₦10,000</td>
-                <td>
-                  <button className="dark:border-white border border-primary px-0.5 py-1 rounded-md">
-                    <EllipsisVertical size={20} />
-                  </button>
-                </td>
-              </tr>
+                  <th
+                    scope="row"
+                    className="dark:text-white px-6 py-4 font-medium text-primary whitespace-nowrap"
+                  >
+                    {index + 1}
+                  </th>
+                  <td className="px-6 py-4">
+                    <div className="flex justify-start items-center">
+                      <Dot /> {ticket.ticketName}
+                    </div>
+                  </td>
+                  <td className="px-6 py-4">
+                    <div className="flex justify-start items-center">
+                      <Dot /> {ticket.availableTickets || "N/A"}
+                    </div>
+                  </td>
+                  <td className="px-6 py-4">
+                    <div className="flex justify-start items-center">
+                      <Dot /> {ticket.ticketStock}
+                    </div>
+                  </td>
+                  <td className="px-6 py-4">{ticket.ticketPrice || "Free"}</td>
+                  <td className=" overflow-y-visible">
+                    <button
+                      onClick={() => setIsOpen(!isOpen)}
+                      className="dark:border-white border border-primary px-0.5 py-1 rounded-md"
+                    >
+                      <EllipsisVertical size={20} />
+                    </button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
@@ -198,7 +187,6 @@ export default function PreviewTicket() {
           Proceed
         </Link>
       </section>
-      {/* <Footer /> */}
     </main>
   );
 }

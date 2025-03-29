@@ -119,9 +119,9 @@ const App = () => {
             <Route path="/profile" element={<Profile />} />
             {/* Add more protected routes here */}
             <Route path="/events/create" element={<CreateEvent />} />
-            <Route path="/events/create/2/:eventID" element={<Event2 />} />
+            <Route path="/events/create/2/:eventId" element={<Event2 />} />
             <Route
-              path="/events/preview/:eventID"
+              path="/events/preview/:eventId"
               element={<PreviewTicket />}
             />
 

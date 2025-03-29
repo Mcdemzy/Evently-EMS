@@ -4,10 +4,14 @@ import FreeTicket from "./FreeTicket";
 import PaidTicket from "./PaidTicket";
 import Socials from "./Socials";
 import { useState } from "react";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { Loader } from "lucide-react";
 
 export default function Event2() {
-  const { eventID } = useParams();
+  const { eventId } = useParams();
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [showForm, setShowForm] = useState(false);
   const [ticketType, setTicketType] = useState<"free" | "paid" | null>(null);
   const [freeTicketData, setFreeTicketData] = useState({
@@ -38,14 +42,38 @@ export default function Event2() {
     setShowForm(false);
   };
 
-  const handleSubmit = () => {
-    const ticketData = ticketType === "free" ? freeTicketData : paidTicketData;
-    // console.log("Submitting Data:", ticketData);
+  // const handleSubmit = () => {
+  //   const ticketData = ticketType === "free" ? freeTicketData : paidTicketData;
+  //   // console.log("Submitting Data:", ticketData);
 
-    // Navigate to preview page and pass the data as state
-    navigate(`/events/preview/${eventID}`, {
-      state: { ticketData, ticketType, eventID },
-    });
+  //   // Navigate to preview page and pass the data as state
+  //   navigate(`/events/preview/${eventID}`, {
+  //     state: { ticketData, ticketType, eventID },
+  //   });
+  // };
+  const handleSubmit = async () => {
+    setIsLoading(true);
+    const ticketData = ticketType === "free" ? freeTicketData : paidTicketData;
+
+    try {
+      const response = await axios.post(
+        `http://localhost:5000/api/tickets/create`,
+        {
+          ...ticketData,
+          ticketType,
+          eventId,
+        }
+      );
+      setIsLoading(false);
+      console.log("Ticket Created Successfully:", response.data);
+      toast.success("Ticket created successfully!", response?.data?.message);
+      navigate(`/events/preview/${eventId}`), setShowForm(false);
+      setTicketType(null);
+    } catch (error: any) {
+      toast.error("Error creating ticket!", error.response?.data?.message);
+
+      console.error("Error creating ticket:", error);
+    }
   };
   return (
     <main className="overflow-hidden w-full dark:bg-black">
@@ -185,10 +213,13 @@ export default function Event2() {
 
         <button
           onClick={handleSubmit}
-          // to="/events/preview "
           className="flex justify-center items-center w-[240px] h-[48px] rounded-md text-white text-md bg-[#624CF5]"
         >
-          Proceed
+          {isLoading ? (
+            <Loader size={24} className="animate-spin mx-auto" />
+          ) : (
+            "Proceed"
+          )}
         </button>
       </section>
     </main>

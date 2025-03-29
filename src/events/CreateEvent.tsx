@@ -1,4 +1,3 @@
-import Footer from "../components/shared/Footer";
 import CreateEventForm from "./1/CreateEventForm";
 
 export default function CreateEvent() {
@@ -37,7 +36,6 @@ export default function CreateEvent() {
         </h2>
         <CreateEventForm />
       </section>
-      <Footer />
     </main>
   );
 }

@@ -36,6 +36,7 @@ export default function FreeTicket({ formData, setFormData }: any) {
           </label>
           <div className="flex flex-row gap-x-2">
             <select
+              required
               value={formData.ticketStock}
               onChange={(e) =>
                 setFormData({ ...formData, ticketStock: e.target.value })
@@ -48,6 +49,7 @@ export default function FreeTicket({ formData, setFormData }: any) {
             </select>
             {formData.ticketStock == "limited" ? (
               <input
+                required
                 type="number"
                 name="availableTickets"
                 value={formData.availableTickets}
@@ -66,17 +68,15 @@ export default function FreeTicket({ formData, setFormData }: any) {
           >
             Ticket Purchase Limit <span className="text-[#FA776C]">*</span>
           </label>
-          {formData.ticketStock == "limited" ? (
-            <input
-              type="number"
-              name="purchaseLimit"
-              value={formData.purchaseLimit}
-              onChange={handleChange}
-              className="dark:bg-[#1F1F1F] dark:border-none dark:text-[#fff] border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            />
-          ) : (
-            ""
-          )}
+
+          <input
+            type="number"
+            name="purchaseLimit"
+            value={formData.purchaseLimit}
+            onChange={handleChange}
+            className="dark:bg-[#1F1F1F] dark:border-none dark:text-[#fff] border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          />
+
           <div className="col-span-2 mt-4 relative">
             <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
               <svg

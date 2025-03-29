@@ -25,9 +25,9 @@ export const verifyAccountNumber = async (
       }
     );
 
-    return response.data.data.account_name; // Returns the verified account name
+    return response.data.data.account_name;
   } catch (error) {
     console.error("Error verifying account:", error);
-    return ""; // Return an empty string if verification fails
+    return "";
   }
 };
