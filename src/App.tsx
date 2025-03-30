@@ -125,7 +125,7 @@ const App = () => {
               element={<PreviewTicket />}
             />
 
-            <Route path="/events/create/3" element={<Event3 />} />
+            <Route path="/events/create/3/:eventId" element={<Event3 />} />
             <Route
               path="/profile-event/:tab/:eventId"
               element={<EventDetailsPage />}
