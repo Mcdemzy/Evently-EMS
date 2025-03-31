@@ -4,6 +4,7 @@ import Socials from "./Socials";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { BASE_URL } from "@/config/config";
 export default function PreviewTicket() {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -13,9 +14,7 @@ export default function PreviewTicket() {
   useEffect(() => {
     const fetchTicket = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:5000/api/events/${eventId}`
-        );
+        const response = await axios.get(`${BASE_URL}/events/${eventId}`);
         console.log(response.data.tickets);
         setTickets(response.data.tickets);
         setIsLoading(false);
