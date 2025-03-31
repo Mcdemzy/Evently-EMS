@@ -7,6 +7,7 @@ import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Loader } from "lucide-react";
+import { BASE_URL } from "@/config/config";
 
 export default function Event2() {
   const { eventId } = useParams();
@@ -42,28 +43,16 @@ export default function Event2() {
     setShowForm(false);
   };
 
-  // const handleSubmit = () => {
-  //   const ticketData = ticketType === "free" ? freeTicketData : paidTicketData;
-  //   // console.log("Submitting Data:", ticketData);
-
-  //   // Navigate to preview page and pass the data as state
-  //   navigate(`/events/preview/${eventID}`, {
-  //     state: { ticketData, ticketType, eventID },
-  //   });
-  // };
   const handleSubmit = async () => {
     setIsLoading(true);
     const ticketData = ticketType === "free" ? freeTicketData : paidTicketData;
 
     try {
-      const response = await axios.post(
-        `http://localhost:5000/api/tickets/create`,
-        {
-          ...ticketData,
-          ticketType,
-          eventId,
-        }
-      );
+      const response = await axios.post(`${BASE_URL}/tickets/create`, {
+        ...ticketData,
+        ticketType,
+        eventId,
+      });
       setIsLoading(false);
       console.log("Ticket Created Successfully:", response.data);
       toast.success("Ticket created successfully!", response?.data?.message);

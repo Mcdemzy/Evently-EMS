@@ -4,6 +4,8 @@ import Progress from "./Progress";
 import { useState } from "react";
 import { Loader } from "lucide-react";
 import { Toaster, toast } from "sonner";
+import axios from "axios";
+// import { BASE_URL } from "@/config/config";
 export default function Event3() {
   const { eventId } = useParams();
   const navigate = useNavigate();
@@ -31,28 +33,28 @@ export default function Event3() {
     formData.append("eventImage", selectedFile);
 
     try {
-      const response = await fetch(
-        `http://localhost:5000/api/events/update-image/${eventId}`,
+      const response = await axios.put(
+        // `${BASE_URL}/events/update-image/${eventId}`,
+        `http://localhost:5000/api/events/update-image/${eventId}`, // deoployed be doesnt work
+
+        formData,
         {
-          method: "PUT",
-          body: formData,
+          headers: {
+            Accept: "application/json",
+          },
         }
       );
 
-      const data = await response.json();
-
-      if (response.ok) {
-        setIsLoading(false);
-        toast.success("Event Created successfully!");
-        setTimeout(() => {
-          navigate("/events/all");
-        }, 2000);
-      } else {
-        toast.error(`Error: ${data.message}`);
-      }
-    } catch (error) {
+      setIsLoading(false);
+      toast.success("Image uploaded successfully!", response?.data?.message);
+      setTimeout(() => {
+        navigate("/events/all");
+      }, 2000);
+    } catch (error: any) {
       console.error("Upload failed:", error);
-      toast.error("Failed to upload image.");
+      toast.error(
+        `Error: ${error.response?.data?.message || "Failed to upload image."}`
+      );
     }
   };
 
@@ -139,7 +141,7 @@ export default function Event3() {
 
         <section className="mt-20 my-6 mb-10 w-full flex flex-row justify-center gap-x-8 items-center">
           <Link
-            to={`/events/create/2${eventId}`}
+            to={`/events/preview/${eventId}`}
             className="dark:border flex justify-center items-center shaodw-md w-[240px] h-[48px] rounded-md dark:text-[#DFE1FF] text-primary text-md dark:bg-black bg-[#624CF50D]"
           >
             Receed
