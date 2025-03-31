@@ -1,14 +1,39 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Progress from "./Progress";
 import FreeTicket from "./FreeTicket";
 import PaidTicket from "./PaidTicket";
 import Socials from "./Socials";
 import { useState } from "react";
-// import Footer from "../../components/shared/Footer";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { Loader } from "lucide-react";
+
 export default function Event2() {
+  const { eventId } = useParams();
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [showForm, setShowForm] = useState(false);
   const [ticketType, setTicketType] = useState<"free" | "paid" | null>(null);
-
+  const [freeTicketData, setFreeTicketData] = useState({
+    ticketName: "",
+    ticketStock: "",
+    availableTickets: "",
+    purchaseLimit: "",
+    benefits: "",
+    ticketDescription: "",
+  });
+  const [paidTicketData, setPaidTicketData] = useState({
+    ticketName: "",
+    ticketStock: "",
+    availableTickets: "",
+    purchaseLimit: "",
+    ticketPrice: "",
+    benefits: "",
+    ticketDescription: "",
+    bank: "",
+    accountNumber: "",
+    accountName: "",
+  });
   const handleAddTicketClick = () => {
     setShowForm(true);
   };
@@ -17,6 +42,39 @@ export default function Event2() {
     setShowForm(false);
   };
 
+  // const handleSubmit = () => {
+  //   const ticketData = ticketType === "free" ? freeTicketData : paidTicketData;
+  //   // console.log("Submitting Data:", ticketData);
+
+  //   // Navigate to preview page and pass the data as state
+  //   navigate(`/events/preview/${eventID}`, {
+  //     state: { ticketData, ticketType, eventID },
+  //   });
+  // };
+  const handleSubmit = async () => {
+    setIsLoading(true);
+    const ticketData = ticketType === "free" ? freeTicketData : paidTicketData;
+
+    try {
+      const response = await axios.post(
+        `http://localhost:5000/api/tickets/create`,
+        {
+          ...ticketData,
+          ticketType,
+          eventId,
+        }
+      );
+      setIsLoading(false);
+      console.log("Ticket Created Successfully:", response.data);
+      toast.success("Ticket created successfully!", response?.data?.message);
+      navigate(`/events/preview/${eventId}`), setShowForm(false);
+      setTicketType(null);
+    } catch (error: any) {
+      toast.error("Error creating ticket!", error.response?.data?.message);
+
+      console.error("Error creating ticket:", error);
+    }
+  };
   return (
     <main className="overflow-hidden w-full dark:bg-black">
       <h2 className="dark:text-[#EDEFFF] text-[#25194D] font-semibold text-4xl text-center mt-14">
@@ -131,8 +189,18 @@ export default function Event2() {
         ) : (
           ""
         )}
-        {ticketType === "free" && <FreeTicket />}
-        {ticketType === "paid" && <PaidTicket />}
+        {ticketType === "free" && (
+          <FreeTicket
+            formData={freeTicketData}
+            setFormData={setFreeTicketData}
+          />
+        )}
+        {ticketType === "paid" && (
+          <PaidTicket
+            formData={paidTicketData}
+            setFormData={setPaidTicketData}
+          />
+        )}
       </section>
       <Socials />
       <section className="mt-20 my-6 mb-10 w-full flex flex-row justify-center gap-x-8 items-center">
@@ -143,14 +211,17 @@ export default function Event2() {
           Receed
         </Link>
 
-        <Link
-          to="/events/preview "
+        <button
+          onClick={handleSubmit}
           className="flex justify-center items-center w-[240px] h-[48px] rounded-md text-white text-md bg-[#624CF5]"
         >
-          Proceed
-        </Link>
+          {isLoading ? (
+            <Loader size={24} className="animate-spin mx-auto" />
+          ) : (
+            "Proceed"
+          )}
+        </button>
       </section>
-      {/* <Footer /> */}
     </main>
   );
 }

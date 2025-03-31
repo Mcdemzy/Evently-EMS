@@ -114,7 +114,6 @@ const App = () => {
           <Route path="/verify-email" element={<VerifyEmail />} />
           {/* <Route path="/events/create" element={<CreateEvent />} /> */}
           {/* <Route path="/events/create/2" element={<Event2 />} /> */}
-          <Route path="/events/preview" element={<PreviewTicket />} />
           <Route path="*" element={<NotFound />} />
           {/* <Route path="/events/create/3" element={<Event3 />} /> */}
           {/* Protected Routes */}
@@ -122,8 +121,13 @@ const App = () => {
             <Route path="/profile" element={<Profile />} />
             {/* Add more protected routes here */}
             <Route path="/events/create" element={<CreateEvent />} />
-            <Route path="/events/create/2" element={<Event2 />} />
-            <Route path="/events/create/3" element={<Event3 />} />
+            <Route path="/events/create/2/:eventId" element={<Event2 />} />
+            <Route
+              path="/events/preview/:eventId"
+              element={<PreviewTicket />}
+            />
+
+            <Route path="/events/create/3/:eventId" element={<Event3 />} />
             <Route
               path="/profile-event/:tab/:eventId"
               element={<EventDetailsPage />}
