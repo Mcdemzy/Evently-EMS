@@ -95,22 +95,16 @@ export default function PaidTicket({ formData, setFormData }: any) {
             >
               Ticket Purchase Limit <span className="text-[#FA776C]">*</span>
             </label>
-            {formData.ticketStock == "limited" ? (
-              <input
-                type="text"
-                name="purchaseLimit"
-                id="username"
-                className=" dark:text-[#fff] dark:bg-[#1F1F1F] dark:border-none border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                required
-                value={formData.purchaseLimit}
-                onChange={handleChange}
-              />
-            ) : (
-              <div
-                id="purchaseLimit"
-                className="cursor-not-allowed border-none bg-[#e8e8e8] p-5 dark:text-[#fff] dark:bg-[#0a0a0a] dark:border-none dark:border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              ></div>
-            )}
+
+            <input
+              type="text"
+              name="purchaseLimit"
+              id="username"
+              className=" dark:text-[#fff] dark:bg-[#1F1F1F] dark:border-none border border-[#1C1C1C] text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              required
+              value={formData.purchaseLimit}
+              onChange={handleChange}
+            />
           </div>
           <div className="">
             <label

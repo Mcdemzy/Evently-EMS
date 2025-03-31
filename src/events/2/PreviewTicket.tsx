@@ -154,7 +154,7 @@ export default function PreviewTicket() {
                       </td>
                       <td className="px-6 py-4">
                         <div className="flex justify-start items-center">
-                          <Dot /> {ticket.availableTickets || "N/A"}
+                          <Dot /> {ticket.availableTickets || "unlimited"}
                         </div>
                       </td>
                       <td className="px-6 py-4">
