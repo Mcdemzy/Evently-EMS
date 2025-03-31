@@ -2,11 +2,11 @@ import { IoTicketOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
 const ProfileTickets = () => {
-  const events = [
+  const tickets = [
     {
       id: 1,
       title: "Hackathon",
-      date: "Monday, Dec 30 2024",
+      date: "Monday, Dec 30 2025",
       ticketsSold: "1 VIP",
       image: "images/eventProfile.png",
     },
@@ -42,27 +42,27 @@ const ProfileTickets = () => {
       <div className="flex items-center mb-6 justify-between">
         <h1 className="text-2xl font-bold ">My Tickets</h1>
         <Link
-          to="/events/all"
+          to="/tickets/all"
           className="w-fit px-8 py-4 bg-[#624CF5] text-white text-xl rounded-full hidden md:flex"
         >
-          Explore more events
+          Explore more tickets
         </Link>
       </div>
 
-      {/* Events Section */}
-      {events.length === 0 ? (
+      {/* tickets Section */}
+      {tickets.length === 0 ? (
         <div className="w-full h-[22.5rem] border border-[#DCDCDC] rounded-lg shadow-md flex flex-col justify-center items-center">
           <div className="w-fit h-20 text-2xl font-medium rounded-xl flex justify-center items-center">
             No event tickets purchased yet
           </div>
           <p className="text-gray-600 font-medium">
-            No worries - plenty of exciting events to explore!
+            No worries - plenty of exciting tickets to explore!
           </p>
         </div>
       ) : (
         <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Render Existing Events */}
-          {events.map((event) => (
+          {/* Render Existing tickets */}
+          {tickets.map((event) => (
             <div
               key={event.id}
               className="w-full h-[22.5rem] border border-[#DCDCDC] rounded-lg shadow-md cursor-pointer"

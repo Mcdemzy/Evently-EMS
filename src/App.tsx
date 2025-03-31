@@ -61,6 +61,7 @@ const App = () => {
 
     return <NavBar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />;
   };
+
   const FooterWrapper = (): JSX.Element | null => {
     const location = useLocation();
 
@@ -104,10 +105,11 @@ const App = () => {
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/forgot-password/email-code" element={<EmailCode />} />
           <Route path="/contact" element={<ContactPage />} />
-          <Route path="/get-tickets" element={<TicketsPage />} />
-          <Route path="/get-tickets/contact" element={<TicketsPage2 />} />
-          <Route path="/get-tickets/checkout" element={<TicketsPage3 />} />
-          <Route path="/event-details" element={<EventDetails />} />
+          <Route
+            path="/event-details/:eventId"
+            element={<EventDetails />}
+          />{" "}
+          {/* Updated route */}
           <Route path="/check-email" element={<CheckEmail />} />
           <Route path="/verify-email" element={<VerifyEmail />} />
           {/* <Route path="/events/create" element={<CreateEvent />} /> */}
@@ -130,6 +132,9 @@ const App = () => {
               path="/profile-event/:tab/:eventId"
               element={<EventDetailsPage />}
             />
+            <Route path="/get-tickets/:eventId" element={<TicketsPage />} />
+            <Route path="/get-tickets/contact" element={<TicketsPage2 />} />
+            <Route path="/get-tickets/checkout" element={<TicketsPage3 />} />
           </Route>
         </Routes>
 
